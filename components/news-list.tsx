@@ -187,10 +187,10 @@ export function NewsList({ items }: { items: NewsItem[] }) {
             key={item.slug}
             className="group relative overflow-hidden rounded-[3rem] border border-slate-100 bg-white/50 p-6 shadow-[0_30px_70px_-20px_rgba(0,0,0,0.05)] backdrop-blur-xl transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_50px_90px_-20px_rgba(0,0,0,0.12)] hover:bg-white"
           >
-            <div className="grid gap-12 lg:grid-cols-[24rem_1fr]">
+            <div className="grid gap-10 lg:grid-cols-[18rem_1fr]">
               <Link
                 href={`/artykul/${item.slug}`}
-                className="relative aspect-[16/10] overflow-hidden rounded-[2.5rem] bg-slate-50 lg:aspect-auto"
+                className="relative aspect-[16/10] overflow-hidden rounded-[2.5rem] bg-slate-50 lg:aspect-[4/3] lg:h-64"
               >
                 <img
                   src={item.image || "/placeholder.svg"}
