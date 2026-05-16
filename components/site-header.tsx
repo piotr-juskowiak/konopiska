@@ -209,7 +209,7 @@ function SearchSuggestions({
               </div>
               <div className="flex flex-col justify-center min-w-0">
                 <div className="flex items-center gap-2 mb-1.5">
-                  <span className="rounded bg-white px-1.5 py-0.5 text-[8px] font-black uppercase tracking-widest text-[var(--french-blue)] shadow-sm ring-1 ring-slate-200/50">
+                  <span className="rounded bg-[var(--imperial-blue)] px-2 py-0.5 text-[7px] font-black uppercase tracking-widest text-white shadow-sm ring-1 ring-white/10">
                     {item.category}
                   </span>
                   <span className="text-[9px] font-bold text-slate-400">

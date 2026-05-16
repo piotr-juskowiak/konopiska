@@ -107,8 +107,8 @@ export function EventsWidget() {
         </div>
         
         <div className="grid grid-cols-7 gap-1 text-center">
-          {["P", "W", "Ś", "C", "P", "S", "N"].map(d => (
-            <span key={d} className="text-[10px] font-black text-slate-300 h-8 flex items-center justify-center">{d}</span>
+          {["P", "W", "Ś", "C", "P", "S", "N"].map((d, idx) => (
+            <span key={idx} className="text-[10px] font-black text-slate-300 h-8 flex items-center justify-center">{d}</span>
           ))}
           {Array.from({ length: 31 }).map((_, i) => {
             const day = i + 1
