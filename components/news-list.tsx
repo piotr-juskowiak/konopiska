@@ -7,16 +7,16 @@ import { CalendarDays, ChevronRight, Search, SlidersHorizontal, X } from "lucide
 import { categories, formatPolishDate, type NewsItem } from "@/lib/news-data"
 
 const categoryTone: Record<string, string> = {
-  Ekologia: \"bg-blue-50 text-blue-700 ring-blue-100\",
-  Edukacja: \"bg-blue-50 text-blue-700 ring-blue-100\",
-  Wydarzenia: \"bg-blue-50 text-blue-700 ring-blue-100\",
-  Samorząd: \"bg-blue-50 text-blue-700 ring-blue-100\",
-  Kultura: \"bg-blue-50 text-blue-700 ring-blue-100\",
-  Sport: \"bg-blue-50 text-blue-700 ring-blue-100\",
-  Transport: \"bg-blue-50 text-blue-700 ring-blue-100\",
-  Zdrowie: \"bg-blue-50 text-blue-700 ring-blue-100\",
-  Fundusze: \"bg-blue-50 text-blue-700 ring-blue-100\",
-  Społeczność: \"bg-blue-50 text-blue-700 ring-blue-100\",
+  Ekologia: "bg-blue-50 text-blue-700 ring-blue-100",
+  Edukacja: "bg-blue-50 text-blue-700 ring-blue-100",
+  Wydarzenia: "bg-blue-50 text-blue-700 ring-blue-100",
+  Samorząd: "bg-blue-50 text-blue-700 ring-blue-100",
+  Kultura: "bg-blue-50 text-blue-700 ring-blue-100",
+  Sport: "bg-blue-50 text-blue-700 ring-blue-100",
+  Transport: "bg-blue-50 text-blue-700 ring-blue-100",
+  Zdrowie: "bg-blue-50 text-blue-700 ring-blue-100",
+  Fundusze: "bg-blue-50 text-blue-700 ring-blue-100",
+  Społeczność: "bg-blue-50 text-blue-700 ring-blue-100",
 }
 
 function getCategoryTone(category?: string) {
@@ -99,24 +99,24 @@ export function NewsList({ items }: { items: NewsItem[] }) {
         </div>
       </div>
 
-      <div className=\"mb-12 space-y-4\">
-        <div className=\"flex flex-col sm:flex-row gap-4 items-stretch\">
-          <div className=\"relative flex-1 group\">
-            <Search className=\"absolute left-5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 group-focus-within:text-[var(--primary)] transition-colors\" />
+      <div className="mb-12 space-y-4">
+        <div className="flex flex-col sm:flex-row gap-4 items-stretch">
+          <div className="relative flex-1 group">
+            <Search className="absolute left-5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 group-focus-within:text-[var(--primary)] transition-colors" />
             <input
-              type=\"search\"
+              type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder=\"Czego dziś szukasz?\"
-              className=\"h-14 w-full rounded-2xl border-2 border-slate-200/40 bg-white pl-12 pr-12 text-sm font-bold text-[var(--imperial-blue)] shadow-[0_15px_45px_-15px_rgba(15,23,42,0.1)] outline-none transition-all focus:border-[var(--french-blue)]/50 focus:bg-white placeholder:text-slate-400 focus:shadow-[0_20px_50px_-10px_rgba(59,130,246,0.15)]\"
+              placeholder="Czego dziś szukasz?"
+              className="h-14 w-full rounded-2xl border-2 border-slate-200/40 bg-white pl-12 pr-12 text-sm font-bold text-[var(--imperial-blue)] shadow-[0_15px_45px_-15px_rgba(15,23,42,0.1)] outline-none transition-all focus:border-[var(--french-blue)]/50 focus:bg-white placeholder:text-slate-400 focus:shadow-[0_20px_50px_-10px_rgba(59,130,246,0.15)]"
             />
             {query && (
               <button
-                type=\"button\"
-                onClick={() => setQuery(\"\")}
-                className=\"absolute right-4 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full text-slate-400 transition hover:bg-slate-100 hover:text-[var(--imperial-blue)]\"
+                type="button"
+                onClick={() => setQuery("")}
+                className="absolute right-4 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full text-slate-400 transition hover:bg-slate-100 hover:text-[var(--imperial-blue)]"
               >
-                <X className=\"h-4 w-4\" />
+                <X className="h-4 w-4" />
               </button>
             )}
           </div>
@@ -125,33 +125,33 @@ export function NewsList({ items }: { items: NewsItem[] }) {
             onClick={() => setShowFilters(!showFilters)}
             className={`flex h-14 items-center justify-center gap-3 rounded-2xl px-8 text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${
               showFilters 
-                ? \"bg-[var(--gold)] text-[var(--imperial-blue)] shadow-[0_15px_35px_-10px_rgba(253,230,138,0.5)]\" 
-                : \"bg-[var(--imperial-blue)] text-white shadow-[0_15px_35px_-10px_rgba(15,23,42,0.3)] hover:bg-[#1e293b]\"
+                ? "bg-[var(--gold)] text-[var(--imperial-blue)] shadow-[0_15px_35px_-10px_rgba(253,230,138,0.5)]" 
+                : "bg-[var(--imperial-blue)] text-white shadow-[0_15px_35px_-10px_rgba(15,23,42,0.3)] hover:bg-[#1e293b]"
             }`}
           >
-            <SlidersHorizontal className={`h-4 w-4 transition-transform duration-500 ${showFilters ? \"rotate-180\" : \"\"}`} />
+            <SlidersHorizontal className={`h-4 w-4 transition-transform duration-500 ${showFilters ? "rotate-180" : ""}`} />
             Filtry
           </button>
         </div>
 
         {/* Expandable Filters Area */}
-        <div className={`overflow-hidden transition-all duration-500 ease-in-out ${showFilters ? \"max-h-24 opacity-100\" : \"max-h-0 opacity-0 pointer-events-none\"}`}>
-          <div className=\"news-filter-scroll flex items-center gap-2 overflow-x-auto pb-4 pt-2\">
+        <div className={`overflow-hidden transition-all duration-500 ease-in-out ${showFilters ? "max-h-24 opacity-100" : "max-h-0 opacity-0 pointer-events-none"}`}>
+          <div className="news-filter-scroll flex items-center gap-2 overflow-x-auto pb-4 pt-2">
             {categories.map((cat) => (
               <button
                 key={cat}
-                type=\"button\"
+                type="button"
                 onClick={() => setActive(cat)}
                 className={`group flex h-10 shrink-0 items-center gap-3 rounded-xl border px-4 transition-all duration-300 ${
                   cat === active
-                    ? \"border-[var(--imperial-blue)] bg-[var(--imperial-blue)] text-[var(--gold)] shadow-lg scale-105\"
-                    : \"border-slate-200 bg-white text-slate-500 hover:border-[var(--french-blue)]/20 hover:text-[var(--imperial-blue)] hover:shadow-md\"
+                    ? "border-[var(--imperial-blue)] bg-[var(--imperial-blue)] text-[var(--gold)] shadow-lg scale-105"
+                    : "border-slate-200 bg-white text-slate-500 hover:border-[var(--french-blue)]/20 hover:text-[var(--imperial-blue)] hover:shadow-md"
                 }`}
               >
-                <span className=\"text-[10px] font-bold uppercase tracking-widest\">{cat}</span>
+                <span className="text-[10px] font-bold uppercase tracking-widest">{cat}</span>
                 <span
                   className={`rounded-full px-2 py-0.5 font-mono text-[9px] font-bold ${
-                    cat === active ? \"bg-white/10 text-white\" : \"bg-slate-50 text-slate-400 group-hover:text-slate-600 group-hover:bg-slate-100\"
+                    cat === active ? "bg-white/10 text-white" : "bg-slate-50 text-slate-400 group-hover:text-slate-600 group-hover:bg-slate-100"
                   }`}
                 >
                   {categoryCounts[cat] ?? 0}
@@ -182,8 +182,8 @@ export function NewsList({ items }: { items: NewsItem[] }) {
                 <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-black/5" />
                 
                 {/* Image Label */}
-                <div className=\"absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/20 px-3 py-1.5 backdrop-blur-md border border-white/30 text-[9px] font-black uppercase tracking-widest text-white\">
-                  <span className=\"h-1.5 w-1.5 rounded-full bg-[var(--french-blue)] animate-pulse\" />
+                <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/20 px-3 py-1.5 backdrop-blur-md border border-white/30 text-[9px] font-black uppercase tracking-widest text-white">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--french-blue)] animate-pulse" />
                   Fotoreportaż
                 </div>
               </Link>
@@ -193,13 +193,13 @@ export function NewsList({ items }: { items: NewsItem[] }) {
                   <span className={`rounded-lg px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.2em] shadow-sm ring-1 ring-inset ${getCategoryTone(item.category)}`}>
                     {item.category}
                   </span>
-                  <div className=\"flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-400\">
-                    <CalendarDays className=\"h-3.5 w-3.5 text-[var(--french-blue)]\" />
+                  <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                    <CalendarDays className="h-3.5 w-3.5 text-[var(--french-blue)]" />
                     {formatPolishDate(item.date)}
                   </div>
                 </div>
 
-                <h3 className="mb-5 font-serif text-2xl font-bold leading-tight text-[var(--imperial-blue)] transition-colors group-hover:text-[var(--primary)] md:text-3xl">
+                <h3 className="mb-5 font-serif text-2xl font-bold leading-tight text-[var(--imperial-blue)] transition-colors group-hover:text-[var(--primary)] md:text-3xl line-clamp-2">
                   <Link href={`/artykul/${item.slug}`} className="block">
                     {item.title}
                   </Link>
@@ -209,14 +209,14 @@ export function NewsList({ items }: { items: NewsItem[] }) {
                   {item.excerpt}
                 </p>
 
-                <div className=\"flex items-center justify-between\">
+                <div className="flex items-center justify-between">
                   <Link
                     href={`/artykul/${item.slug}`}
-                    className=\"group/btn relative inline-flex items-center gap-3 overflow-hidden rounded-xl bg-[var(--imperial-blue)] px-6 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-white transition-all hover:pr-10\"
+                    className="group/btn relative inline-flex items-center gap-3 overflow-hidden rounded-xl bg-[var(--imperial-blue)] px-6 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-white transition-all hover:pr-10"
                   >
-                    <span className=\"relative z-10\">Czytaj artykuł</span>
-                    <ChevronRight className=\"absolute right-4 h-4 w-4 translate-x-2 opacity-0 transition-all group-hover/btn:translate-x-0 group-hover/btn:opacity-100 z-10\" />
-                    <div className=\"absolute inset-0 bg-gradient-to-r from-[var(--french-blue)] to-[var(--steel-azure)] opacity-0 transition-opacity group-hover/btn:opacity-100\" />
+                    <span className="relative z-10">Czytaj artykuł</span>
+                    <ChevronRight className="absolute right-4 h-4 w-4 translate-x-2 opacity-0 transition-all group-hover/btn:translate-x-0 group-hover/btn:opacity-100 z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[var(--french-blue)] to-[var(--steel-azure)] opacity-0 transition-opacity group-hover/btn:opacity-100" />
                   </Link>
                 </div>
               </div>
