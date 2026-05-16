@@ -65,55 +65,11 @@ export function SiteFooter() {
       {/* Decorative background blur */}
       <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-[var(--french-blue)] rounded-full blur-[100px] opacity-20 pointer-events-none translate-x-1/3 -translate-y-1/3" />
 
-      {/* Integrated Newsletter section */}
-      <div className="relative border-b border-white/10 bg-[var(--imperial-blue)]/50 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-10 px-4 py-16 sm:px-6 lg:flex-row lg:py-20">
-          <div className="max-w-xl text-center lg:text-left">
-            <p className="font-mono text-xs font-bold uppercase tracking-[0.3em] text-[var(--gold)]">
-              Niedzielne wydanie
-            </p>
-            <h3 className="mt-4 font-serif text-3xl font-medium leading-tight text-white md:text-4xl lg:text-5xl">
-              Co tydzień najważniejsze <span className="italic text-[var(--school-bus-yellow)]">sprawy z gminy</span> w Twojej skrzynce.
-            </h3>
-            <p className="mt-4 text-base text-[var(--steel-azure)] text-white/70">
-              Bez spamu. Bez reklam. Zawsze starannie wyselekcjonowany przegląd lokalnych historii.
-            </p>
-          </div>
-          <div className="w-full max-w-md">
-            <form
-              className="flex flex-col gap-3 rounded-3xl border border-white/10 bg-white/5 p-4 backdrop-blur-md shadow-2xl sm:flex-row sm:items-center"
-              onSubmit={(e) => e.preventDefault()}
-            >
-              <label htmlFor="email" className="sr-only">
-                Adres e-mail
-              </label>
-              <div className="flex flex-1 items-center gap-3 rounded-xl bg-white px-4 py-3.5 text-black shadow-inner">
-                <Mail className="h-5 w-5 text-[var(--imperial-blue)]/50" />
-                <input
-                  id="email"
-                  type="email"
-                  required
-                  placeholder="twój.email@example.com"
-                  className="w-full bg-transparent text-sm text-[var(--imperial-blue)] outline-none placeholder:text-[var(--imperial-blue)]/40 font-medium"
-                />
-              </div>
-              <button
-                type="submit"
-                className="group flex items-center justify-center gap-2 rounded-xl bg-[var(--gold)] px-6 py-3.5 text-sm font-bold text-[var(--imperial-blue)] transition-all hover:bg-[var(--school-bus-yellow)] shadow-lg shadow-[var(--gold)]/20 hover:shadow-[var(--school-bus-yellow)]/40"
-              >
-                Zapisz
-                <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-
       {/* Main grid */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6">
-        <div className="grid gap-16 md:grid-cols-12">
+        <div className="grid gap-16 lg:grid-cols-12">
           {/* Brand block */}
-          <div className="md:col-span-4 lg:col-span-4">
+          <div className="lg:col-span-4">
             <Link href="/" className="inline-flex items-center gap-4">
               <img
                 src="/logo.png"
@@ -142,36 +98,11 @@ export function SiteFooter() {
                  Niniejszy serwis jest <span className="text-[var(--school-bus-yellow)] font-bold">całkowicie niezależny</span> i nie jest w żaden sposób związany z Urzędem Gminy Konopiska.
                </p>
             </div>
-
-            <ul className="mt-8 space-y-4 text-sm text-white/80">
-              <li className="flex items-center gap-4 group">
-                <div className="p-2 rounded-full bg-white/5 group-hover:bg-[var(--gold)]/10 transition-colors">
-                   <MapPin className="h-4 w-4 text-[var(--gold)]" />
-                </div>
-                <span className="font-medium">ul. Lipowa 5, 42-274 Konopiska</span>
-              </li>
-              <li className="flex items-center gap-4 group">
-                <div className="p-2 rounded-full bg-white/5 group-hover:bg-[var(--gold)]/10 transition-colors">
-                   <Mail className="h-4 w-4 text-[var(--gold)]" />
-                </div>
-                <a href="mailto:redakcja@magazyn-konopiska.pl" className="hover:text-[var(--gold)] font-medium transition-colors">
-                  redakcja@magazyn-konopiska.pl
-                </a>
-              </li>
-              <li className="flex items-center gap-4 group">
-                <div className="p-2 rounded-full bg-white/5 group-hover:bg-[var(--gold)]/10 transition-colors">
-                   <Phone className="h-4 w-4 text-[var(--gold)]" />
-                </div>
-                <a href="tel:+48340000000" className="hover:text-[var(--gold)] font-medium transition-colors">
-                  +48 34 000 00 00
-                </a>
-              </li>
-            </ul>
           </div>
 
           {/* Link columns */}
-          <div className="grid gap-12 sm:grid-cols-3 md:col-span-8 lg:col-span-7 lg:col-start-6">
-            {sections.map((section) => (
+          <div className="grid gap-10 sm:grid-cols-2 lg:col-span-4">
+            {sections.slice(0, 2).map((section) => (
               <div key={section.title}>
                 <p className="font-serif text-sm font-medium uppercase tracking-[0.2em] text-[var(--gold)]">
                   {section.title}
@@ -195,24 +126,67 @@ export function SiteFooter() {
               </div>
             ))}
           </div>
+
+          {/* Newsletter Column */}
+          <div className="lg:col-span-4">
+            <p className="font-serif text-sm font-medium uppercase tracking-[0.2em] text-[var(--gold)]">
+              Zostań w kontakcie
+            </p>
+            <span aria-hidden className="mt-4 block h-px w-12 bg-[var(--french-blue)]" />
+            
+            <p className="mt-6 text-sm leading-relaxed text-white/70">
+              Otrzymuj najważniejsze wiadomości i wydarzenia prosto na swoją skrzynkę e-mail.
+            </p>
+
+            <form
+              className="mt-8 flex flex-col gap-3"
+              onSubmit={(e) => e.preventDefault()}
+            >
+              <div className="flex flex-1 items-center gap-3 rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white focus-within:border-[var(--gold)]/50 transition-colors">
+                <Mail className="h-4 w-4 text-[var(--gold)]/60" />
+                <input
+                  type="email"
+                  required
+                  placeholder="Twój adres e-mail"
+                  className="w-full bg-transparent text-sm outline-none placeholder:text-white/30"
+                />
+              </div>
+              <button
+                type="submit"
+                className="group flex items-center justify-center gap-2 rounded-xl bg-[var(--gold)] px-6 py-3.5 text-[11px] font-bold uppercase tracking-widest text-[var(--imperial-blue)] transition-all hover:bg-[var(--school-bus-yellow)]"
+              >
+                Zapisz się
+                <Send className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+              </button>
+            </form>
+
+            <ul className="mt-12 space-y-4 text-sm text-white/80">
+              <li className="flex items-center gap-4 group">
+                <MapPin className="h-4 w-4 text-[var(--gold)]/60" />
+                <span className="text-xs">ul. Lipowa 5, 42-274 Konopiska</span>
+              </li>
+              <li className="flex items-center gap-4 group">
+                <Mail className="h-4 w-4 text-[var(--gold)]/60" />
+                <a href="mailto:redakcja@magazyn-konopiska.pl" className="text-xs hover:text-[var(--gold)] transition-colors">
+                  redakcja@magazyn-konopiska.pl
+                </a>
+              </li>
+              <li className="flex items-center gap-4 group">
+                <Phone className="h-4 w-4 text-[var(--gold)]/60" />
+                <a href="tel:+48340000000" className="text-xs hover:text-[var(--gold)] transition-colors">
+                  +48 34 000 00 00
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
       {/* Bottom bar */}
       <div className="relative z-10 border-t border-white/10 bg-[#001538]">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-4 py-8 sm:px-6 lg:flex-row">
-          <p className="text-xs text-white/50 text-center lg:text-left">
-            © {new Date().getFullYear()} Magazyn Konopiska. Wszystkie prawa zastrzeżone.
-            Treści źródłowe pochodzą z serwisu{" "}
-            <a
-              href="https://www.konopiska.pl"
-              target="_blank"
-              rel="noreferrer"
-              className="text-[var(--gold)] hover:underline"
-            >
-              konopiska.pl
-            </a>
-            .
+          <p className="text-[10px] uppercase tracking-widest text-white/40 text-center lg:text-left">
+            © {new Date().getFullYear()} Magazyn Konopiska. Niezależny portal informacyjny.
           </p>
 
           <div className="flex items-center gap-3">
@@ -221,7 +195,7 @@ export function SiteFooter() {
                 key={label}
                 href={href}
                 aria-label={label}
-                className="grid h-10 w-10 place-items-center rounded-full border border-white/10 text-white/70 transition-all hover:border-[var(--gold)] hover:bg-[var(--gold)] hover:text-[var(--imperial-blue)] shadow-sm hover:shadow-[0_0_15px_var(--gold)]/40"
+                className="grid h-10 w-10 place-items-center rounded-full border border-white/10 text-white/70 transition-all hover:border-[var(--gold)] hover:bg-[var(--gold)] hover:text-[var(--imperial-blue)] shadow-sm"
               >
                 <Icon className="h-4 w-4" />
               </a>

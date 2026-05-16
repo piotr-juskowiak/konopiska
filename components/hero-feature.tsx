@@ -3,146 +3,187 @@
 import Link from "next/link"
 import { ArrowUpRight, Clock, ChevronLeft, ChevronRight } from "lucide-react"
 import { formatPolishDate, type NewsItem } from "@/lib/news-data"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 
 export function HeroFeature({ items }: { items: NewsItem[] }) {
   const [current, setCurrent] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+
+  const nextSlide = useCallback(() => {
+    setCurrent((prev) => (prev + 1) % items.length)
+  }, [items.length])
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % items.length)
-    }, 6000)
+    if (isPaused) return
+    const timer = setInterval(nextSlide, 6000)
     return () => clearInterval(timer)
-  }, [items.length])
+  }, [nextSlide, isPaused])
 
   if (!items || items.length === 0) return null
 
   return (
-    <section id="aktualnosci" className="relative w-full bg-[#001538] overflow-hidden">
-      {/* Background with subtle animation */}
+    <section 
+      id="aktualnosci" 
+      className="relative w-full bg-[#001d4a] overflow-hidden min-h-[600px] lg:min-h-[750px] flex items-center"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      {/* Background Layer */}
       <div className="absolute inset-0 z-0">
         {items.map((item, idx) => (
           <div
             key={item.slug}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              idx === current ? "opacity-100" : "opacity-0"
+            className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+              idx === current ? "opacity-100 scale-100" : "opacity-0 scale-110"
             }`}
           >
+            <div className="absolute inset-0 bg-black/40 z-10" />
             <img
               src={item.image || "/placeholder.svg"}
               alt=""
-              className="h-full w-full object-cover opacity-30 mix-blend-overlay transition-transform duration-[10000ms] scale-100 animate-in zoom-in-105"
+              className="h-full w-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[var(--imperial-blue)] via-[var(--imperial-blue)]/90 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[var(--imperial-blue)] to-transparent" />
-            <div className="absolute top-0 right-0 w-[50rem] h-[50rem] bg-[var(--french-blue)] opacity-40 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/4" />
+            {/* Dynamic Overlays */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#001d4a] via-[#001d4a]/60 to-transparent z-20" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#001d4a] via-transparent to-transparent z-20" />
           </div>
         ))}
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
-        <div className="mb-12 flex items-center gap-4">
-          <span className="h-0.5 w-12 bg-[var(--gold)]" />
-          <span className="text-xs font-bold uppercase tracking-[0.3em] text-[var(--school-bus-yellow)]">
-            Najnowsze wieści
-          </span>
-        </div>
+      <div className="relative z-30 mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-32 w-full">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          
+          {/* Left: Content Area */}
+          <div className="lg:col-span-7 xl:col-span-8 relative">
+            <div className="flex items-center gap-4 mb-8 animate-in fade-in slide-in-from-left-4 duration-700">
+              <span className="h-px w-10 bg-[var(--gold)]" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--gold)]">
+                Najnowsze wieści
+              </span>
+            </div>
 
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <div className="lg:col-span-8 min-h-[350px] flex flex-col justify-center relative">
-            {items.map((item, idx) => (
-              <div
-                key={item.slug}
-                className={`transition-all duration-700 absolute inset-0 lg:relative ${
-                  idx === current ? "opacity-100 translate-y-0 z-10 pointer-events-auto" : "opacity-0 translate-y-8 z-0 pointer-events-none"
-                }`}
-              >
-                <div className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-[var(--gold)] mb-5">
-                  <Clock className="h-4 w-4" />
-                  <time>{formatPolishDate(item.date)}</time>
-                  {item.category && (
-                    <>
-                      <span className="opacity-40">•</span>
-                      <span className="bg-white/10 px-2.5 py-1 rounded-md backdrop-blur-sm text-white">{item.category}</span>
-                    </>
-                  )}
-                </div>
-                <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.1] text-white mb-6 text-balance drop-shadow-lg">
-                  <Link href={`/artykul/${item.slug}`} className="hover:text-[var(--school-bus-yellow)] transition-colors">
-                    {item.title}
-                  </Link>
-                </h1>
-                <p className="text-base sm:text-lg text-[var(--steel-azure)] text-white/80 mb-10 max-w-2xl line-clamp-3">
-                  {item.excerpt}
-                </p>
-                <Link
-                  href={`/artykul/${item.slug}`}
-                  className="inline-flex w-fit items-center gap-3 rounded-full bg-[var(--gold)] px-8 py-4 text-xs font-bold uppercase tracking-widest text-[var(--imperial-blue)] shadow-[0_0_40px_-10px_var(--gold)] transition-all hover:scale-105 hover:bg-[var(--school-bus-yellow)]"
+            <div className="relative min-h-[300px]">
+              {items.map((item, idx) => (
+                <div
+                  key={item.slug}
+                  className={`transition-all duration-700 absolute inset-0 ${
+                    idx === current 
+                      ? "opacity-100 translate-y-0 pointer-events-auto" 
+                      : "opacity-0 translate-y-8 pointer-events-none"
+                  }`}
                 >
-                  Czytaj artykuł
-                  <ArrowUpRight className="h-4 w-4" />
-                </Link>
-              </div>
-            ))}
+                  <div className="flex items-center gap-4 text-[11px] font-bold uppercase tracking-[0.2em] text-white/60 mb-6">
+                    <span className="flex items-center gap-2 text-[var(--school-bus-yellow)]">
+                      <Clock className="h-3.5 w-3.5" />
+                      {formatPolishDate(item.date)}
+                    </span>
+                    {item.category && (
+                      <>
+                        <span className="w-1 h-1 rounded-full bg-white/20" />
+                        <span className="px-2 py-0.5 rounded bg-white/10 text-white backdrop-blur-sm">{item.category}</span>
+                      </>
+                    )}
+                  </div>
+
+                  <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.1] text-white mb-8 text-balance drop-shadow-2xl">
+                    <Link href={`/artykul/${item.slug}`} className="hover:text-[var(--gold)] transition-colors duration-300">
+                      {item.title}
+                    </Link>
+                  </h1>
+
+                  <p className="text-lg sm:text-xl text-white/70 mb-10 max-w-2xl line-clamp-2 leading-relaxed">
+                    {item.excerpt}
+                  </p>
+
+                  <Link
+                    href={`/artykul/${item.slug}`}
+                    className="inline-flex items-center gap-3 rounded-full bg-[var(--gold)] px-10 py-5 text-[11px] font-bold uppercase tracking-[0.2em] text-[var(--imperial-blue)] shadow-[0_15px_30px_-10px_rgba(255,213,0,0.3)] transition-all hover:scale-105 hover:bg-[var(--school-bus-yellow)] hover:shadow-[0_20px_40px_-10px_rgba(255,213,0,0.5)]"
+                  >
+                    Czytaj historię
+                    <ArrowUpRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="hidden lg:flex lg:col-span-4 flex-col gap-3 pl-8 xl:pl-12 border-l border-white/10">
+          {/* Right: Thumbnails / Vertical Navigation */}
+          <div className="hidden lg:flex lg:col-span-5 xl:col-span-4 flex-col gap-4 pl-12 border-l border-white/10">
             {items.map((item, idx) => (
               <button
                 key={item.slug}
                 onClick={() => setCurrent(idx)}
-                className={`text-left group relative p-4 transition-all duration-300 ${
-                  idx === current
-                    ? "bg-white/10 rounded-2xl border border-white/20 backdrop-blur-md shadow-xl"
-                    : "hover:bg-white/5 rounded-2xl border border-transparent"
+                className={`group relative flex items-center gap-5 p-4 text-left transition-all duration-500 rounded-2xl ${
+                  idx === current 
+                    ? "bg-white/10 border border-white/20 shadow-2xl backdrop-blur-md" 
+                    : "hover:bg-white/5 border border-transparent"
                 }`}
               >
+                {/* Active Indicator Bar */}
                 {idx === current && (
-                  <div className="absolute -left-8 xl:-left-12 top-1/2 -translate-y-1/2 w-1.5 h-12 bg-[var(--gold)] rounded-r-full shadow-[0_0_15px_var(--gold)]" />
+                  <div className="absolute -left-[3rem] top-1/2 -translate-y-1/2 w-1 h-12 bg-[var(--gold)] rounded-full shadow-[0_0_15px_var(--gold)]" />
                 )}
-                <div className="flex gap-4 items-center">
-                   <div className={`w-16 h-16 shrink-0 overflow-hidden rounded-xl border transition-colors ${idx === current ? 'border-[var(--gold)]/50' : 'border-white/10'}`}>
-                      <img src={item.image || "/placeholder.svg"} className="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
-                   </div>
-                   <div>
-                     <p className={`text-[10px] font-bold uppercase tracking-widest mb-1.5 transition-colors ${idx === current ? 'text-[var(--gold)]' : 'text-[var(--gold)]/60'}`}>
-                       {formatPolishDate(item.date)}
-                     </p>
-                     <h3 className={`font-serif text-sm leading-snug line-clamp-2 transition-colors ${idx === current ? "text-white" : "text-white/60 group-hover:text-white"}`}>
-                       {item.title}
-                     </h3>
-                   </div>
+                
+                <div className={`relative w-20 h-20 shrink-0 overflow-hidden rounded-xl border-2 transition-all duration-500 ${
+                  idx === current ? "border-[var(--gold)]" : "border-white/10 group-hover:border-white/30"
+                }`}>
+                  <img 
+                    src={item.image || "/placeholder.svg"} 
+                    className={`w-full h-full object-cover transition-transform duration-700 ${idx === current ? "scale-110" : "scale-100"}`} 
+                    alt="" 
+                  />
+                </div>
+
+                <div className="min-w-0">
+                  <p className={`text-[9px] font-bold uppercase tracking-[0.2em] mb-2 transition-colors ${
+                    idx === current ? "text-[var(--gold)]" : "text-white/40"
+                  }`}>
+                    {item.category || "Aktualności"}
+                  </p>
+                  <h3 className={`font-serif text-sm leading-snug line-clamp-2 transition-all ${
+                    idx === current ? "text-white font-medium" : "text-white/60 group-hover:text-white"
+                  }`}>
+                    {item.title}
+                  </h3>
                 </div>
               </button>
             ))}
           </div>
         </div>
 
-        {/* Mobile controls */}
-        <div className="mt-72 sm:mt-64 flex lg:hidden items-center justify-between gap-4">
-          <button
-            onClick={() => setCurrent((prev) => (prev - 1 + items.length) % items.length)}
-            className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 backdrop-blur-sm"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
+        {/* Navigation Controls Overlay */}
+        <div className="mt-20 flex items-center justify-between lg:justify-start gap-8">
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setCurrent((prev) => (prev - 1 + items.length) % items.length)}
+              className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white transition-all hover:bg-white/10 hover:border-white/40 active:scale-95"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white transition-all hover:bg-white/10 hover:border-white/40 active:scale-95"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+
+          {/* Progress Indicators */}
           <div className="flex gap-2">
             {items.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setCurrent(idx)}
-                className={`h-1.5 rounded-full transition-all duration-500 ${
-                  idx === current ? "w-8 bg-[var(--gold)] shadow-[0_0_10px_var(--gold)]" : "w-2 bg-white/30"
+                className={`h-1 rounded-full transition-all duration-500 ${
+                  idx === current ? "w-10 bg-[var(--gold)]" : "w-4 bg-white/20 hover:bg-white/40"
                 }`}
               />
             ))}
           </div>
-          <button
-            onClick={() => setCurrent((prev) => (prev + 1) % items.length)}
-            className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 backdrop-blur-sm"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
+
+          <div className="hidden lg:block text-[10px] font-mono uppercase tracking-[0.3em] text-white/30 ml-auto">
+            0{current + 1} / 0{items.length}
+          </div>
         </div>
       </div>
     </section>
