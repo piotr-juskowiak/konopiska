@@ -66,14 +66,14 @@ export function SiteFooter() {
       {/* Background photo */}
       <div
         aria-hidden
-        className="absolute inset-0 z-0 bg-cover bg-center opacity-35"
+        className="absolute inset-0 z-0 bg-cover bg-center opacity-50 transition-opacity duration-1000"
         style={{
           backgroundImage:
             "url('https://d2exd72xrrp1s7.cloudfront.net/www/000/1k5/in/in4ech8dz68u8djuusd3n4i73wnm4w2t-uhi41226144/0?width=2560&height=3200&crop=false&q=80')",
         }}
       />
-      <div aria-hidden className="absolute inset-0 z-0 bg-[var(--imperial-blue)]/82" />
-      <div aria-hidden className="absolute inset-0 z-0 bg-gradient-to-r from-[var(--imperial-blue)] via-[var(--imperial-blue)]/88 to-[var(--imperial-blue)]/55" />
+      <div aria-hidden className="absolute inset-0 z-0 bg-gradient-to-b from-[var(--imperial-blue)]/95 via-[var(--imperial-blue)]/75 to-[var(--imperial-blue)]/95" />
+      <div aria-hidden className="absolute inset-0 z-0 bg-[var(--imperial-blue)]/40" />
 
       {/* Main grid */}
       <div className="relative z-10 mx-auto max-w-[1440px] px-4 py-20 sm:px-6 lg:py-24">
