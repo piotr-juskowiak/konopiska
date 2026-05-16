@@ -68,123 +68,115 @@ export function SiteFooter() {
       <div className="absolute bottom-0 left-0 w-[30rem] h-[30rem] bg-[var(--gold)] rounded-full blur-[100px] opacity-10 pointer-events-none -translate-x-1/3 translate-y-1/3" />
 
       {/* Main grid */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-24">
-        <div className="grid gap-16 lg:grid-cols-12">
+      <div className="relative z-10 mx-auto max-w-[1440px] px-4 py-20 sm:px-6 lg:py-24">
+        <div className="grid gap-12 xl:grid-cols-5 lg:grid-cols-12">
           {/* Brand block */}
-          <div className="lg:col-span-4 flex flex-col">
+          <div className="lg:col-span-4 xl:col-span-1 flex flex-col">
             <Link href="/" className="inline-flex items-center gap-4 group">
               <div className="relative">
                 <div className="absolute inset-0 bg-[var(--gold)] rounded-full blur-md opacity-20 group-hover:opacity-40 transition-opacity" />
                 <img
                   src="/logo.png"
                   alt=""
-                  className="relative h-16 w-16 rounded-full object-cover border-2 border-[var(--gold)]/30"
+                  className="relative h-14 w-14 rounded-full object-cover border-2 border-[var(--gold)]/30"
                 />
               </div>
               <span>
-                <span className="block font-serif text-2xl font-medium leading-none text-white tracking-tight">
+                <span className="block font-serif text-xl font-medium leading-none text-white tracking-tight">
                   Serwis Informacyjny
                 </span>
-                <span className="mt-1.5 block font-mono text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--gold)]">
-                  Konopiska · Est. 2024
+                <span className="mt-1 block font-mono text-[9px] font-bold uppercase tracking-[0.4em] text-[var(--gold)]">
+                  Konopiska · 2024
                 </span>
               </span>
             </Link>
 
-            <p className="mt-10 max-w-sm text-sm leading-relaxed text-white/60 font-medium">
-              Rzetelność, niezależność i pasja do lokalnych historii. Jesteśmy głosem mieszkańców Gminy Konopiska, dbając o najwyższą jakość przekazu i estetykę słowa.
+            <p className="mt-8 text-sm leading-relaxed text-white/50 font-medium">
+              Rzetelność i pasja do lokalnych historii. Jesteśmy głosem mieszkańców Gminy Konopiska.
             </p>
 
-            <div className="mt-10 rounded-2xl bg-white/5 p-6 border border-white/10 backdrop-blur-sm relative overflow-hidden group">
-               <div className="absolute top-0 right-0 w-24 h-24 bg-[var(--gold)]/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
-               <p className="font-serif text-[11px] font-bold uppercase tracking-[0.3em] text-[var(--gold)] mb-4">Deklaracja Niezależności</p>
-               <p className="text-[11px] leading-relaxed text-white/50 relative z-10">
-                 Portal <span className="text-white font-bold">GminaKonopiska.pl</span> jest inicjatywą obywatelską. 
-                 Działamy w pełni <span className="text-[var(--school-bus-yellow)] font-bold">niezależnie od Urzędu Gminy</span>, co pozwala nam na bezstronne informowanie o sprawach lokalnych.
+            <div className="mt-8 rounded-2xl bg-white/5 p-5 border border-white/10 backdrop-blur-sm relative overflow-hidden group">
+               <p className="font-serif text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--gold)] mb-3">Niezależność</p>
+               <p className="text-[10px] leading-relaxed text-white/40">
+                 Portal <span className="text-white">GminaKonopiska.pl</span> jest inicjatywą obywatelską, niezależną od Urzędu Gminy.
                </p>
             </div>
           </div>
 
           {/* Link columns */}
-          <div className="grid gap-10 grid-cols-2 md:grid-cols-3 lg:col-span-8">
-            {sections.map((section) => (
-              <div key={section.title}>
-                <h4 className="font-serif text-sm font-bold uppercase tracking-[0.2em] text-[var(--gold)]">
-                  {section.title}
-                </h4>
-                <div aria-hidden className="mt-4 flex gap-1">
-                   <div className="h-0.5 w-8 bg-[var(--french-blue)]" />
-                   <div className="h-0.5 w-1 bg-[var(--gold)]" />
-                </div>
-                <ul className="mt-8 space-y-4">
-                  {section.links.map((link) => (
-                    <li key={link.label}>
-                      <Link
-                        href={link.href}
-                        className="group flex items-center gap-2 text-sm text-white/60 transition-all hover:text-[var(--gold)]"
-                      >
-                        <ArrowUpRight className="h-3 w-3 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
-                        <span className="transition-transform group-hover:translate-x-1">{link.label}</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+          {sections.map((section) => (
+            <div key={section.title} className="lg:col-span-2 xl:col-span-1">
+              <h4 className="font-serif text-sm font-bold uppercase tracking-[0.2em] text-[var(--gold)]">
+                {section.title}
+              </h4>
+              <div aria-hidden className="mt-4 flex gap-1">
+                 <div className="h-0.5 w-8 bg-[var(--french-blue)]" />
+                 <div className="h-0.5 w-1 bg-[var(--gold)]" />
               </div>
-            ))}
-
-            {/* Newsletter Column - now part of the grid */}
-            <div className="col-span-2 md:col-span-3 xl:col-span-1 pt-10 lg:pt-0">
-               <h4 className="font-serif text-sm font-bold uppercase tracking-[0.2em] text-[var(--gold)]">
-                 Newsletter
-               </h4>
-               <div aria-hidden className="mt-4 flex gap-1">
-                  <div className="h-0.5 w-8 bg-[var(--french-blue)]" />
-                  <div className="h-0.5 w-1 bg-[var(--gold)]" />
-               </div>
-               <p className="mt-8 text-sm text-white/50 leading-relaxed mb-8">
-                 Otrzymuj przegląd tygodnia prosto na swoją skrzynkę. Bez reklam, tylko fakty.
-               </p>
-
-               <form
-                 className="relative group/form"
-                 onSubmit={(e) => e.preventDefault()}
-               >
-                 <div className="flex flex-col sm:flex-row gap-2">
-                    <div className="relative flex-1">
-                      <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[var(--gold)]/50" />
-                      <input
-                        type="email"
-                        required
-                        placeholder="Twój adres e-mail"
-                        className="h-12 w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 text-xs font-medium outline-none focus:border-[var(--gold)]/50 focus:bg-white/10 transition-all"
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      className="h-12 px-6 rounded-xl bg-[var(--gold)] text-[var(--imperial-blue)] text-[10px] font-extrabold uppercase tracking-widest transition-all hover:bg-[var(--school-bus-yellow)] hover:scale-105 active:scale-95 shadow-lg shadow-[var(--gold)]/10"
+              <ul className="mt-8 space-y-4">
+                {section.links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="group flex items-center gap-2 text-sm text-white/60 transition-all hover:text-[var(--gold)]"
                     >
-                      Zapisz
-                    </button>
-                 </div>
-               </form>
-
-               <div className="mt-12 flex flex-col gap-5 pt-8 border-t border-white/5">
-                 <div className="flex items-center gap-4 group/item">
-                   <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover/item:bg-[var(--gold)]/20 transition-colors">
-                     <MapPin className="h-4 w-4 text-[var(--gold)]" />
-                   </div>
-                   <span className="text-xs text-white/50">ul. Lipowa 5, 42-274 Konopiska</span>
-                 </div>
-                 <div className="flex items-center gap-4 group/item">
-                   <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover/item:bg-[var(--gold)]/20 transition-colors">
-                     <Mail className="h-4 w-4 text-[var(--gold)]" />
-                   </div>
-                   <a href="mailto:redakcja@serwis-konopiska.pl" className="text-xs text-white/50 hover:text-[var(--gold)] transition-colors">
-                     redakcja@serwis-konopiska.pl
-                   </a>
-                 </div>
-               </div>
+                      <ArrowUpRight className="h-3 w-3 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
+                      <span className="transition-transform group-hover:translate-x-1">{link.label}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
+          ))}
+
+          {/* Newsletter Column */}
+          <div className="lg:col-span-4 xl:col-span-1 pt-10 xl:pt-0 border-t border-white/5 xl:border-t-0">
+             <h4 className="font-serif text-sm font-bold uppercase tracking-[0.2em] text-[var(--gold)]">
+               Newsletter
+             </h4>
+             <div aria-hidden className="mt-4 flex gap-1">
+                <div className="h-0.5 w-8 bg-[var(--french-blue)]" />
+                <div className="h-0.5 w-1 bg-[var(--gold)]" />
+             </div>
+             <p className="mt-8 text-sm text-white/50 leading-relaxed mb-8">
+               Najważniejsze wieści prosto na Twoją skrzynkę.
+             </p>
+
+             <form
+               className="relative group/form"
+               onSubmit={(e) => e.preventDefault()}
+             >
+               <div className="flex flex-col gap-2">
+                  <div className="relative">
+                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[var(--gold)]/50" />
+                    <input
+                      type="email"
+                      required
+                      placeholder="E-mail"
+                      className="h-12 w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 text-xs font-medium outline-none focus:border-[var(--gold)]/50 transition-all"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="h-12 w-full rounded-xl bg-[var(--gold)] text-[var(--imperial-blue)] text-[10px] font-extrabold uppercase tracking-widest transition-all hover:bg-[var(--school-bus-yellow)] shadow-lg shadow-[var(--gold)]/10"
+                  >
+                    Zapisz się
+                  </button>
+               </div>
+             </form>
+
+             <div className="mt-10 flex flex-col gap-4 pt-8 border-t border-white/5">
+               <div className="flex items-center gap-3">
+                 <MapPin className="h-3.5 w-3.5 text-[var(--gold)]" />
+                 <span className="text-[11px] text-white/40">ul. Lipowa 5, 42-274 Konopiska</span>
+               </div>
+               <div className="flex items-center gap-3">
+                 <Mail className="h-3.5 w-3.5 text-[var(--gold)]" />
+                 <a href="mailto:redakcja@serwis-konopiska.pl" className="text-[11px] text-white/40 hover:text-[var(--gold)] transition-colors">
+                   redakcja@serwis-konopiska.pl
+                 </a>
+               </div>
+             </div>
           </div>
         </div>
       </div>
