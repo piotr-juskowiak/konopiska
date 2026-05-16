@@ -215,7 +215,7 @@ export function NewsList({ items }: { items: NewsItem[] }) {
                   </div>
                 </div>
 
-                <h3 className="mb-6 font-serif text-3xl font-bold leading-tight text-[var(--imperial-blue)] transition-colors group-hover:text-[var(--primary)] xl:text-4xl tracking-tight">
+                <h3 className="mb-5 font-serif text-2xl font-semibold leading-snug text-[var(--imperial-blue)] transition-colors group-hover:text-[var(--primary)] xl:text-3xl tracking-tight">
                   <Link href={`/artykul/${item.slug}`} className="block">
                     {item.title}
                   </Link>

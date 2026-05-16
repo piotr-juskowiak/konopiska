@@ -74,7 +74,7 @@ export function EventsWidget() {
             </div>
             
             <div className="flex-1 min-w-0 flex flex-col justify-center">
-              <h4 className="text-sm font-bold leading-snug text-[var(--imperial-blue)] mb-3 transition-colors line-clamp-2 tracking-tight group-hover:text-[var(--primary)]">
+              <h4 className="text-xs font-semibold leading-snug text-[var(--imperial-blue)] mb-3 transition-colors line-clamp-2 tracking-tight group-hover:text-[var(--primary)]">
                 {event.title}
               </h4>
               <div className="flex flex-wrap gap-x-4 gap-y-2">
