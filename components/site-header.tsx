@@ -3,12 +3,13 @@
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { Menu, Search, X } from "lucide-react"
+import { Menu, Search, X, Facebook } from "lucide-react"
 
 const nav = [
   { label: "Aktualności", href: "/aktualnosci" },
+  { label: "Wydarzenia", href: "/?cat=Wydarzenia#archiwum" },
+  { label: "Oceń Radnych", href: "/ocen-radnych" },
   { label: "Archiwum", href: "/archiwum" },
-  { label: "Newsletter", href: "/newsletter" },
   { label: "Kontakt", href: "/kontakt" },
 ]
 
@@ -43,63 +44,72 @@ export function SiteHeader({ updatedAt }: { updatedAt: string }) {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-md">
       {/* Top utility bar */}
-      <div className="border-b border-border/60 bg-primary text-primary-foreground">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-1.5 text-xs sm:px-6">
-          <span className="hidden sm:inline tracking-wide uppercase opacity-90">
-            Wydanie internetowe · woj. śląskie
-          </span>
-          <span className="font-mono opacity-90">{updatedAt}</span>
+      <div className="border-b border-white/10 bg-[var(--imperial-blue)] text-white">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 text-[10px] sm:px-6">
+          <div className="flex items-center gap-6">
+            <span className="hidden sm:inline tracking-[0.2em] uppercase opacity-90 text-[var(--gold)] font-bold">
+              Wydanie internetowe · woj. śląskie
+            </span>
+            <span className="font-mono opacity-80 text-white/80">{updatedAt}</span>
+          </div>
+          <div className="flex items-center gap-4">
+             <a href="#" className="flex items-center gap-2 hover:text-[var(--gold)] transition-colors group">
+               <Facebook className="h-3.5 w-3.5" />
+               <span className="hidden md:inline font-bold uppercase tracking-widest">Śledź nas na Facebooku</span>
+             </a>
+          </div>
         </div>
       </div>
 
       {/* Main bar */}
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-3" aria-label="Magazyn Konopiska — strona główna">
+        <Link href="/" className="flex items-center gap-4 group" aria-label="Magazyn Konopiska — strona główna">
           <span
             aria-hidden
-            className="grid h-10 w-10 place-items-center rounded-full bg-primary text-primary-foreground font-serif text-lg font-semibold"
+            className="grid h-11 w-11 place-items-center rounded-full bg-[var(--imperial-blue)] text-[var(--gold)] font-serif text-xl font-bold shadow-[0_4px_12px_rgba(0,41,107,0.2)] transition-transform group-hover:scale-105"
           >
             K
           </span>
-          <span className="flex flex-col leading-none">
-            <span className="font-serif text-xl font-semibold tracking-tight text-foreground">
+          <span className="flex flex-col leading-tight">
+            <span className="font-serif text-2xl font-medium tracking-tight text-[var(--imperial-blue)]">
               Magazyn Konopiska
             </span>
-            <span className="mt-1 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+            <span className="mt-1 text-[10px] font-bold uppercase tracking-[0.25em] text-[var(--french-blue)]/60">
               Niezależny przegląd gminny
             </span>
           </span>
         </Link>
 
         <nav aria-label="Nawigacja główna" className="hidden lg:block">
-          <ul className="flex items-center gap-8 text-sm font-medium">
+          <ul className="flex items-center gap-8 text-sm">
             {nav.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-foreground/80 transition-colors hover:text-primary"
+                  className="relative text-[var(--imperial-blue)] font-bold uppercase tracking-wider text-[11px] transition-colors hover:text-[var(--steel-azure)] group"
                 >
                   {item.label}
+                  <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-[var(--gold)] transition-all group-hover:w-full" />
                 </Link>
               </li>
             ))}
           </ul>
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <button
             type="button"
             onClick={() => setSearchOpen(true)}
             aria-label="Szukaj"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground/80 transition hover:bg-secondary hover:text-foreground"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-secondary/50 text-[var(--imperial-blue)] transition hover:bg-[var(--gold)] hover:text-[var(--imperial-blue)]"
           >
             <Search className="h-4 w-4" />
           </button>
           <Link
             href="/newsletter"
-            className="hidden sm:inline-flex items-center rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition hover:bg-primary"
+            className="hidden sm:inline-flex items-center rounded-xl bg-[var(--imperial-blue)] px-6 py-2.5 text-[11px] font-bold uppercase tracking-widest text-white shadow-lg transition hover:bg-[var(--french-blue)] hover:-translate-y-0.5"
           >
             Newsletter
           </Link>
@@ -117,14 +127,14 @@ export function SiteHeader({ updatedAt }: { updatedAt: string }) {
 
       {/* Mobile nav */}
       {open && (
-        <div className="border-t border-border lg:hidden">
-          <ul className="mx-auto flex max-w-7xl flex-col px-4 py-2 sm:px-6">
+        <div className="border-t border-border bg-white lg:hidden">
+          <ul className="mx-auto flex max-w-7xl flex-col px-4 py-4 sm:px-6 divide-y divide-border/50">
             {nav.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="block py-3 text-sm font-medium text-foreground/80 hover:text-primary"
+                  className="block py-4 text-xs font-bold uppercase tracking-widest text-[var(--imperial-blue)] hover:text-[var(--gold)]"
                 >
                   {item.label}
                 </Link>
@@ -134,7 +144,7 @@ export function SiteHeader({ updatedAt }: { updatedAt: string }) {
         </div>
       )}
 
-      {/* Search overlay */}
+      {/* Search overlay remains same */}
       {searchOpen && (
         <div
           role="dialog"

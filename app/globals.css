@@ -4,54 +4,67 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Warm editorial palette: cream paper, deep forest, charcoal ink, gold accent */
-  --background: oklch(0.978 0.012 85);          /* warm cream */
-  --foreground: oklch(0.22 0.018 60);           /* deep charcoal-brown */
-  --card: oklch(0.995 0.005 85);
-  --card-foreground: oklch(0.22 0.018 60);
-  --popover: oklch(0.995 0.005 85);
-  --popover-foreground: oklch(0.22 0.018 60);
-  --primary: oklch(0.34 0.07 155);              /* deep forest green */
-  --primary-foreground: oklch(0.978 0.012 85);
-  --secondary: oklch(0.94 0.018 85);            /* warm sand */
-  --secondary-foreground: oklch(0.28 0.03 60);
-  --muted: oklch(0.93 0.015 85);
-  --muted-foreground: oklch(0.48 0.02 70);
-  --accent: oklch(0.72 0.13 75);                /* warm gold/ochre */
-  --accent-foreground: oklch(0.22 0.018 60);
+  /* Premium Blue & Gold palette */
+  --imperial-blue: #00296b;
+  --french-blue: #003f88;
+  --steel-azure: #00509d;
+  --school-bus-yellow: #fdc500;
+  --gold: #ffd500;
+
+  --background: oklch(1 0 0);
+  --foreground: var(--imperial-blue);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--imperial-blue);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--imperial-blue);
+  --primary: var(--french-blue);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.96 0.01 240);
+  --secondary-foreground: var(--french-blue);
+  --muted: oklch(0.96 0.01 240);
+  --muted-foreground: oklch(0.45 0.05 240);
+  --accent: var(--gold);
+  --accent-foreground: var(--imperial-blue);
   --destructive: oklch(0.55 0.2 27);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.88 0.02 80);
-  --input: oklch(0.88 0.02 80);
-  --ring: oklch(0.34 0.07 155);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.9 0.02 240);
+  --input: oklch(0.9 0.02 240);
+  --ring: var(--steel-azure);
   --radius: 0.5rem;
 }
 
 .dark {
-  --background: oklch(0.18 0.015 60);
-  --foreground: oklch(0.96 0.012 85);
-  --card: oklch(0.22 0.018 60);
-  --card-foreground: oklch(0.96 0.012 85);
-  --popover: oklch(0.22 0.018 60);
-  --popover-foreground: oklch(0.96 0.012 85);
-  --primary: oklch(0.72 0.1 155);
-  --primary-foreground: oklch(0.18 0.015 60);
-  --secondary: oklch(0.26 0.02 60);
-  --secondary-foreground: oklch(0.96 0.012 85);
-  --muted: oklch(0.26 0.02 60);
-  --muted-foreground: oklch(0.7 0.015 80);
-  --accent: oklch(0.78 0.13 75);
-  --accent-foreground: oklch(0.18 0.015 60);
-  --destructive: oklch(0.55 0.2 27);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.3 0.02 60);
-  --input: oklch(0.3 0.02 60);
-  --ring: oklch(0.72 0.1 155);
+  --background: #001d4a;
+  --foreground: oklch(0.98 0.01 240);
+  --card: #002257;
+  --card-foreground: oklch(0.98 0.01 240);
+  --popover: #002257;
+  --popover-foreground: oklch(0.98 0.01 240);
+  --primary: var(--steel-azure);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: var(--french-blue);
+  --secondary-foreground: oklch(1 0 0);
+  --muted: #003472;
+  --muted-foreground: oklch(0.8 0.02 240);
+  --accent: var(--school-bus-yellow);
+  --accent-foreground: var(--imperial-blue);
+  --destructive: oklch(0.4 0.15 27);
+  --destructive-foreground: oklch(1 0 0);
+  --border: #003f88;
+  --input: #003f88;
+  --ring: var(--gold);
 }
 
 @theme inline {
   --font-sans: var(--font-sans), 'Inter Fallback', system-ui, sans-serif;
   --font-serif: var(--font-serif), 'Fraunces Fallback', Georgia, serif;
+  
+  --color-imperial-blue: var(--imperial-blue);
+  --color-french-blue: var(--french-blue);
+  --color-steel-azure: var(--steel-azure);
+  --color-school-bus-yellow: var(--school-bus-yellow);
+  --color-gold: var(--gold);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
