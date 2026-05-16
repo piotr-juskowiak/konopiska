@@ -81,13 +81,13 @@ export function SiteHeader({ updatedAt }: { updatedAt: string }) {
           </span>
         </Link>
 
-        <nav aria-label="Nawigacja główna" className="hidden lg:block">
-          <ul className="flex items-center gap-8 text-sm">
+        <nav aria-label="Nawigacja główna" className="hidden lg:block shrink-0">
+          <ul className="flex items-center gap-6 xl:gap-8 text-sm">
             {nav.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="relative text-[var(--imperial-blue)] font-bold uppercase tracking-wider text-[11px] transition-colors hover:text-[var(--steel-azure)] group"
+                  className="relative whitespace-nowrap text-[var(--imperial-blue)] font-bold uppercase tracking-wider text-[11px] transition-colors hover:text-[var(--steel-azure)] group"
                 >
                   {item.label}
                   <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-[var(--gold)] transition-all group-hover:w-full" />
