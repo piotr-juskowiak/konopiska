@@ -6,10 +6,10 @@
 :root {
   /* Serene Blue & Cream palette */
   --imperial-blue: #0f172a;
-  --french-blue: #3b82f6;
-  --steel-azure: #60a5fa;
-  --school-bus-yellow: #fef3c7;
-  --gold: #fde68a;
+  --french-blue: #1e40af;
+  --steel-azure: #1d4ed8;
+  --school-bus-yellow: #e5d99f;
+  --gold: #b59b33;
 
   --background: #f8fafc;
   --foreground: #334155;
@@ -17,19 +17,19 @@
   --card-foreground: #334155;
   --popover: #ffffff;
   --popover-foreground: #334155;
-  --primary: #3b82f6;
+  --primary: #0f172a;
   --primary-foreground: #ffffff;
-  --secondary: #eff6ff;
-  --secondary-foreground: #1e40af;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
   --muted: #f1f5f9;
   --muted-foreground: #64748b;
-  --accent: #fef3c7;
-  --accent-foreground: #92400e;
+  --accent: #e5d99f;
+  --accent-foreground: #5d4f1a;
   --destructive: oklch(0.55 0.2 27);
   --destructive-foreground: oklch(1 0 0);
   --border: #e2e8f0;
   --input: #e2e8f0;
-  --ring: #3b82f6;
+  --ring: #0f172a;
   --radius: 1rem;
 }
 
@@ -40,7 +40,7 @@
   --card-foreground: #f1f5f9;
   --popover: #0f172a;
   --popover-foreground: #f1f5f9;
-  --primary: #3b82f6;
+  --primary: #60a5fa;
   --primary-foreground: #ffffff;
   --secondary: #1e293b;
   --secondary-foreground: #f1f5f9;
@@ -52,7 +52,7 @@
   --destructive-foreground: oklch(1 0 0);
   --border: #1e293b;
   --input: #1e293b;
-  --ring: #3b82f6;
+  --ring: #1e40af;
 }
 
 @theme inline {

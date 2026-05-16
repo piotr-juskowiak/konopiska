@@ -112,7 +112,7 @@ function WeatherWidget() {
   return (
     <div className="group relative hidden h-9 items-center gap-3 rounded-full border border-white/10 bg-white/10 px-4 text-white/90 shadow-sm backdrop-blur-md transition-all hover:bg-white/20 md:flex">
       <div className="relative">
-        <Icon className="h-4 w-4 text-[var(--gold)] drop-shadow-[0_0_8px_rgba(253,230,138,0.4)]" aria-hidden />
+        <Icon className="h-4 w-4 text-[var(--gold)] drop-shadow-[0_0_8px_rgba(181,155,51,0.4)]" aria-hidden />
         <span className="absolute -right-1 -top-1 flex h-1.5 w-1.5">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--gold)] opacity-75"></span>
           <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[var(--gold)]"></span>
@@ -138,14 +138,14 @@ function WeatherWidget() {
           <div className="flex flex-col gap-1">
             <span className="text-[8px] font-bold uppercase text-white/40">Wiatr</span>
             <span className="flex items-center gap-1.5 text-[10px] font-bold text-white">
-              <Wind className="h-3 w-3 text-sky-400" />
+              <Wind className="h-3 w-3 text-[var(--gold)]/60" />
               {weather.wind ?? "--"} km/h
             </span>
           </div>
           <div className="flex flex-col gap-1">
             <span className="text-[8px] font-bold uppercase text-white/40">Wilgoć</span>
             <span className="flex items-center gap-1.5 text-[10px] font-bold text-white">
-              <CloudRain className="h-3 w-3 text-blue-400" />
+              <CloudRain className="h-3 w-3 text-[var(--gold)]/60" />
               {weather.humidity ?? "--"}%
             </span>
           </div>
@@ -197,7 +197,7 @@ function SearchSuggestions({
               type="button"
               onMouseDown={(event) => event.preventDefault()}
               onClick={() => onArticleSelect(item)}
-              className="group grid w-full grid-cols-[4.5rem_1fr] gap-4 rounded-xl p-3 text-left transition hover:bg-[var(--secondary)]"
+              className="group grid w-full grid-cols-[4.5rem_1fr] gap-4 rounded-xl p-3 text-left transition hover:bg-slate-50"
             >
               <div className="relative h-14 w-full overflow-hidden rounded-lg">
                 <img
@@ -216,7 +216,7 @@ function SearchSuggestions({
                     {formatPolishDate(item.date)}
                   </span>
                 </div>
-                <h3 className="text-sm font-bold leading-tight text-[var(--imperial-blue)] transition-colors group-hover:text-[var(--primary)] line-clamp-2">
+                <h3 className="text-sm font-bold leading-tight text-[var(--imperial-blue)] transition-colors group-hover:text-[var(--gold)] line-clamp-2">
                   {item.title}
                 </h3>
               </div>
@@ -238,7 +238,7 @@ function SearchSuggestions({
         type="button"
         onMouseDown={(event) => event.preventDefault()}
         onClick={onSearchAll}
-        className="group flex w-full items-center justify-between border-t border-slate-100 bg-slate-50/50 px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-[var(--primary)] transition hover:bg-[var(--primary)] hover:text-white"
+        className="group flex w-full items-center justify-between border-t border-slate-100 bg-slate-50/50 px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-[var(--imperial-blue)] transition hover:bg-[var(--imperial-blue)] hover:text-white"
       >
         <span>Zobacz wszystkie wyniki</span>
         <Search className="h-3.5 w-3.5 transition-transform group-hover:scale-110" />
@@ -335,7 +335,7 @@ export function SiteHeader({ updatedAt }: { updatedAt: string }) {
       <div className="mx-auto flex max-w-[90rem] items-center justify-between gap-4 px-4 py-3.5 sm:px-6 lg:gap-6">
         <Link
           href="/"
-          className="group flex shrink-0 items-center gap-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--french-blue)] focus-visible:ring-offset-4"
+          className="group flex shrink-0 items-center gap-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--imperial-blue)] focus-visible:ring-offset-4"
           aria-label="Serwis Informacyjny Konopiska — strona główna"
         >
           <span className="relative grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white shadow-[0_10px_25px_rgba(15,23,42,0.14)] ring-1 ring-slate-200/80 transition group-hover:-translate-y-0.5 group-hover:shadow-[0_14px_32px_rgba(15,23,42,0.18)]">
@@ -349,7 +349,7 @@ export function SiteHeader({ updatedAt }: { updatedAt: string }) {
             <span className="whitespace-nowrap font-serif text-xl font-semibold tracking-tight text-[var(--imperial-blue)] sm:text-2xl">
               Konopiska
             </span>
-            <span className="mt-1 hidden text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--french-blue)]/70 sm:block">
+            <span className="mt-1 hidden text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--imperial-blue)]/60 sm:block">
               Niezależny przegląd gminny
             </span>
           </span>
@@ -375,8 +375,8 @@ export function SiteHeader({ updatedAt }: { updatedAt: string }) {
                     <Icon
                       className={`h-3.5 w-3.5 transition ${
                         isActive
-                          ? "text-[var(--french-blue)]"
-                          : "text-slate-400 group-hover:text-[var(--french-blue)]"
+                          ? "text-[var(--gold)]"
+                          : "text-slate-400 group-hover:text-[var(--gold)]"
                       }`}
                       aria-hidden
                     />
@@ -394,7 +394,7 @@ export function SiteHeader({ updatedAt }: { updatedAt: string }) {
             <form
               onSubmit={submitSearch}
               role="search"
-              className="flex h-11 w-72 items-center gap-3 rounded-full border border-slate-200 bg-white px-4 shadow-[0_8px_24px_rgba(15,23,42,0.06)] transition-all focus-within:border-[var(--french-blue)]/50 focus-within:ring-4 focus-within:ring-[var(--french-blue)]/10"
+              className="flex h-11 w-72 items-center gap-3 rounded-full border border-slate-200 bg-white px-4 shadow-[0_8px_24px_rgba(15,23,42,0.06)] transition-all focus-within:border-[var(--imperial-blue)]/30 focus-within:ring-4 focus-within:ring-[var(--imperial-blue)]/5"
             >
               <Search className="h-4 w-4 text-slate-400" aria-hidden />
               <input
@@ -439,7 +439,7 @@ export function SiteHeader({ updatedAt }: { updatedAt: string }) {
             type="button"
             onClick={() => setSearchOpen(true)}
             aria-label="Szukaj"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-[var(--imperial-blue)] shadow-[0_8px_20px_rgba(15,23,42,0.06)] transition hover:border-[var(--french-blue)]/40 hover:text-[var(--french-blue)] 2xl:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-[var(--imperial-blue)] shadow-[0_8px_20px_rgba(15,23,42,0.06)] transition hover:border-[var(--gold)]/40 hover:text-[var(--gold)] 2xl:hidden"
           >
             <Search className="h-4 w-4" />
           </button>
@@ -449,7 +449,7 @@ export function SiteHeader({ updatedAt }: { updatedAt: string }) {
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Zamknij menu" : "Otwórz menu"}
             aria-expanded={open}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-[var(--imperial-blue)] text-white shadow-[0_8px_20px_rgba(15,23,42,0.18)] transition hover:bg-[var(--french-blue)] xl:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-[var(--imperial-blue)] text-white shadow-[0_8px_20px_rgba(15,23,42,0.18)] transition hover:bg-[#1e293b] xl:hidden"
           >
             {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
@@ -472,11 +472,11 @@ export function SiteHeader({ updatedAt }: { updatedAt: string }) {
                     aria-current={isActive ? "page" : undefined}
                     className={`flex items-center gap-3 rounded-lg px-4 py-3 text-xs font-bold uppercase tracking-[0.14em] transition ${
                       isActive
-                        ? "bg-secondary text-[var(--imperial-blue)] ring-1 ring-[var(--french-blue)]/15"
+                        ? "bg-slate-50 text-[var(--imperial-blue)] ring-1 ring-[var(--imperial-blue)]/15"
                         : "text-slate-600 hover:bg-slate-50 hover:text-[var(--imperial-blue)]"
                     }`}
                   >
-                    <span className="grid h-8 w-8 place-items-center rounded-full bg-white text-[var(--french-blue)] shadow-sm ring-1 ring-slate-200">
+                    <span className="grid h-8 w-8 place-items-center rounded-full bg-white text-[var(--gold)] shadow-sm ring-1 ring-slate-200">
                       <Icon className="h-4 w-4" aria-hidden />
                     </span>
                     {item.label}

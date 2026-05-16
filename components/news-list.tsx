@@ -7,16 +7,16 @@ import { CalendarDays, ChevronRight, Search, SlidersHorizontal, X, ArrowRight } 
 import { categories, formatPolishDate, type NewsItem } from "@/lib/news-data"
 
 const categoryTone: Record<string, string> = {
-  Ekologia: "text-blue-600 bg-blue-50 border-blue-100",
-  Edukacja: "text-blue-600 bg-blue-50 border-blue-100",
-  Wydarzenia: "text-blue-600 bg-blue-50 border-blue-100",
-  Samorząd: "text-blue-600 bg-blue-50 border-blue-100",
-  Kultura: "text-blue-600 bg-blue-50 border-blue-100",
-  Sport: "text-blue-600 bg-blue-50 border-blue-100",
-  Transport: "text-blue-600 bg-blue-50 border-blue-100",
-  Zdrowie: "text-blue-600 bg-blue-50 border-blue-100",
-  Fundusze: "text-blue-600 bg-blue-50 border-blue-100",
-  Społeczność: "text-blue-600 bg-blue-50 border-blue-100",
+  Ekologia: "text-[var(--gold)] bg-[var(--gold)]/10 border-[var(--gold)]/20",
+  Edukacja: "text-[var(--gold)] bg-[var(--gold)]/10 border-[var(--gold)]/20",
+  Wydarzenia: "text-[var(--gold)] bg-[var(--gold)]/10 border-[var(--gold)]/20",
+  Samorząd: "text-[var(--gold)] bg-[var(--gold)]/10 border-[var(--gold)]/20",
+  Kultura: "text-[var(--gold)] bg-[var(--gold)]/10 border-[var(--gold)]/20",
+  Sport: "text-[var(--gold)] bg-[var(--gold)]/10 border-[var(--gold)]/20",
+  Transport: "text-[var(--gold)] bg-[var(--gold)]/10 border-[var(--gold)]/20",
+  Zdrowie: "text-[var(--gold)] bg-[var(--gold)]/10 border-[var(--gold)]/20",
+  Fundusze: "text-[var(--gold)] bg-[var(--gold)]/10 border-[var(--gold)]/20",
+  Społeczność: "text-[var(--gold)] bg-[var(--gold)]/10 border-[var(--gold)]/20",
 }
 
 function getCategoryTone(category?: string) {

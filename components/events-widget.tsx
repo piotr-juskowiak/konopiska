@@ -32,7 +32,7 @@ export function EventsWidget() {
       {/* Editorial Widget Header */}
       <div className="rounded-[2.5rem] bg-gradient-to-br from-[var(--imperial-blue)] to-[#0f172a] p-10 text-white shadow-2xl overflow-hidden relative group">
         <div className="absolute -right-10 -top-10 w-48 h-48 bg-[var(--gold)]/10 rounded-full blur-3xl transition-transform duration-1000 group-hover:scale-150" />
-        <div className="absolute -left-10 -bottom-10 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl" />
+        <div className="absolute -left-10 -bottom-10 w-40 h-40 bg-[var(--gold)]/10 rounded-full blur-3xl" />
         
         <div className="relative z-10">
           <div className="flex items-center gap-3 mb-8">
