@@ -11,6 +11,7 @@ import {
   MapPin,
   Clock,
   ArrowUpRight,
+  ChevronRight,
   Rss,
   Send
 } from "lucide-react"
@@ -62,10 +63,17 @@ const socials = [
 export function SiteFooter() {
   return (
     <footer className="relative mt-24 bg-[var(--imperial-blue)] text-white border-t-[6px] border-[var(--gold)] overflow-hidden">
-      {/* Decorative background effects */}
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
-      <div className="absolute top-0 right-0 w-[50rem] h-[50rem] bg-[var(--french-blue)] rounded-full blur-[120px] opacity-20 pointer-events-none translate-x-1/3 -translate-y-1/3" />
-      <div className="absolute bottom-0 left-0 w-[30rem] h-[30rem] bg-[var(--gold)] rounded-full blur-[100px] opacity-10 pointer-events-none -translate-x-1/3 translate-y-1/3" />
+      {/* Background photo */}
+      <div
+        aria-hidden
+        className="absolute inset-0 z-0 bg-cover bg-center opacity-35"
+        style={{
+          backgroundImage:
+            "url('https://d2exd72xrrp1s7.cloudfront.net/www/000/1k5/in/in4ech8dz68u8djuusd3n4i73wnm4w2t-uhi41226144/0?width=2560&height=3200&crop=false&q=80')",
+        }}
+      />
+      <div aria-hidden className="absolute inset-0 z-0 bg-[var(--imperial-blue)]/82" />
+      <div aria-hidden className="absolute inset-0 z-0 bg-gradient-to-r from-[var(--imperial-blue)] via-[var(--imperial-blue)]/88 to-[var(--imperial-blue)]/55" />
 
       {/* Main grid */}
       <div className="relative z-10 mx-auto max-w-[1440px] px-4 py-20 sm:px-6 lg:py-24">
@@ -220,7 +228,3 @@ export function SiteFooter() {
     </footer>
   )
 }
-
-// Helper to make the component work since I missed importing ChevronRight
-import { ChevronRight } from "lucide-react"
-

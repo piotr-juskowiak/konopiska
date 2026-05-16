@@ -25,14 +25,14 @@ export default function Page() {
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
         <div className="grid lg:grid-cols-12 gap-16">
           {/* Main Content: News List */}
-          <div className="lg:col-span-8">
+          <div className="min-w-0 lg:col-span-8">
             <Suspense fallback={null}>
               <NewsList items={newsItems} />
             </Suspense>
           </div>
 
           {/* Sidebar: Events Widget */}
-          <div className="lg:col-span-4">
+          <div className="min-w-0 lg:col-span-4">
             <EventsWidget />
           </div>
         </div>

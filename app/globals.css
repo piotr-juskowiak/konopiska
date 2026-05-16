@@ -95,8 +95,23 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground min-h-screen relative;
     font-feature-settings: "ss01", "cv11";
+    overflow-x: hidden;
+    background-color: #f8fafc;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: url('https://d2exd72xrrp1s7.cloudfront.net/www/000/1k5/in/in4ech8dz68u8djuusd3n4i73wnm4w2t-uhi41226144/0?width=2560&height=3200&crop=false&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    opacity: 0.08; /* Very subtle background image */
+    pointer-events: none;
   }
   ::selection {
     background: var(--primary);
@@ -106,9 +121,21 @@
 
 /* Subtle paper texture for the editorial feel */
 .paper-grain {
-  background-image:
-    radial-gradient(oklch(0.22 0.018 60 / 0.025) 1px, transparent 1px);
-  background-size: 3px 3px;
+  position: relative;
+}
+
+.paper-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: 
+    radial-gradient(oklch(0.22 0.018 60 / 0.04) 1px, transparent 1px),
+    url('https://d2exd72xrrp1s7.cloudfront.net/www/000/1k5/in/in4ech8dz68u8djuusd3n4i73wnm4w2t-uhi41226144/0?width=2560&height=3200&crop=false&q=80');
+  background-size: 4px 4px, cover;
+  background-position: center;
+  opacity: 0.12;
+  pointer-events: none;
 }
 
 /* Ticker animation */
@@ -118,4 +145,31 @@
 }
 .animate-ticker {
   animation: ticker 60s linear infinite;
+}
+
+.ticker-viewport {
+  contain: layout paint;
+}
+
+.news-filter-scroll {
+  scrollbar-color: color-mix(in oklab, var(--imperial-blue) 42%, transparent) transparent;
+  scrollbar-width: thin;
+}
+
+.news-filter-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.news-filter-scroll::-webkit-scrollbar-track {
+  background: color-mix(in oklab, var(--border) 70%, transparent);
+  border-radius: 999px;
+}
+
+.news-filter-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, var(--imperial-blue), var(--french-blue));
+  border-radius: 999px;
+}
+
+.news-filter-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--imperial-blue);
 }
