@@ -78,14 +78,14 @@ export function EventsWidget() {
               </h4>
               <div className="flex flex-wrap gap-x-5 gap-y-2">
                 <div className="flex items-center gap-2 text-[9px] text-slate-400 font-black uppercase tracking-widest">
-                  <div className="p-1 rounded-md bg-slate-50">
-                    <Clock className="h-3 w-3 text-[var(--gold)]" />
+                  <div className=\"p-1 rounded-md bg-blue-50\">
+                    <Clock className=\"h-3 w-3 text-[var(--french-blue)]\" />
                   </div>
                   {event.time}
                 </div>
                 <div className="flex items-center gap-2 text-[9px] text-slate-400 font-black uppercase tracking-widest">
-                  <div className="p-1 rounded-md bg-slate-50">
-                    <MapPin className="h-3 w-3 text-[var(--gold)]" />
+                  <div className=\"p-1 rounded-md bg-blue-50\">
+                    <MapPin className=\"h-3 w-3 text-[var(--french-blue)]\" />
                   </div>
                   {event.location}
                 </div>

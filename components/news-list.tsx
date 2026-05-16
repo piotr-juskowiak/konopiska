@@ -7,16 +7,16 @@ import { CalendarDays, ChevronRight, Search, SlidersHorizontal, X } from "lucide
 import { categories, formatPolishDate, type NewsItem } from "@/lib/news-data"
 
 const categoryTone: Record<string, string> = {
-  Ekologia: "bg-emerald-50 text-emerald-700 ring-emerald-100",
-  Edukacja: "bg-sky-50 text-sky-700 ring-sky-100",
-  Wydarzenia: "bg-amber-50 text-amber-700 ring-amber-100",
-  Samorząd: "bg-indigo-50 text-indigo-700 ring-indigo-100",
-  Kultura: "bg-rose-50 text-rose-700 ring-rose-100",
-  Sport: "bg-lime-50 text-lime-700 ring-lime-100",
-  Transport: "bg-cyan-50 text-cyan-700 ring-cyan-100",
-  Zdrowie: "bg-pink-50 text-pink-700 ring-pink-100",
-  Fundusze: "bg-blue-50 text-blue-700 ring-blue-100",
-  Społeczność: "bg-violet-50 text-violet-700 ring-violet-100",
+  Ekologia: \"bg-blue-50 text-blue-700 ring-blue-100\",
+  Edukacja: \"bg-blue-50 text-blue-700 ring-blue-100\",
+  Wydarzenia: \"bg-blue-50 text-blue-700 ring-blue-100\",
+  Samorząd: \"bg-blue-50 text-blue-700 ring-blue-100\",
+  Kultura: \"bg-blue-50 text-blue-700 ring-blue-100\",
+  Sport: \"bg-blue-50 text-blue-700 ring-blue-100\",
+  Transport: \"bg-blue-50 text-blue-700 ring-blue-100\",
+  Zdrowie: \"bg-blue-50 text-blue-700 ring-blue-100\",
+  Fundusze: \"bg-blue-50 text-blue-700 ring-blue-100\",
+  Społeczność: \"bg-blue-50 text-blue-700 ring-blue-100\",
 }
 
 function getCategoryTone(category?: string) {
@@ -32,6 +32,7 @@ export function NewsList({ items }: { items: NewsItem[] }) {
 
   const [active, setActive] = useState(urlCategory)
   const [query, setQuery] = useState(urlQuery)
+  const [showFilters, setShowFilters] = useState(false)
 
   useEffect(() => {
     setActive(urlCategory)
@@ -98,48 +99,59 @@ export function NewsList({ items }: { items: NewsItem[] }) {
         </div>
       </div>
 
-      <div className="mb-12 space-y-6">
-        <div className="relative group">
-          <Search className="absolute left-5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 group-focus-within:text-[var(--primary)] transition-colors" />
-          <input
-            type="search"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Czego dziś szukasz?"
-            className="h-14 w-full rounded-2xl border border-slate-200/60 bg-white pl-12 pr-12 text-sm font-medium text-[var(--imperial-blue)] shadow-[0_10px_40px_-10px_rgba(15,23,42,0.05)] outline-none transition-all focus:border-[var(--french-blue)]/30 focus:ring-8 focus:ring-[var(--french-blue)]/5 placeholder:text-slate-400"
-          />
-          {query && (
-            <button
-              type="button"
-              onClick={() => setQuery("")}
-              className="absolute right-4 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full text-slate-400 transition hover:bg-slate-100 hover:text-[var(--imperial-blue)]"
-            >
-              <X className="h-4 w-4" />
-            </button>
-          )}
+      <div className=\"mb-12 space-y-4\">
+        <div className=\"flex flex-col sm:flex-row gap-4 items-stretch\">
+          <div className=\"relative flex-1 group\">
+            <Search className=\"absolute left-5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 group-focus-within:text-[var(--primary)] transition-colors\" />
+            <input
+              type=\"search\"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder=\"Czego dziś szukasz?\"
+              className=\"h-14 w-full rounded-2xl border-2 border-slate-200/40 bg-white pl-12 pr-12 text-sm font-bold text-[var(--imperial-blue)] shadow-[0_15px_45px_-15px_rgba(15,23,42,0.1)] outline-none transition-all focus:border-[var(--french-blue)]/50 focus:bg-white placeholder:text-slate-400 focus:shadow-[0_20px_50px_-10px_rgba(59,130,246,0.15)]\"
+            />
+            {query && (
+              <button
+                type=\"button\"
+                onClick={() => setQuery(\"\")}
+                className=\"absolute right-4 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full text-slate-400 transition hover:bg-slate-100 hover:text-[var(--imperial-blue)]\"
+              >
+                <X className=\"h-4 w-4\" />
+              </button>
+            )}
+          </div>
+          
+          <button 
+            onClick={() => setShowFilters(!showFilters)}
+            className={`flex h-14 items-center justify-center gap-3 rounded-2xl px-8 text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${
+              showFilters 
+                ? \"bg-[var(--gold)] text-[var(--imperial-blue)] shadow-[0_15px_35px_-10px_rgba(253,230,138,0.5)]\" 
+                : \"bg-[var(--imperial-blue)] text-white shadow-[0_15px_35px_-10px_rgba(15,23,42,0.3)] hover:bg-[#1e293b]\"
+            }`}
+          >
+            <SlidersHorizontal className={`h-4 w-4 transition-transform duration-500 ${showFilters ? \"rotate-180\" : \"\"}`} />
+            Filtry
+          </button>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3">
-          <div className="flex h-10 items-center gap-2 rounded-xl bg-[var(--imperial-blue)] px-4 text-[9px] font-black uppercase tracking-[0.2em] text-white shadow-lg">
-            <SlidersHorizontal className="h-3.5 w-3.5 text-[var(--gold)]" />
-            Filtry
-          </div>
-          <div className="news-filter-scroll flex flex-1 items-center gap-2 overflow-x-auto pb-2">
+        {/* Expandable Filters Area */}
+        <div className={`overflow-hidden transition-all duration-500 ease-in-out ${showFilters ? \"max-h-24 opacity-100\" : \"max-h-0 opacity-0 pointer-events-none\"}`}>
+          <div className=\"news-filter-scroll flex items-center gap-2 overflow-x-auto pb-4 pt-2\">
             {categories.map((cat) => (
               <button
                 key={cat}
-                type="button"
+                type=\"button\"
                 onClick={() => setActive(cat)}
                 className={`group flex h-10 shrink-0 items-center gap-3 rounded-xl border px-4 transition-all duration-300 ${
                   cat === active
-                    ? "border-[var(--imperial-blue)] bg-[var(--imperial-blue)] text-[var(--gold)] shadow-xl scale-105"
-                    : "border-slate-200 bg-white text-slate-500 hover:border-[var(--french-blue)]/20 hover:text-[var(--imperial-blue)] hover:shadow-md"
+                    ? \"border-[var(--imperial-blue)] bg-[var(--imperial-blue)] text-[var(--gold)] shadow-lg scale-105\"
+                    : \"border-slate-200 bg-white text-slate-500 hover:border-[var(--french-blue)]/20 hover:text-[var(--imperial-blue)] hover:shadow-md\"
                 }`}
               >
-                <span className="text-[10px] font-bold uppercase tracking-widest">{cat}</span>
+                <span className=\"text-[10px] font-bold uppercase tracking-widest\">{cat}</span>
                 <span
                   className={`rounded-full px-2 py-0.5 font-mono text-[9px] font-bold ${
-                    cat === active ? "bg-white/10 text-white" : "bg-slate-50 text-slate-400 group-hover:text-slate-600 group-hover:bg-slate-100"
+                    cat === active ? \"bg-white/10 text-white\" : \"bg-slate-50 text-slate-400 group-hover:text-slate-600 group-hover:bg-slate-100\"
                   }`}
                 >
                   {categoryCounts[cat] ?? 0}
@@ -170,8 +182,8 @@ export function NewsList({ items }: { items: NewsItem[] }) {
                 <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-black/5" />
                 
                 {/* Image Label */}
-                <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/20 px-3 py-1.5 backdrop-blur-md border border-white/30 text-[9px] font-black uppercase tracking-widest text-white">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--gold)] animate-pulse" />
+                <div className=\"absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/20 px-3 py-1.5 backdrop-blur-md border border-white/30 text-[9px] font-black uppercase tracking-widest text-white\">
+                  <span className=\"h-1.5 w-1.5 rounded-full bg-[var(--french-blue)] animate-pulse\" />
                   Fotoreportaż
                 </div>
               </Link>
@@ -181,8 +193,8 @@ export function NewsList({ items }: { items: NewsItem[] }) {
                   <span className={`rounded-lg px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.2em] shadow-sm ring-1 ring-inset ${getCategoryTone(item.category)}`}>
                     {item.category}
                   </span>
-                  <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                    <CalendarDays className="h-3.5 w-3.5 text-[var(--gold)]" />
+                  <div className=\"flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-400\">
+                    <CalendarDays className=\"h-3.5 w-3.5 text-[var(--french-blue)]\" />
                     {formatPolishDate(item.date)}
                   </div>
                 </div>
@@ -197,26 +209,15 @@ export function NewsList({ items }: { items: NewsItem[] }) {
                   {item.excerpt}
                 </p>
 
-                <div className="flex items-center justify-between">
+                <div className=\"flex items-center justify-between\">
                   <Link
                     href={`/artykul/${item.slug}`}
-                    className="group/btn relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-[var(--imperial-blue)] px-6 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-white transition-all hover:pr-10"
+                    className=\"group/btn relative inline-flex items-center gap-3 overflow-hidden rounded-xl bg-[var(--imperial-blue)] px-6 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-white transition-all hover:pr-10\"
                   >
-                    <span className="relative z-10">Czytaj artykuł</span>
-                    <ChevronRight className="absolute right-4 h-4 w-4 translate-x-2 opacity-0 transition-all group-hover/btn:translate-x-0 group-hover/btn:opacity-100 z-10" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-[var(--french-blue)] to-[var(--steel-azure)] opacity-0 transition-opacity group-hover/btn:opacity-100" />
+                    <span className=\"relative z-10\">Czytaj artykuł</span>
+                    <ChevronRight className=\"absolute right-4 h-4 w-4 translate-x-2 opacity-0 transition-all group-hover/btn:translate-x-0 group-hover/btn:opacity-100 z-10\" />
+                    <div className=\"absolute inset-0 bg-gradient-to-r from-[var(--french-blue)] to-[var(--steel-azure)] opacity-0 transition-opacity group-hover/btn:opacity-100\" />
                   </Link>
-                  
-                  <div className="flex -space-x-2">
-                    {[1, 2, 3].map(i => (
-                      <div key={i} className="h-8 w-8 rounded-full border-2 border-white bg-slate-100 overflow-hidden">
-                        <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="" className="h-full w-full object-cover" />
-                      </div>
-                    ))}
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-[var(--school-bus-yellow)] text-[9px] font-bold text-[var(--imperial-blue)]">
-                      +12
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

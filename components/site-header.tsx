@@ -216,9 +216,11 @@ function SearchSuggestions({
                     {formatPolishDate(item.date)}
                   </span>
                 </div>
-                <span className="line-clamp-2 text-sm font-bold leading-tight text-[var(--imperial-blue)] transition-colors group-hover:text-[var(--primary)]">
-                  {item.title}
-                </span>
+                <h3 className="mb-5 font-serif text-2xl font-bold leading-tight text-[var(--imperial-blue)] transition-colors group-hover:text-[var(--primary)] md:text-3xl line-clamp-2">
+                  <Link href={`/artykul/${item.slug}`} className="block">
+                    {item.title}
+                  </Link>
+                </h3>
               </div>
             </button>
           ))}
@@ -346,11 +348,10 @@ export function SiteHeader({ updatedAt }: { updatedAt: string }) {
             />
           </span>
           <span className="flex min-w-0 flex-col leading-tight">
-            <span className="whitespace-nowrap font-serif text-xl font-semibold tracking-tight text-[var(--imperial-blue)] sm:text-2xl">
-              <span className="sm:hidden">Konopiska</span>
-              <span className="hidden sm:inline">Serwis Informacyjny Konopiska</span>
+            <span className=\"whitespace-nowrap font-serif text-xl font-semibold tracking-tight text-[var(--imperial-blue)] sm:text-2xl\">
+              Konopiska
             </span>
-            <span className="mt-1 hidden text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--french-blue)]/70 sm:block">
+            <span className=\"mt-1 hidden text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--french-blue)]/70 sm:block\">
               Niezależny przegląd gminny
             </span>
           </span>

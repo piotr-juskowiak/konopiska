@@ -85,8 +85,8 @@ export function HeroFeature({ items }: { items: NewsItem[] }) {
                     )}
                   </div>
 
-                  <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.1] text-white mb-8 text-balance drop-shadow-2xl">
-                    <Link href={`/artykul/${item.slug}`} className="hover:text-[var(--gold)] transition-colors duration-300">
+                  <h1 className=\"font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.1] text-white mb-8 text-balance drop-shadow-2xl line-clamp-3 max-w-[90%]\">
+                    <Link href={`/artykul/${item.slug}`} className=\"hover:text-[var(--gold)] transition-colors duration-300\">
                       {item.title}
                     </Link>
                   </h1>
@@ -140,9 +140,7 @@ export function HeroFeature({ items }: { items: NewsItem[] }) {
                   }`}>
                     {item.category || "Aktualności"}
                   </p>
-                  <h3 className={`font-serif text-sm leading-snug line-clamp-2 transition-all ${
-                    idx === current ? "text-white font-medium" : "text-white/60 group-hover:text-white"
-                  }`}>
+                  <h3 className="font-serif text-sm leading-snug line-clamp-2 transition-all text-white/60 group-hover:text-white">
                     {item.title}
                   </h3>
                 </div>
