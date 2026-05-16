@@ -1,19 +1,17 @@
-import type { Metadata } from "next"
-import { Fraunces, Inter } from "next/font/google"
+import { Plus_Jakarta_Sans, Outfit } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
-const inter = Inter({
+const sans = Plus_Jakarta_Sans({
   subsets: ["latin", "latin-ext"],
   variable: "--font-sans",
   display: "swap",
 })
 
-const fraunces = Fraunces({
+const outfit = Outfit({
   subsets: ["latin", "latin-ext"],
-  variable: "--font-serif",
+  variable: "--font-outfit",
   display: "swap",
-  axes: ["opsz"],
 })
 
 export const metadata: Metadata = {
@@ -32,8 +30,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pl" className={`${inter.variable} ${fraunces.variable} bg-background`}>
-      <body className="font-sans antialiased">
+    <html lang="pl" className={`${sans.variable} ${outfit.variable} bg-background`}>
+      <body className="font-sans antialiased text-foreground">
         {children}
         {process.env.NODE_ENV === "production" && <Analytics />}
       </body>

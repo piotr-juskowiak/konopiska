@@ -61,7 +61,7 @@ const socials = [
 
 export function SiteFooter() {
   return (
-    <footer className="relative mt-24 bg-[#001d4a] text-white border-t-[6px] border-[var(--gold)] overflow-hidden">
+    <footer className="relative mt-24 bg-[var(--imperial-blue)] text-white border-t-[6px] border-[var(--gold)] overflow-hidden">
       {/* Decorative background effects */}
       <div className="absolute inset-0 z-0 opacity-20 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
       <div className="absolute top-0 right-0 w-[50rem] h-[50rem] bg-[var(--french-blue)] rounded-full blur-[120px] opacity-20 pointer-events-none translate-x-1/3 -translate-y-1/3" />

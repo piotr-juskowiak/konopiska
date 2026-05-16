@@ -24,7 +24,7 @@ export function HeroFeature({ items }: { items: NewsItem[] }) {
   return (
     <section 
       id="aktualnosci" 
-      className="relative w-full bg-[#001d4a] overflow-hidden min-h-[600px] lg:min-h-[750px] flex items-center"
+      className="relative w-full bg-[var(--imperial-blue)] overflow-hidden min-h-[600px] lg:min-h-[750px] flex items-center"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -44,8 +44,8 @@ export function HeroFeature({ items }: { items: NewsItem[] }) {
               className="h-full w-full object-cover"
             />
             {/* Dynamic Overlays */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#001d4a] via-[#001d4a]/60 to-transparent z-20" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#001d4a] via-transparent to-transparent z-20" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[var(--imperial-blue)] via-[var(--imperial-blue)]/60 to-transparent z-20" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[var(--imperial-blue)] via-transparent to-transparent z-20" />
           </div>
         ))}
       </div>
