@@ -66,12 +66,11 @@ export function SiteHeader({ updatedAt }: { updatedAt: string }) {
       {/* Main bar */}
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
         <Link href="/" className="flex items-center gap-4 group" aria-label="Magazyn Konopiska — strona główna">
-          <span
-            aria-hidden
-            className="grid h-11 w-11 place-items-center rounded-full bg-[var(--imperial-blue)] text-[var(--gold)] font-serif text-xl font-bold shadow-[0_4px_12px_rgba(0,41,107,0.2)] transition-transform group-hover:scale-105"
-          >
-            K
-          </span>
+          <img
+            src="/logo.png"
+            alt="Logo Magazyn Konopiska"
+            className="h-12 w-12 rounded-full object-cover shadow-[0_4px_12px_rgba(0,41,107,0.2)] transition-transform group-hover:scale-105"
+          />
           <span className="flex flex-col leading-tight">
             <span className="font-serif text-2xl font-medium tracking-tight text-[var(--imperial-blue)]">
               Magazyn Konopiska

@@ -115,12 +115,11 @@ export function SiteFooter() {
           {/* Brand block */}
           <div className="md:col-span-4 lg:col-span-4">
             <Link href="/" className="inline-flex items-center gap-4">
-              <span
-                aria-hidden
-                className="grid h-14 w-14 place-items-center rounded-full bg-[var(--gold)] text-[var(--imperial-blue)] font-serif text-2xl font-bold shadow-[0_0_20px_var(--gold)]/30"
-              >
-                K
-              </span>
+              <img
+                src="/logo.png"
+                alt=""
+                className="h-14 w-14 rounded-full object-cover shadow-[0_0_20px_var(--gold)]/30"
+              />
               <span>
                 <span className="block font-serif text-2xl font-medium leading-none text-white tracking-tight">
                   Magazyn Konopiska

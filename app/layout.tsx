@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   description:
     "Niezależny magazyn z najświeższymi wiadomościami, komunikatami i zapowiedziami wydarzeń z Gminy Konopiska.",
   generator: "v0.app",
+  icons: {
+    icon: "/favicon-custom.png",
+  },
 }
 
 export default function RootLayout({
