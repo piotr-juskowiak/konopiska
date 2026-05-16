@@ -17,9 +17,9 @@ const fraunces = Fraunces({
 })
 
 export const metadata: Metadata = {
-  title: "Magazyn Konopiska — Aktualności z Gminy",
+  title: "Serwis Informacyjny Konopiska — Aktualności z Gminy",
   description:
-    "Niezależny magazyn z najświeższymi wiadomościami, komunikatami i zapowiedziami wydarzeń z Gminy Konopiska.",
+    "Niezależny serwis z najświeższymi wiadomościami, komunikatami i zapowiedziami wydarzeń z Gminy Konopiska.",
   generator: "v0.app",
   icons: {
     icon: "/favicon-custom.png",

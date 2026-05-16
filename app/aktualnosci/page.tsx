@@ -6,7 +6,7 @@ import { PageHero } from "@/components/page-hero"
 import { newsItems } from "@/lib/news-data"
 
 export const metadata = {
-  title: "Aktualności · Magazyn Konopiska",
+  title: "Aktualności · Serwis Informacyjny Konopiska",
   description: "Najnowsze wiadomości i doniesienia z Gminy Konopiska.",
 }
 
@@ -30,7 +30,7 @@ export default function AktualnosciPage() {
         title="Aktualności z Gminy Konopiska"
         description="Bieżące doniesienia, decyzje samorządu, wydarzenia kulturalne i sprawy mieszkańców — wszystko, czym żyje gmina, w jednym miejscu."
         breadcrumb={[
-          { label: "Magazyn", href: "/" },
+          { label: "Serwis", href: "/" },
           { label: "Aktualności" },
         ]}
       />

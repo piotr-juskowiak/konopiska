@@ -1,8 +1,8 @@
 import { Suspense } from "react"
 import { BreakingTicker } from "@/components/breaking-ticker"
 import { HeroFeature } from "@/components/hero-feature"
-import { EventsCalendar } from "@/components/events-calendar"
-import { NewsGrid } from "@/components/news-grid"
+import { NewsList } from "@/components/news-list"
+import { EventsWidget } from "@/components/events-widget"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
 import { newsItems } from "@/lib/news-data"
@@ -21,10 +21,23 @@ export default function Page() {
       <SiteHeader updatedAt={updatedAt} />
       <BreakingTicker items={newsItems} />
       <HeroFeature items={newsItems.slice(0, 5)} />
-      <EventsCalendar />
-      <Suspense fallback={null}>
-        <NewsGrid items={newsItems} />
-      </Suspense>
+      
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
+        <div className="grid lg:grid-cols-12 gap-16">
+          {/* Main Content: News List */}
+          <div className="lg:col-span-8">
+            <Suspense fallback={null}>
+              <NewsList items={newsItems} />
+            </Suspense>
+          </div>
+
+          {/* Sidebar: Events Widget */}
+          <div className="lg:col-span-4">
+            <EventsWidget />
+          </div>
+        </div>
+      </div>
+
       <SiteFooter />
     </main>
   )

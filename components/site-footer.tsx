@@ -30,7 +30,7 @@ const sections = [
   {
     title: "Redakcja",
     links: [
-      { label: "O Magazynie", href: "#" },
+      { label: "O Serwisie", href: "#" },
       { label: "Zespół", href: "#" },
       { label: "Kontakt z redakcją", href: "/kontakt" },
       { label: "Reklama i patronaty", href: "#" },
@@ -78,7 +78,7 @@ export function SiteFooter() {
               />
               <span>
                 <span className="block font-serif text-2xl font-medium leading-none text-white tracking-tight">
-                  Magazyn Konopiska
+                  Serwis Informacyjny Konopiska
                 </span>
                 <span className="mt-1.5 block font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--gold)]/80">
                   Dziennik gminny · Est. 2024
@@ -186,7 +186,7 @@ export function SiteFooter() {
       <div className="relative z-10 border-t border-white/10 bg-[#001538]">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-4 py-8 sm:px-6 lg:flex-row">
           <p className="text-[10px] uppercase tracking-widest text-white/40 text-center lg:text-left">
-            © {new Date().getFullYear()} Magazyn Konopiska. Niezależny portal informacyjny.
+            © {new Date().getFullYear()} Serwis Informacyjny Konopiska. Niezależny portal informacyjny.
           </p>
 
           <div className="flex items-center gap-3">

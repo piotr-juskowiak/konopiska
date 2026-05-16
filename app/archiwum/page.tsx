@@ -6,8 +6,8 @@ import { NewsGrid } from "@/components/news-grid"
 import { newsItems } from "@/lib/news-data"
 
 export const metadata = {
-  title: "Archiwum · Magazyn Konopiska",
-  description: "Przeszukiwalne archiwum wszystkich artykułów Magazynu Konopiska.",
+  title: "Archiwum · Serwis Informacyjny Konopiska",
+  description: "Przeszukiwalne archiwum wszystkich artykułów Serwisu Informacyjnego Konopiska.",
 }
 
 export default function ArchiwumPage() {
@@ -28,7 +28,7 @@ export default function ArchiwumPage() {
         title="Wszystkie historie z gminy"
         description="Przeszukuj pełen katalog wydań — od najnowszych doniesień po starsze relacje. Filtruj po kategorii lub użyj wyszukiwarki."
         breadcrumb={[
-          { label: "Magazyn", href: "/" },
+          { label: "Serwis", href: "/" },
           { label: "Archiwum" },
         ]}
       />

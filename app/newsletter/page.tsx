@@ -51,7 +51,7 @@ export default function NewsletterPage() {
         title="Cotygodniowy newsletter z Konopisk"
         description="Zapisz się, a w każdy piątek o świcie otrzymasz starannie wybrany przegląd tygodnia, krótki komentarz redakcji i jedno wydarzenie do zaplanowania w weekend."
         breadcrumb={[
-          { label: "Magazyn", href: "/" },
+          { label: "Serwis", href: "/" },
           { label: "Newsletter" },
         ]}
       />

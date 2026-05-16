@@ -18,7 +18,7 @@ export async function generateMetadata({
   const article = getArticleBySlug(slug)
   if (!article) return { title: "Artykuł nie znaleziony" }
   return {
-    title: `${article.title} — Magazyn Konopiska`,
+    title: `${article.title} — Serwis Informacyjny Konopiska`,
     description: article.excerpt,
     openGraph: {
       title: article.title,
@@ -99,7 +99,7 @@ export default async function ArticlePage({
               MK
             </div>
             <div className="text-sm">
-              <p className="font-medium text-foreground">Redakcja Magazynu Konopiska</p>
+              <p className="font-medium text-foreground">Redakcja Serwisu Informacyjnego Konopiska</p>
               <p className="text-xs text-muted-foreground">Newsroom lokalny</p>
             </div>
           </div>

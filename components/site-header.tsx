@@ -65,15 +65,15 @@ export function SiteHeader({ updatedAt }: { updatedAt: string }) {
 
       {/* Main bar */}
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-4 group" aria-label="Magazyn Konopiska — strona główna">
+        <Link href="/" className="flex items-center gap-4 group" aria-label="Serwis Informacyjny Konopiska — strona główna">
           <img
             src="/logo.png"
-            alt="Logo Magazyn Konopiska"
+            alt="Logo Serwis Informacyjny Konopiska"
             className="h-12 w-12 rounded-full object-cover shadow-[0_4px_12px_rgba(0,41,107,0.2)] transition-transform group-hover:scale-105"
           />
           <span className="flex flex-col leading-tight">
             <span className="font-serif text-2xl font-medium tracking-tight text-[var(--imperial-blue)]">
-              Magazyn Konopiska
+              Serwis Informacyjny Konopiska
             </span>
             <span className="mt-1 text-[10px] font-bold uppercase tracking-[0.25em] text-[var(--french-blue)]/60">
               Niezależny przegląd gminny
@@ -97,21 +97,32 @@ export function SiteHeader({ updatedAt }: { updatedAt: string }) {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-6">
+          {/* Desktop Search Input */}
+          <form 
+            onSubmit={submitSearch}
+            className="hidden md:flex items-center gap-3 bg-secondary/50 rounded-xl px-4 py-2 border border-transparent focus-within:border-[var(--gold)]/50 focus-within:bg-white transition-all w-64 xl:w-80"
+          >
+            <Search className="h-4 w-4 text-[var(--imperial-blue)]/40" />
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Szukaj w serwisie..."
+              className="bg-transparent text-[11px] font-bold uppercase tracking-widest text-[var(--imperial-blue)] outline-none placeholder:text-[var(--imperial-blue)]/30 w-full"
+            />
+          </form>
+
+          {/* Mobile Search Button */}
           <button
             type="button"
             onClick={() => setSearchOpen(true)}
             aria-label="Szukaj"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-secondary/50 text-[var(--imperial-blue)] transition hover:bg-[var(--gold)] hover:text-[var(--imperial-blue)]"
+            className="inline-flex md:hidden h-10 w-10 items-center justify-center rounded-full bg-secondary/50 text-[var(--imperial-blue)] transition hover:bg-[var(--gold)]"
           >
             <Search className="h-4 w-4" />
           </button>
-          <Link
-            href="/newsletter"
-            className="hidden sm:inline-flex items-center rounded-xl bg-[var(--imperial-blue)] px-6 py-2.5 text-[11px] font-bold uppercase tracking-widest text-white shadow-lg transition hover:bg-[var(--french-blue)] hover:-translate-y-0.5"
-          >
-            Newsletter
-          </Link>
+
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -165,7 +176,7 @@ export function SiteHeader({ updatedAt }: { updatedAt: string }) {
                 type="search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Czego szukasz w Magazynie?"
+                placeholder="Czego szukasz w Serwisie?"
                 className="h-16 flex-1 bg-transparent text-base text-foreground outline-none placeholder:text-muted-foreground"
               />
               <button
