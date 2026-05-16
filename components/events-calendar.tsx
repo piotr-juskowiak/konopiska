@@ -47,7 +47,7 @@ export function EventsCalendar() {
             </span>
           </div>
           <h2 className="font-serif text-3xl font-medium tracking-tight text-[var(--imperial-blue)] sm:text-4xl">
-            Kalendarium <em className="italic text-[var(--steel-azure)]">wydarzeń</em>
+            Kalendarium <em className="text-[var(--steel-azure)]">wydarzeń</em>
           </h2>
         </div>
         <button className="group flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[var(--imperial-blue)] hover:text-[var(--gold)] transition-colors">

@@ -43,7 +43,7 @@ export function EventsWidget() {
           </div>
           <h3 className="font-serif text-4xl font-medium leading-[1.1] mb-6 tracking-tight">
             Co przyniesie <br />
-            <span className="italic font-light text-[var(--school-bus-yellow)]">najbliższy tydzień?</span>
+            <span className="font-light text-[var(--school-bus-yellow)]">najbliższy tydzień?</span>
           </h3>
           <p className="text-sm text-white/40 mb-10 leading-relaxed font-medium max-w-[240px]">
             Nie przegap najważniejszych spotkań i wydarzeń kulturalnych w naszej gminie.

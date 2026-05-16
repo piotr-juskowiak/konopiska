@@ -77,7 +77,7 @@ export function NewsGrid({ items }: { items: NewsItem[] }) {
               id="grid-heading"
               className="font-serif text-4xl font-medium tracking-tight text-[var(--imperial-blue)] text-balance sm:text-5xl lg:text-6xl"
             >
-              Wszystkie <span className="italic text-[var(--steel-azure)]">historie</span> z gminy
+              Wszystkie <span className="text-[var(--steel-azure)]">historie</span> z gminy
             </h2>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-[var(--imperial-blue)]/70">
               Przeglądaj publikacje według kategorii lub wyszukaj konkretny temat. Aktualizujemy
