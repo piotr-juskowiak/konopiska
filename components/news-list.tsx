@@ -77,99 +77,96 @@ export function NewsList({ items }: { items: NewsItem[] }) {
 
   return (
     <div id="wiadomosci" className="scroll-mt-28">
-      {/* Redesigned Premium Header Section */}
-      <div className="mb-12">
-        <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <div className="space-y-4">
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-2xl bg-white border border-slate-100 shadow-sm">
-              <div className="h-2 w-2 rounded-full bg-[var(--gold)] animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[var(--imperial-blue)]/60">
+      {/* Premium Header Section */}
+      <div className="mb-10">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="space-y-3">
+            <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-white border border-slate-100 shadow-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-[var(--gold)] animate-pulse" />
+              <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[var(--imperial-blue)]/60">
                 Dziennik Gminny
               </span>
             </div>
             
-            <h2 className="font-serif text-5xl sm:text-6xl font-medium text-[var(--imperial-blue)] leading-[1.05] tracking-tighter">
+            <h2 className="font-serif text-4xl sm:text-5xl font-medium text-[var(--imperial-blue)] leading-[1.05] tracking-tighter">
               Najnowsze <br />
               <span className="font-light text-[var(--imperial-blue)] drop-shadow-sm opacity-80">wiadomości</span>
             </h2>
             
-            <p className="text-base text-slate-400 font-medium max-w-md leading-relaxed">
+            <p className="text-sm text-slate-400 font-medium max-w-sm leading-relaxed">
               Odkryj historie, które kształtują naszą gminę każdego dnia.
             </p>
           </div>
 
           <div className="flex flex-col items-end gap-6">
-            {/* Stats Badge */}
-            <div className="group relative flex items-center gap-4 bg-white p-2 pr-6 rounded-full border border-slate-100 shadow-xl transition-all hover:border-[var(--gold)]/20">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--imperial-blue)] text-white shadow-lg shadow-[var(--imperial-blue)]/20">
-                <LayoutGrid className="h-5 w-5" />
+            <div className="group relative flex items-center gap-3 bg-white p-1.5 pr-5 rounded-full border border-slate-100 shadow-lg transition-all hover:border-[var(--gold)]/20">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--imperial-blue)] text-white shadow-lg shadow-[var(--imperial-blue)]/20">
+                <LayoutGrid className="h-4 w-4" />
               </div>
               <div className="flex flex-col">
-                <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">Publikacje</span>
+                <span className="text-[8px] font-black uppercase tracking-widest text-slate-400">Publikacje</span>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-xl font-serif font-black text-[var(--imperial-blue)]">{filtered.length}</span>
-                  <span className="text-[10px] font-bold text-slate-300">/ {items.length}</span>
+                  <span className="text-lg font-serif font-black text-[var(--imperial-blue)]">{filtered.length}</span>
+                  <span className="text-[9px] font-bold text-slate-300">/ {items.length}</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Improved Search and Filters Bar */}
-        <div className="mt-12 flex flex-col sm:flex-row gap-4">
+        <div className="mt-10 flex flex-col sm:flex-row gap-3">
           <div className="relative flex-1">
-            <div className="absolute left-6 top-1/2 -translate-y-1/2 flex items-center gap-4 pointer-events-none">
-              <Search className="h-5 w-5 text-slate-400" />
-              <div className="h-4 w-px bg-slate-200" />
+            <div className="absolute left-5 top-1/2 -translate-y-1/2 flex items-center gap-3 pointer-events-none">
+              <Search className="h-4 w-4 text-slate-400" />
+              <div className="h-3 w-px bg-slate-200" />
             </div>
             <input
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Czego dziś szukasz w Konopiskach?"
-              className="h-16 w-full rounded-3xl border border-slate-200 bg-white pl-20 pr-14 text-sm font-semibold text-[var(--imperial-blue)] shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] outline-none transition-all focus:border-[var(--gold)]/40 focus:ring-4 focus:ring-[var(--gold)]/5 placeholder:text-slate-400"
+              placeholder="Szukaj informacji..."
+              className="h-14 w-full rounded-2xl border border-slate-200 bg-white pl-16 pr-12 text-xs font-semibold text-[var(--imperial-blue)] shadow-[0_10px_30px_-15px_rgba(0,0,0,0.05)] outline-none transition-all focus:border-[var(--gold)]/40 focus:ring-4 focus:ring-[var(--gold)]/5 placeholder:text-slate-400"
             />
             {query && (
               <button
                 type="button"
                 onClick={() => setQuery("")}
-                className="absolute right-5 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-2xl text-slate-400 transition hover:bg-slate-50 hover:text-[var(--imperial-blue)]"
+                className="absolute right-4 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-xl text-slate-400 transition hover:bg-slate-50 hover:text-[var(--imperial-blue)]"
               >
-                <X className="h-4 w-4" />
+                <X className="h-3.5 w-3.5" />
               </button>
             )}
           </div>
           
           <button 
             onClick={() => setShowFilters(!showFilters)}
-            className={`group flex h-16 items-center justify-center gap-4 rounded-3xl px-10 text-[11px] font-black uppercase tracking-[0.25em] transition-all duration-500 shadow-2xl ${
+            className={`group flex h-14 items-center justify-center gap-3 rounded-2xl px-8 text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500 shadow-xl ${
               showFilters 
                 ? "bg-[var(--gold)] text-white shadow-[var(--gold)]/30" 
-                : "bg-[var(--imperial-blue)] text-white shadow-[var(--imperial-blue)]/20 hover:bg-[#1e293b] hover:-translate-y-0.5"
+                : "bg-[var(--imperial-blue)] text-white shadow-[var(--imperial-blue)]/20 hover:bg-[#1e293b]"
             }`}
           >
-            <SlidersHorizontal className={`h-4 w-4 transition-transform duration-500 ${showFilters ? "rotate-90" : ""}`} />
+            <SlidersHorizontal className={`h-3.5 w-3.5 transition-transform duration-500 ${showFilters ? "rotate-90" : ""}`} />
             Filtry
           </button>
         </div>
 
-        {/* Category Filters Grid */}
-        <div className={`overflow-hidden transition-all duration-500 ease-in-out ${showFilters ? "max-h-[300px] opacity-100 mt-6" : "max-h-0 opacity-0 pointer-events-none"}`}>
+        <div className={`overflow-hidden transition-all duration-500 ease-in-out ${showFilters ? "max-h-[300px] opacity-100 mt-5" : "max-h-0 opacity-0 pointer-events-none"}`}>
           <div className="flex flex-wrap gap-2 p-1">
             {categories.map((cat) => (
               <button
                 key={cat}
                 type="button"
                 onClick={() => setActive(cat)}
-                className={`flex h-11 items-center gap-3 rounded-2xl border px-6 transition-all duration-300 ${
+                className={`flex h-10 items-center gap-3 rounded-xl border px-5 transition-all duration-300 ${
                   cat === active
-                    ? "border-[var(--imperial-blue)] bg-[var(--imperial-blue)] text-white shadow-xl scale-105"
-                    : "border-slate-100 bg-white text-slate-500 hover:border-[var(--imperial-blue)]/20 hover:text-[var(--imperial-blue)] hover:shadow-lg"
+                    ? "border-[var(--imperial-blue)] bg-[var(--imperial-blue)] text-white shadow-lg scale-105"
+                    : "border-slate-100 bg-white text-slate-500 hover:border-[var(--imperial-blue)]/20 hover:text-[var(--imperial-blue)]"
                 }`}
               >
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em]">{cat}</span>
+                <span className="text-[9px] font-bold uppercase tracking-[0.15em]">{cat}</span>
                 <span
-                  className={`rounded-lg px-2 py-0.5 font-mono text-[9px] font-bold ${
+                  className={`rounded-lg px-1.5 py-0.5 font-mono text-[8px] font-bold ${
                     cat === active ? "bg-white/10 text-white" : "bg-slate-50 text-slate-400"
                   }`}
                 >
@@ -181,16 +178,16 @@ export function NewsList({ items }: { items: NewsItem[] }) {
         </div>
       </div>
 
-      <div className="grid gap-12">
+      <div className="grid gap-8">
         {filtered.map((item, idx) => (
           <article
             key={item.slug}
-            className="group relative overflow-hidden rounded-[3rem] border border-slate-100 bg-white/50 p-6 shadow-[0_30px_70px_-20px_rgba(0,0,0,0.05)] backdrop-blur-xl transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_50px_90px_-20px_rgba(0,0,0,0.12)] hover:bg-white"
+            className="group relative overflow-hidden rounded-[2.5rem] border border-slate-100 bg-white/50 p-5 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] backdrop-blur-xl transition-all duration-700 hover:-translate-y-1 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.1)] hover:bg-white"
           >
-            <div className="grid gap-10 lg:grid-cols-[18rem_1fr]">
+            <div className="grid gap-8 lg:grid-cols-[16rem_1fr]">
               <Link
                 href={`/artykul/${item.slug}`}
-                className="relative aspect-[16/10] overflow-hidden rounded-[2.5rem] bg-slate-50 lg:aspect-[4/3] lg:h-64"
+                className="relative aspect-[16/10] overflow-hidden rounded-[2rem] bg-slate-50 lg:aspect-auto lg:h-full"
               >
                 <img
                   src={item.image || "/placeholder.svg"}
@@ -199,45 +196,44 @@ export function NewsList({ items }: { items: NewsItem[] }) {
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-[var(--imperial-blue)]/20 to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
                 
-                {/* Image Label Overlay */}
-                <div className="absolute bottom-6 left-6 flex items-center gap-3 rounded-2xl bg-black/40 px-5 py-2.5 backdrop-blur-xl border border-white/20 text-[10px] font-black uppercase tracking-[0.3em] text-white transition-all group-hover:translate-x-2">
-                  <div className="h-2 w-2 rounded-full bg-[var(--gold)]" />
+                <div className="absolute bottom-5 left-5 flex items-center gap-2.5 rounded-xl bg-black/40 px-4 py-2 backdrop-blur-xl border border-white/20 text-[9px] font-black uppercase tracking-[0.25em] text-white transition-all group-hover:translate-x-1">
+                  <div className="h-1.5 w-1.5 rounded-full bg-[var(--gold)]" />
                   Fotoreportaż
                 </div>
               </Link>
 
-              <div className="flex flex-col justify-center py-4">
-                <div className="mb-8 flex flex-wrap items-center gap-8">
-                  <span className={`rounded-2xl border px-5 py-2.5 text-[10px] font-black uppercase tracking-[0.2em] shadow-sm ${getCategoryTone(item.category)}`}>
+              <div className="flex flex-col justify-center py-2">
+                <div className="mb-5 flex flex-wrap items-center gap-6">
+                  <span className={`rounded-xl border px-4 py-1.5 text-[9px] font-black uppercase tracking-[0.15em] shadow-sm ${getCategoryTone(item.category)}`}>
                     {item.category}
                   </span>
-                  <div className="flex items-center gap-2.5 text-[10px] font-bold uppercase tracking-[0.25em] text-slate-400">
-                    <CalendarDays className="h-4 w-4 text-[var(--gold)]" />
+                  <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400">
+                    <CalendarDays className="h-3.5 w-3.5 text-[var(--gold)]" />
                     {formatPolishDate(item.date)}
                   </div>
                 </div>
 
-                <h3 className="mb-6 font-serif text-3xl font-semibold leading-tight text-[var(--imperial-blue)] transition-colors group-hover:text-[var(--gold)] xl:text-4xl tracking-tighter">
+                <h3 className="mb-4 font-serif text-2xl font-semibold leading-tight text-[var(--imperial-blue)] transition-colors group-hover:text-[var(--gold)] xl:text-3xl tracking-tighter">
                   <Link href={`/artykul/${item.slug}`} className="block">
                     {item.title}
                   </Link>
                 </h3>
 
-                <p className="mb-10 line-clamp-3 text-lg leading-relaxed text-slate-500/80 font-medium">
+                <p className="mb-7 line-clamp-2 text-base leading-relaxed text-slate-500/80 font-medium">
                   {item.excerpt}
                 </p>
 
                 <div className="flex items-center justify-between mt-auto">
                   <Link
                     href={`/artykul/${item.slug}`}
-                    className="group/btn inline-flex items-center gap-5 text-[11px] font-black uppercase tracking-[0.3em] text-[var(--imperial-blue)] transition-all hover:gap-8"
+                    className="group/btn inline-flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.2em] text-[var(--imperial-blue)] transition-all hover:gap-6"
                   >
                     <span className="relative">
                       Czytaj artykuł
-                      <span className="absolute -bottom-2 left-0 h-0.5 w-0 bg-[var(--gold)] transition-all group-hover/btn:w-full" />
+                      <span className="absolute -bottom-1.5 left-0 h-0.5 w-0 bg-[var(--gold)] transition-all group-hover/btn:w-full" />
                     </span>
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-50 border border-slate-100 transition-all group-hover/btn:bg-[var(--imperial-blue)] group-hover/btn:text-white group-hover/btn:border-[var(--imperial-blue)] group-hover/btn:shadow-[0_15px_30px_-5px_rgba(15,23,42,0.3)]">
-                      <ArrowRight className="h-5 w-5" />
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-50 border border-slate-100 transition-all group-hover/btn:bg-[var(--imperial-blue)] group-hover/btn:text-white group-hover/btn:border-[var(--imperial-blue)] group-hover/btn:shadow-lg">
+                      <ArrowRight className="h-4 w-4" />
                     </div>
                   </Link>
                 </div>
@@ -248,12 +244,12 @@ export function NewsList({ items }: { items: NewsItem[] }) {
       </div>
 
       {filtered.length === 0 && (
-        <div className="rounded-[4rem] border-2 border-dashed border-slate-100 bg-white/50 py-32 text-center backdrop-blur-sm">
-          <div className="mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-full bg-slate-50 text-slate-200">
-            <Search className="h-12 w-12" />
+        <div className="rounded-[3rem] border-2 border-dashed border-slate-100 bg-white/50 py-24 text-center backdrop-blur-sm">
+          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-slate-50 text-slate-200">
+            <Search className="h-10 w-10" />
           </div>
-          <h3 className="mb-3 font-serif text-2xl font-bold text-[var(--imperial-blue)]">Brak wyników</h3>
-          <p className="text-sm font-medium text-slate-400">Spróbuj wpisać inne hasło lub zmień kategorię.</p>
+          <h3 className="mb-2 font-serif text-xl font-bold text-[var(--imperial-blue)]">Brak wyników</h3>
+          <p className="text-xs font-medium text-slate-400">Spróbuj wpisać inne hasło lub zmień kategorię.</p>
         </div>
       )}
     </div>

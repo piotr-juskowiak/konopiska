@@ -66,18 +66,17 @@ export function SiteFooter() {
       {/* Background photo */}
       <div
         aria-hidden
-        className="absolute inset-0 z-0 bg-cover bg-center opacity-50 transition-opacity duration-1000"
+        className="absolute inset-0 z-0 bg-cover bg-center opacity-40 transition-opacity duration-1000"
         style={{
           backgroundImage:
             "url('https://d2exd72xrrp1s7.cloudfront.net/www/000/1k5/in/in4ech8dz68u8djuusd3n4i73wnm4w2t-uhi41226144/0?width=2560&height=3200&crop=false&q=80')",
         }}
       />
-      <div aria-hidden className="absolute inset-0 z-0 bg-gradient-to-b from-[var(--imperial-blue)]/95 via-[var(--imperial-blue)]/75 to-[var(--imperial-blue)]/95" />
-      <div aria-hidden className="absolute inset-0 z-0 bg-[var(--imperial-blue)]/40" />
+      <div aria-hidden className="absolute inset-0 z-0 bg-gradient-to-b from-[var(--imperial-blue)] via-[var(--imperial-blue)]/80 to-[var(--imperial-blue)]" />
 
       {/* Main grid */}
       <div className="relative z-10 mx-auto max-w-[1440px] px-4 py-20 sm:px-6 lg:py-24">
-        <div className="grid gap-12 xl:grid-cols-5 lg:grid-cols-12">
+        <div className="grid gap-16 xl:grid-cols-5 lg:grid-cols-12">
           {/* Brand block */}
           <div className="lg:col-span-4 xl:col-span-1 flex flex-col">
             <Link href="/" className="inline-flex items-center gap-4 group">
@@ -99,14 +98,14 @@ export function SiteFooter() {
               </span>
             </Link>
 
-            <p className="mt-8 text-sm leading-relaxed text-white/50 font-medium">
+            <p className="mt-8 text-sm leading-relaxed text-white/40 font-medium">
               Rzetelność i pasja do lokalnych historii. Jesteśmy głosem mieszkańców Gminy Konopiska.
             </p>
 
-            <div className="mt-8 rounded-2xl bg-white/5 p-5 border border-white/10 backdrop-blur-sm relative overflow-hidden group">
-               <p className="font-serif text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--gold)] mb-3">Niezależność</p>
-               <p className="text-[10px] leading-relaxed text-white/40">
-                 Portal <span className="text-white">GminaKonopiska.pl</span> jest inicjatywą obywatelską, niezależną od Urzędu Gminy.
+            <div className="mt-8 rounded-2xl bg-white/[0.03] p-6 border border-white/5 backdrop-blur-sm relative overflow-hidden group">
+               <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[var(--gold)] mb-3">Niezależność</p>
+               <p className="text-[10px] leading-relaxed text-white/30">
+                 Portal <span className="text-white/60 font-bold">GminaKonopiska.pl</span> jest inicjatywą obywatelską, niezależną od Urzędu Gminy.
                </p>
             </div>
           </div>
@@ -114,19 +113,21 @@ export function SiteFooter() {
           {/* Link columns */}
           {sections.map((section) => (
             <div key={section.title} className="lg:col-span-2 xl:col-span-1">
-              <h4 className="font-serif text-sm font-bold uppercase tracking-[0.2em] text-[var(--gold)]">
-                {section.title}
-              </h4>
-              <div aria-hidden className="mt-4 flex gap-1">
-                 <div className="h-0.5 w-8 bg-[var(--french-blue)]" />
-                 <div className="h-0.5 w-1 bg-[var(--gold)]" />
+              <div className="relative mb-8">
+                <h4 className="font-serif text-base font-medium tracking-tight text-white/90">
+                  {section.title}
+                </h4>
+                <div aria-hidden className="mt-3 flex items-center gap-2">
+                  <div className="h-px w-8 bg-[var(--gold)]" />
+                  <div className="h-1 w-1 rounded-full bg-[var(--gold)]" />
+                </div>
               </div>
-              <ul className="mt-8 space-y-4">
+              <ul className="space-y-4">
                 {section.links.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="group flex items-center gap-2 text-sm text-white/60 transition-all hover:text-[var(--gold)]"
+                      className="group flex items-center gap-2 text-sm text-white/50 transition-all hover:text-[var(--gold)]"
                     >
                       <ArrowUpRight className="h-3 w-3 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
                       <span className="transition-transform group-hover:translate-x-1">{link.label}</span>
@@ -138,15 +139,17 @@ export function SiteFooter() {
           ))}
 
           {/* Newsletter Column */}
-          <div className="lg:col-span-4 xl:col-span-1 pt-10 xl:pt-0 border-t border-white/5 xl:border-t-0">
-             <h4 className="font-serif text-sm font-bold uppercase tracking-[0.2em] text-[var(--gold)]">
-               Newsletter
-             </h4>
-             <div aria-hidden className="mt-4 flex gap-1">
-                <div className="h-0.5 w-8 bg-[var(--french-blue)]" />
-                <div className="h-0.5 w-1 bg-[var(--gold)]" />
+          <div className="lg:col-span-4 xl:col-span-1 pt-12 xl:pt-0 border-t border-white/5 xl:border-t-0">
+             <div className="relative mb-8">
+                <h4 className="font-serif text-base font-medium tracking-tight text-white/90">
+                  Newsletter
+                </h4>
+                <div aria-hidden className="mt-3 flex items-center gap-2">
+                  <div className="h-px w-8 bg-[var(--gold)]" />
+                  <div className="h-1 w-1 rounded-full bg-[var(--gold)]" />
+                </div>
              </div>
-             <p className="mt-8 text-sm text-white/50 leading-relaxed mb-8">
+             <p className="text-sm text-white/40 leading-relaxed mb-8">
                Najważniejsze wieści prosto na Twoją skrzynkę.
              </p>
 
@@ -154,19 +157,19 @@ export function SiteFooter() {
                className="relative group/form"
                onSubmit={(e) => e.preventDefault()}
              >
-               <div className="flex flex-col gap-2">
+               <div className="flex flex-col gap-3">
                   <div className="relative">
-                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[var(--gold)]/50" />
+                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[var(--gold)]/40" />
                     <input
                       type="email"
                       required
                       placeholder="E-mail"
-                      className="h-12 w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 text-xs font-medium outline-none focus:border-[var(--gold)]/50 transition-all"
+                      className="h-12 w-full bg-white/[0.03] border border-white/10 rounded-xl pl-12 pr-4 text-xs font-medium outline-none focus:border-[var(--gold)]/30 transition-all placeholder:text-white/20"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="h-12 w-full rounded-xl bg-[var(--gold)] text-[var(--imperial-blue)] text-[10px] font-extrabold uppercase tracking-widest transition-all hover:bg-[var(--school-bus-yellow)] shadow-lg shadow-[var(--gold)]/10"
+                    className="h-12 w-full rounded-xl bg-[var(--gold)] text-[var(--imperial-blue)] text-[10px] font-black uppercase tracking-widest transition-all hover:bg-[var(--school-bus-yellow)] shadow-lg shadow-[var(--gold)]/10 active:scale-[0.98]"
                   >
                     Zapisz się
                   </button>
@@ -175,12 +178,12 @@ export function SiteFooter() {
 
              <div className="mt-10 flex flex-col gap-4 pt-8 border-t border-white/5">
                <div className="flex items-center gap-3">
-                 <MapPin className="h-3.5 w-3.5 text-[var(--gold)]" />
-                 <span className="text-[11px] text-white/40">ul. Lipowa 5, 42-274 Konopiska</span>
+                 <MapPin className="h-3.5 w-3.5 text-[var(--gold)]/60" />
+                 <span className="text-[11px] text-white/30">ul. Lipowa 5, 42-274 Konopiska</span>
                </div>
                <div className="flex items-center gap-3">
-                 <Mail className="h-3.5 w-3.5 text-[var(--gold)]" />
-                 <a href="mailto:redakcja@serwis-konopiska.pl" className="text-[11px] text-white/40 hover:text-[var(--gold)] transition-colors">
+                 <Mail className="h-3.5 w-3.5 text-[var(--gold)]/60" />
+                 <a href="mailto:redakcja@serwis-konopiska.pl" className="text-[11px] text-white/30 hover:text-[var(--gold)] transition-colors">
                    redakcja@serwis-konopiska.pl
                  </a>
                </div>
@@ -190,13 +193,13 @@ export function SiteFooter() {
       </div>
 
       {/* Bottom bar */}
-      <div className="relative z-10 border-t border-white/5 bg-black/20 backdrop-blur-md">
+      <div className="relative z-10 border-t border-white/5 bg-black/40 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-4 py-10 sm:px-6 lg:flex-row">
           <div className="flex flex-col items-center lg:items-start gap-2">
-            <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/30">
+            <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/20">
               © {new Date().getFullYear()} Serwis Informacyjny Konopiska
             </p>
-            <p className="text-[9px] font-medium uppercase tracking-widest text-white/20">
+            <p className="text-[9px] font-medium uppercase tracking-widest text-white/10">
               Niezależny portal społecznościowy · Wszystkie prawa zastrzeżone
             </p>
           </div>
@@ -207,7 +210,7 @@ export function SiteFooter() {
                 key={label}
                 href={href}
                 aria-label={label}
-                className="grid h-11 w-11 place-items-center rounded-xl bg-white/5 text-white/40 transition-all hover:bg-[var(--gold)] hover:text-[var(--imperial-blue)] hover:scale-110 active:scale-95 shadow-sm"
+                className="grid h-11 w-11 place-items-center rounded-xl bg-white/[0.02] border border-white/5 text-white/30 transition-all hover:bg-[var(--gold)] hover:text-[var(--imperial-blue)] hover:scale-110 active:scale-95 shadow-sm hover:border-[var(--gold)]"
               >
                 <Icon className="h-5 w-5" />
               </a>
@@ -216,7 +219,7 @@ export function SiteFooter() {
           
           <button 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="group flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.3em] text-white/40 hover:text-[var(--gold)] transition-colors"
+            className="group flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 hover:text-[var(--gold)] transition-colors"
           >
             Wróć na górę
             <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[var(--gold)] transition-colors">
