@@ -7,16 +7,16 @@ import { CalendarDays, ChevronRight, Search, SlidersHorizontal, X } from "lucide
 import { categories, formatPolishDate, type NewsItem } from "@/lib/news-data"
 
 const categoryTone: Record<string, string> = {
-  Ekologia: "bg-blue-50 text-blue-700 ring-blue-100",
-  Edukacja: "bg-blue-50 text-blue-700 ring-blue-100",
-  Wydarzenia: "bg-blue-50 text-blue-700 ring-blue-100",
-  Samorząd: "bg-blue-50 text-blue-700 ring-blue-100",
-  Kultura: "bg-blue-50 text-blue-700 ring-blue-100",
-  Sport: "bg-blue-50 text-blue-700 ring-blue-100",
-  Transport: "bg-blue-50 text-blue-700 ring-blue-100",
-  Zdrowie: "bg-blue-50 text-blue-700 ring-blue-100",
-  Fundusze: "bg-blue-50 text-blue-700 ring-blue-100",
-  Społeczność: "bg-blue-50 text-blue-700 ring-blue-100",
+  Ekologia: "bg-[var(--imperial-blue)] text-white ring-[var(--imperial-blue)]/10",
+  Edukacja: "bg-[var(--imperial-blue)] text-white ring-[var(--imperial-blue)]/10",
+  Wydarzenia: "bg-[var(--imperial-blue)] text-white ring-[var(--imperial-blue)]/10",
+  Samorząd: "bg-[var(--imperial-blue)] text-white ring-[var(--imperial-blue)]/10",
+  Kultura: "bg-[var(--imperial-blue)] text-white ring-[var(--imperial-blue)]/10",
+  Sport: "bg-[var(--imperial-blue)] text-white ring-[var(--imperial-blue)]/10",
+  Transport: "bg-[var(--imperial-blue)] text-white ring-[var(--imperial-blue)]/10",
+  Zdrowie: "bg-[var(--imperial-blue)] text-white ring-[var(--imperial-blue)]/10",
+  Fundusze: "bg-[var(--imperial-blue)] text-white ring-[var(--imperial-blue)]/10",
+  Społeczność: "bg-[var(--imperial-blue)] text-white ring-[var(--imperial-blue)]/10",
 }
 
 function getCategoryTone(category?: string) {
@@ -77,24 +77,41 @@ export function NewsList({ items }: { items: NewsItem[] }) {
 
   return (
     <div id="wiadomosci" className="scroll-mt-28">
-      <div className="mb-10 relative">
-        <div className="flex items-center gap-3 mb-4">
-          <span className="h-[2px] w-12 bg-gradient-to-r from-[var(--gold)] to-transparent" />
-          <span className="text-[11px] font-black uppercase tracking-[0.4em] text-[var(--imperial-blue)]/40">
-            Dziennik Gminny
-          </span>
+      <div className="mb-12 relative">
+        <div className="flex items-center gap-4 mb-6">
+          <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-100 shadow-sm">
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--gold)] animate-pulse" />
+            <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[var(--imperial-blue)]/60">
+              Dziennik Gminny
+            </span>
+          </div>
+          <div className="h-px flex-1 bg-gradient-to-r from-slate-100 to-transparent" />
         </div>
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <h2 className="font-serif text-4xl sm:text-5xl font-semibold text-[var(--imperial-blue)] leading-none tracking-tight">
-            Najnowsze <span className="italic font-medium text-[var(--steel-azure)] drop-shadow-sm">wiadomości</span>
-          </h2>
-          <div className="flex flex-col items-start md:items-end gap-1">
-            <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
-              Baza publikacji
+        
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+          <div className="max-w-2xl">
+            <h2 className="font-serif text-5xl sm:text-6xl font-medium text-[var(--imperial-blue)] leading-[1.1] tracking-tight mb-2">
+              Najnowsze <span className="italic font-light text-[var(--imperial-blue)] drop-shadow-sm opacity-80">wiadomości</span>
+            </h2>
+            <p className="text-sm text-slate-400 font-medium max-w-lg">
+              Najważniejsze informacje z regionu, zebrane w jednym miejscu specjalnie dla Ciebie.
             </p>
-            <p className="font-mono text-xs font-bold text-[var(--imperial-blue)]">
-              {filtered.length} / {items.length}
-            </p>
+          </div>
+          
+          <div className="flex items-center gap-5 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm self-start md:self-end">
+            <div className="flex flex-col">
+              <span className="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-1">
+                Baza publikacji
+              </span>
+              <div className="flex items-baseline gap-1">
+                <span className="text-2xl font-serif font-black text-[var(--imperial-blue)]">{filtered.length}</span>
+                <span className="text-xs font-bold text-slate-300">/ {items.length}</span>
+              </div>
+            </div>
+            <div className="h-10 w-px bg-slate-100" />
+            <div className="p-2 rounded-xl bg-[var(--gold)]/10">
+              <Search className="h-5 w-5 text-[var(--gold)]" />
+            </div>
           </div>
         </div>
       </div>
@@ -183,7 +200,7 @@ export function NewsList({ items }: { items: NewsItem[] }) {
                 
                 {/* Image Label */}
                 <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/20 px-3 py-1.5 backdrop-blur-md border border-white/30 text-[9px] font-black uppercase tracking-widest text-white">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--french-blue)] animate-pulse" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--imperial-blue)] animate-pulse" />
                   Fotoreportaż
                 </div>
               </Link>
@@ -194,7 +211,7 @@ export function NewsList({ items }: { items: NewsItem[] }) {
                     {item.category}
                   </span>
                   <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                    <CalendarDays className="h-3.5 w-3.5 text-[var(--french-blue)]" />
+                    <CalendarDays className="h-3.5 w-3.5 text-[var(--imperial-blue)]" />
                     {formatPolishDate(item.date)}
                   </div>
                 </div>

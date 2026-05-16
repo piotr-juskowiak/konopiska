@@ -66,14 +66,14 @@ export function EventsWidget() {
         </div>
         
         {events.map((event, i) => (
-          <div key={i} className="flex gap-6 group cursor-pointer relative">
+          <div key={i} className="flex gap-6 group cursor-pointer relative p-4 rounded-2xl border border-slate-200/60 bg-white/30 transition-all duration-500 hover:bg-white hover:border-[var(--gold)]/30 hover:shadow-xl hover:shadow-slate-200/40">
             <div className="flex flex-col items-center justify-center shrink-0 w-16 h-20 rounded-2xl bg-white border border-slate-100 shadow-[0_10px_25px_-5px_rgba(0,0,0,0.05)] group-hover:border-[var(--gold)] group-hover:shadow-xl group-hover:-translate-y-1 transition-all duration-500">
               <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[var(--imperial-blue)]/30 mb-1">{event.month}</span>
               <span className="text-2xl font-serif font-black text-[var(--imperial-blue)]">{event.date}</span>
             </div>
             
             <div className="flex-1 pt-2">
-              <h4 className="text-base font-bold leading-snug text-[var(--imperial-blue)] mb-3 group-hover:text-[var(--primary)] transition-colors line-clamp-2 tracking-tight">
+              <h4 className="text-sm font-bold leading-snug text-[var(--imperial-blue)] mb-3 group-hover:text-[var(--primary)] transition-colors line-clamp-2 tracking-tight">
                 {event.title}
               </h4>
               <div className="flex flex-wrap gap-x-5 gap-y-2">
