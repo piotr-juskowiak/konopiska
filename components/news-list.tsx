@@ -96,48 +96,53 @@ export function NewsList({ items }: { items: NewsItem[] }) {
       </div>
 
       {/* List Layout */}
-      <div className="flex flex-col divide-y divide-border/50">
+      <div className="flex flex-col gap-6">
         {filtered.map((item) => (
-          <article key={item.slug} className="group relative py-8 first:pt-0">
-            <div className="flex flex-col sm:flex-row gap-6 lg:gap-8 items-start">
+          <article 
+            key={item.slug} 
+            className="group relative bg-white rounded-2xl border border-border/60 p-5 sm:p-6 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/5 hover:border-[var(--steel-azure)]/30"
+          >
+            <div className="flex flex-col sm:flex-row gap-6 lg:gap-8 items-center sm:items-start">
               <Link 
                 href={`/artykul/${item.slug}`}
-                className="relative shrink-0 w-full sm:w-48 aspect-[16/10] overflow-hidden rounded-xl bg-muted"
+                className="relative shrink-0 w-full sm:w-56 aspect-[16/10] overflow-hidden rounded-xl bg-slate-100 shadow-inner"
               >
                 <img
                   src={item.image || "/placeholder.svg"}
                   alt=""
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors" />
+                <div className="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-xl" />
               </Link>
               
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-3 mb-3">
-                   <span className="px-2 py-0.5 rounded bg-[var(--gold)]/10 text-[9px] font-bold uppercase tracking-widest text-[var(--imperial-blue)]">
-                     {item.category}
-                   </span>
-                   <span className="text-[10px] text-foreground/40 font-medium">
-                     {formatPolishDate(item.date)}
-                   </span>
+                <div className="flex items-center justify-between mb-4">
+                   <div className="flex items-center gap-3">
+                     <span className="px-2.5 py-1 rounded-lg bg-[var(--secondary)] text-[10px] font-bold uppercase tracking-widest text-[var(--secondary-foreground)]">
+                       {item.category}
+                     </span>
+                     <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+                       {formatPolishDate(item.date)}
+                     </span>
+                   </div>
                 </div>
                 
-                <h3 className="font-serif text-xl font-medium leading-tight text-[var(--imperial-blue)] mb-3 group-hover:text-[var(--steel-azure)] transition-colors">
+                <h3 className="font-serif text-xl sm:text-2xl font-medium leading-tight text-slate-800 mb-4 group-hover:text-[var(--primary)] transition-colors">
                   <Link href={`/artykul/${item.slug}`}>
                     {item.title}
                   </Link>
                 </h3>
                 
-                <p className="text-sm text-foreground/60 leading-relaxed mb-4 line-clamp-2">
+                <p className="text-sm text-slate-500 leading-relaxed mb-6 line-clamp-2">
                   {item.excerpt}
                 </p>
                 
                 <Link
                   href={`/artykul/${item.slug}`}
-                  className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-[var(--imperial-blue)]/40 group-hover:text-[var(--gold)] transition-colors"
+                  className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-[var(--primary)] group-hover:gap-3 transition-all"
                 >
-                  Czytaj dalej
-                  <ChevronRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
+                  Czytaj artykuł
+                  <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
             </div>

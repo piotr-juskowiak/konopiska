@@ -4,55 +4,55 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Friendly Blue & Amber palette */
-  --imperial-blue: #1e3a8a;
-  --french-blue: #2563eb;
-  --steel-azure: #3b82f6;
-  --school-bus-yellow: #fbbf24;
-  --gold: #fcd34d;
+  /* Serene Blue & Cream palette */
+  --imperial-blue: #0f172a;
+  --french-blue: #3b82f6;
+  --steel-azure: #60a5fa;
+  --school-bus-yellow: #fef3c7;
+  --gold: #fde68a;
 
-  --background: oklch(1 0 0);
-  --foreground: #1e293b;
-  --card: oklch(1 0 0);
-  --card-foreground: #1e293b;
-  --popover: oklch(1 0 0);
-  --popover-foreground: #1e293b;
-  --primary: var(--french-blue);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: #f1f5f9;
-  --secondary-foreground: #1e3a8a;
-  --muted: #f8fafc;
+  --background: #f8fafc;
+  --foreground: #334155;
+  --card: #ffffff;
+  --card-foreground: #334155;
+  --popover: #ffffff;
+  --popover-foreground: #334155;
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+  --secondary: #eff6ff;
+  --secondary-foreground: #1e40af;
+  --muted: #f1f5f9;
   --muted-foreground: #64748b;
-  --accent: var(--gold);
-  --accent-foreground: #1e3a8a;
+  --accent: #fef3c7;
+  --accent-foreground: #92400e;
   --destructive: oklch(0.55 0.2 27);
   --destructive-foreground: oklch(1 0 0);
   --border: #e2e8f0;
   --input: #e2e8f0;
-  --ring: var(--steel-azure);
-  --radius: 0.75rem;
+  --ring: #3b82f6;
+  --radius: 1rem;
 }
 
 .dark {
-  --background: #0f172a;
-  --foreground: #f8fafc;
-  --card: #1e293b;
-  --card-foreground: #f8fafc;
-  --popover: #1e293b;
-  --popover-foreground: #f8fafc;
-  --primary: var(--steel-azure);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: #1e3a8a;
-  --secondary-foreground: oklch(1 0 0);
-  --muted: #334155;
+  --background: #020617;
+  --foreground: #f1f5f9;
+  --card: #0f172a;
+  --card-foreground: #f1f5f9;
+  --popover: #0f172a;
+  --popover-foreground: #f1f5f9;
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+  --secondary: #1e293b;
+  --secondary-foreground: #f1f5f9;
+  --muted: #1e293b;
   --muted-foreground: #94a3b8;
-  --accent: var(--school-bus-yellow);
-  --accent-foreground: #0f172a;
+  --accent: #1e40af;
+  --accent-foreground: #f1f5f9;
   --destructive: oklch(0.4 0.15 27);
   --destructive-foreground: oklch(1 0 0);
-  --border: #334155;
-  --input: #334155;
-  --ring: var(--gold);
+  --border: #1e293b;
+  --input: #1e293b;
+  --ring: #3b82f6;
 }
 
 @theme inline {
