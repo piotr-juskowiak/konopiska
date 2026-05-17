@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useRouter, useSearchParams, usePathname } from "next/navigation"
 import { useMemo, useState, useEffect } from "react"
 import { ArrowUpRight, Search, X, Calendar, Tag } from "lucide-react"
 import { categories, formatPolishDate, type NewsItem } from "@/lib/news-data"
@@ -9,6 +9,7 @@ import { categories, formatPolishDate, type NewsItem } from "@/lib/news-data"
 export function NewsGrid({ items }: { items: NewsItem[] }) {
   const router = useRouter()
   const params = useSearchParams()
+  const pathname = usePathname()
 
   const urlCategory = params.get("kategoria") ?? "Wszystkie"
   const urlQuery = params.get("q") ?? ""
@@ -31,11 +32,11 @@ export function NewsGrid({ items }: { items: NewsItem[] }) {
       if (query.trim()) next.set("q", query.trim())
       else next.delete("q")
       const qs = next.toString()
-      router.replace(`/${qs ? `?${qs}` : ""}#archiwum`, { scroll: false })
+      router.replace(`${pathname}${qs ? `?${qs}` : ""}#archiwum`, { scroll: false })
     }, 250)
     return () => clearTimeout(t)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [active, query])
+  }, [active, query, pathname])
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()

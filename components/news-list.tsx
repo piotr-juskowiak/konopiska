@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useRouter, useSearchParams, usePathname } from "next/navigation"
 import { useMemo, useState, useEffect } from "react"
 import { CalendarDays, ChevronRight, Search, SlidersHorizontal, X, ArrowRight, LayoutGrid, List } from "lucide-react"
 import { categories, formatPolishDate, type NewsItem } from "@/lib/news-data"
@@ -26,6 +26,7 @@ function getCategoryTone(category?: string) {
 export function NewsList({ items }: { items: NewsItem[] }) {
   const router = useRouter()
   const params = useSearchParams()
+  const pathname = usePathname()
 
   const urlCategory = params.get("kategoria") ?? "Wszystkie"
   const urlQuery = params.get("q") ?? ""
@@ -49,10 +50,10 @@ export function NewsList({ items }: { items: NewsItem[] }) {
       if (query.trim()) next.set("q", query.trim())
       else next.delete("q")
       const qs = next.toString()
-      router.replace(`/${qs ? `?${qs}` : ""}#wiadomosci`, { scroll: false })
+      router.replace(`${pathname}${qs ? `?${qs}` : ""}#wiadomosci`, { scroll: false })
     }, 250)
     return () => clearTimeout(t)
-  }, [active, query, params, router])
+  }, [active, query, params, pathname, router])
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
