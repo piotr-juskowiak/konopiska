@@ -94,10 +94,12 @@ export function EventsWidget() {
 
       {/* Municipal Announcements Widget */}
       <div className="space-y-4">
-        <div className="flex items-center gap-3 px-1 mb-6">
+        <div className="flex items-center gap-3 mb-6">
+          <span className="h-0.5 w-6 rounded bg-[var(--gold)] shrink-0" />
+          <h3 className="text-xs font-black uppercase tracking-[0.2em] text-[var(--imperial-blue)]">
+            Ogłoszenia Urzędu Gminy
+          </h3>
           <div className="h-px flex-1 bg-slate-100" />
-          <span className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-300">Ogłoszenia Urzędu Gminy</span>
-          <div className="h-px w-4 bg-slate-100" />
         </div>
         
         <div className="rounded-3xl border border-slate-100 bg-white/40 p-4 space-y-3">
@@ -130,10 +132,12 @@ export function EventsWidget() {
 
       {/* Latest Comments Widget */}
       <div className="space-y-4">
-        <div className="flex items-center gap-3 px-1 mb-6">
+        <div className="flex items-center gap-3 mb-6">
+          <span className="h-0.5 w-6 rounded bg-[var(--gold)] shrink-0" />
+          <h3 className="text-xs font-black uppercase tracking-[0.2em] text-[var(--imperial-blue)]">
+            Najnowsze komentarze
+          </h3>
           <div className="h-px flex-1 bg-slate-100" />
-          <span className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-300">Najnowsze komentarze</span>
-          <div className="h-px w-4 bg-slate-100" />
         </div>
         
         {comments.map((comment, i) => (

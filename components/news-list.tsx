@@ -125,7 +125,7 @@ export function NewsList({ items }: { items: NewsItem[] }) {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Szukaj informacji..."
-              className="h-14 w-full rounded-2xl border border-[var(--imperial-blue)] bg-white pl-16 pr-12 text-xs font-semibold text-[var(--imperial-blue)] shadow-[0_10px_30px_-15px_rgba(0,0,0,0.05)] outline-none transition-all focus:border-[var(--gold)]/40 focus:ring-4 focus:ring-[var(--gold)]/5 placeholder:text-slate-400"
+              className="h-14 w-full rounded-2xl border border-[var(--imperial-blue)]/20 bg-white pl-16 pr-12 text-xs font-semibold text-[var(--imperial-blue)] shadow-[0_10px_30px_-15px_rgba(0,0,0,0.05)] outline-none transition-all focus:border-[var(--gold)]/40 focus:ring-4 focus:ring-[var(--gold)]/5 placeholder:text-slate-400"
             />
             {query && (
               <button
@@ -182,9 +182,9 @@ export function NewsList({ items }: { items: NewsItem[] }) {
         {filtered.slice(0, 7).map((item, idx) => (
           <article
             key={item.slug}
-            className="group relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-[var(--imperial-blue)] p-5 shadow-[0_25px_60px_-15px_rgba(15,23,42,0.12)] backdrop-blur-xl transition-all duration-700 hover:-translate-y-1 hover:shadow-[0_40px_90px_-15px_rgba(15,23,42,0.25)] hover:bg-[var(--imperial-blue)]/95"
+            className="group relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-[var(--imperial-blue)]/[0.96] p-5 shadow-[0_25px_60px_-15px_rgba(15,23,42,0.12)] backdrop-blur-xl transition-all duration-700 hover:-translate-y-1 hover:border-[var(--gold)]/30 hover:shadow-[0_40px_90px_-15px_rgba(15,23,42,0.25)] hover:bg-[var(--imperial-blue)]"
           >
-            <div className="grid gap-8 lg:grid-cols-[16rem_1fr]">
+            <div className="grid gap-8 lg:grid-cols-[20rem_1fr]">
               <Link
                 href={`/artykul/${item.slug}`}
                 className="relative aspect-[16/10] overflow-hidden rounded-[2rem] bg-slate-50 lg:aspect-auto lg:h-full"
@@ -226,7 +226,7 @@ export function NewsList({ items }: { items: NewsItem[] }) {
                 <div className="flex items-center justify-between mt-auto">
                   <Link
                     href={`/artykul/${item.slug}`}
-                    className="inline-flex items-center gap-2.5 rounded-full bg-[var(--imperial-blue)] border border-white px-6 py-3.5 text-[9px] font-black uppercase tracking-[0.2em] text-white shadow-[0_10px_20px_rgba(15,23,42,0.15)] transition-all hover:bg-[var(--gold)] hover:text-[var(--imperial-blue)] hover:border-[var(--gold)] hover:shadow-[0_15px_30px_rgba(181,155,51,0.3)] hover:-translate-y-0.5 active:scale-95"
+                    className="inline-flex items-center gap-2.5 rounded-full bg-white/5 border border-white/15 px-6 py-3.5 text-[9px] font-black uppercase tracking-[0.2em] text-white/90 shadow-[0_10px_20px_rgba(0,0,0,0.1)] transition-all hover:bg-[var(--gold)] hover:text-[var(--imperial-blue)] hover:border-[var(--gold)] hover:shadow-[0_15px_30px_rgba(181,155,51,0.3)] hover:-translate-y-0.5 active:scale-95"
                   >
                     Czytaj artykuł
                     <ArrowRight className="h-3.5 w-3.5" />
