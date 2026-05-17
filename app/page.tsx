@@ -8,6 +8,7 @@ import { SiteHeader } from "@/components/site-header"
 import { newsItems } from "@/lib/news-data"
 
 import { NewsGroups } from "@/components/news-groups"
+import { CategoryTiles } from "@/components/category-tiles"
 
 export default function Page() {
   const updatedAt = new Date().toLocaleString("pl-PL", {
@@ -23,6 +24,7 @@ export default function Page() {
       <SiteHeader updatedAt={updatedAt} />
       <BreakingTicker items={newsItems} />
       <HeroFeature items={newsItems.slice(0, 5)} />
+      <CategoryTiles />
       
       <div className="mx-auto max-w-[90rem] px-4 py-16 sm:px-6 lg:py-24">
         <div className="grid lg:grid-cols-12 gap-16">

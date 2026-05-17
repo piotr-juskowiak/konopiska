@@ -65,68 +65,14 @@ export function NewsGrid({ items }: { items: NewsItem[] }) {
       <div className="absolute bottom-0 right-1/4 w-[30rem] h-[30rem] bg-[var(--gold)]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative mx-auto max-w-[90rem] px-4 sm:px-6">
-        {/* Heading Area */}
-        <div className="mb-12 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-2xl">
-            <div className="flex items-center gap-3 mb-4">
-              <span aria-hidden className="h-0.5 w-12 bg-[var(--gold)]" />
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[var(--french-blue)]">
-                Archiwum redakcji
-              </p>
-            </div>
-            <h2
-              id="grid-heading"
-              className="font-serif text-4xl font-medium tracking-tight text-[var(--imperial-blue)] text-balance sm:text-5xl lg:text-6xl"
-            >
-              Wszystkie <span className="text-[var(--steel-azure)]">historie</span> z gminy
-            </h2>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-[var(--imperial-blue)]/70">
-              Przeglądaj publikacje według kategorii lub wyszukaj konkretny temat. Aktualizujemy
-              bazę codziennie o nowe materiały redakcji, byś zawsze był na bieżąco.
-            </p>
-          </div>
-
-          {/* Search */}
-          <form
-            role="search"
-            onSubmit={(e) => e.preventDefault()}
-            className="relative w-full md:max-w-sm"
+        {/* Controls Bar: Filters & Search */}
+        <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          {/* Category filter */}
+          <div
+            role="tablist"
+            aria-label="Kategorie"
+            className="flex max-w-full items-center gap-1 overflow-x-auto rounded-full border border-slate-200 bg-slate-50/80 p-1 shadow-inner shadow-white [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
-            <label htmlFor="grid-search" className="sr-only">
-              Szukaj w artykułach
-            </label>
-            <Search
-              aria-hidden
-              className="pointer-events-none absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-[var(--french-blue)]"
-            />
-            <input
-              id="grid-search"
-              type="search"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Szukaj artykułów…"
-              className="h-14 w-full rounded-full border-2 border-white bg-white/80 backdrop-blur pl-14 pr-12 text-sm text-[var(--imperial-blue)] shadow-lg shadow-[var(--imperial-blue)]/5 outline-none transition placeholder:text-[var(--steel-azure)]/50 focus:border-[var(--school-bus-yellow)] focus:bg-white focus:ring-4 focus:ring-[var(--gold)]/20"
-            />
-            {query && (
-              <button
-                type="button"
-                onClick={() => setQuery("")}
-                aria-label="Wyczyść"
-                className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-2 text-[var(--imperial-blue)]/50 hover:bg-[var(--school-bus-yellow)]/20 hover:text-[var(--imperial-blue)]"
-              >
-                <X className="h-4 w-4" />
-              </button>
-            )}
-          </form>
-        </div>
-
-        {/* Category filter */}
-        <div className="mb-12 flex items-center gap-3 overflow-x-auto pb-4 md:flex-wrap md:overflow-visible scrollbar-hide">
-          <span className="hidden items-center gap-1.5 text-xs font-bold uppercase tracking-[0.2em] text-[var(--imperial-blue)]/50 md:inline-flex shrink-0">
-            <Tag className="h-4 w-4" />
-            Filtruj:
-          </span>
-          <div role="tablist" aria-label="Kategorie" className="flex flex-nowrap md:flex-wrap gap-2 md:gap-3">
             {categories.map((cat) => {
               const isActive = cat === active
               return (
@@ -135,18 +81,50 @@ export function NewsGrid({ items }: { items: NewsItem[] }) {
                   role="tab"
                   aria-selected={isActive}
                   onClick={() => setActive(cat)}
-                  className={[
-                    "whitespace-nowrap rounded-full border-2 px-5 py-2 text-[11px] font-bold uppercase tracking-widest transition-all duration-300",
+                  className={`inline-flex h-9 items-center justify-center whitespace-nowrap rounded-full px-4 text-[10px] font-bold uppercase tracking-[0.12em] transition-all duration-300 shrink-0 ${
                     isActive
-                      ? "border-[var(--imperial-blue)] bg-[var(--imperial-blue)] text-[var(--gold)] shadow-md"
-                      : "border-white bg-white/60 text-[var(--french-blue)] hover:border-[var(--gold)] hover:bg-white hover:text-[var(--imperial-blue)] shadow-sm",
-                  ].join(" ")}
+                      ? "bg-white text-[var(--imperial-blue)] shadow-[0_8px_20px_rgba(15,23,42,0.08)] ring-1 ring-slate-200/60"
+                      : "text-slate-600 hover:bg-white/80 hover:text-[var(--imperial-blue)]"
+                  }`}
                 >
                   {cat}
                 </button>
               )
             })}
           </div>
+
+          {/* Search */}
+          <form
+            role="search"
+            onSubmit={(e) => e.preventDefault()}
+            className="flex h-11 w-full md:max-w-xs items-center gap-3 rounded-full border border-slate-200 bg-white px-4 shadow-[0_8px_24px_rgba(15,23,42,0.06)] transition-all focus-within:border-[var(--imperial-blue)]/30 focus-within:ring-4 focus-within:ring-[var(--imperial-blue)]/5 shrink-0"
+          >
+            <label htmlFor="grid-search" className="sr-only">
+              Szukaj w artykułach
+            </label>
+            <Search
+              aria-hidden
+              className="h-4 w-4 text-slate-400 shrink-0"
+            />
+            <input
+              id="grid-search"
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Szukaj artykułów…"
+              className="w-full bg-transparent text-xs font-semibold text-[var(--imperial-blue)] outline-none placeholder:text-slate-400"
+            />
+            {query && (
+              <button
+                type="button"
+                onClick={() => setQuery("")}
+                aria-label="Wyczyść"
+                className="text-slate-400 transition hover:text-[var(--imperial-blue)] shrink-0"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            )}
+          </form>
         </div>
 
         {(query || active !== "Wszystkie") && (
