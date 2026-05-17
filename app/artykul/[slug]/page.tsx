@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowUpRight, Clock, Share2 } from "lucide-react"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { getArticleBySlug, newsItems, formatPolishDate } from "@/lib/news-data"
+import { ArticleComments } from "@/components/article-comments"
 
 export function generateStaticParams() {
   return newsItems.map((n) => ({ slug: n.slug }))
@@ -153,6 +154,8 @@ export default async function ArticlePage({
             <Share2 className="h-4 w-4" /> Udostępnij ten materiał
           </span>
         </div>
+
+        <ArticleComments />
       </article>
 
       {/* Related */}
