@@ -1,28 +1,62 @@
 "use client"
 
-import { Calendar, Clock, MapPin, ChevronRight, Sparkles, ArrowRight } from "lucide-react"
+import { MessageSquare, Clock, Sparkles, ArrowRight, Bell } from "lucide-react"
 
-const events = [
+const announcements = [
   {
-    date: "18",
-    month: "Maj",
-    title: "Bieg Pamięci Bohaterów Monte Cassino",
-    time: "10:00",
-    location: "Stadion Gminny",
+    title: "Harmonogram wywozu odpadów w czerwcu",
+    tag: "Harmonogram",
+    tagColor: "bg-emerald-500/10 text-emerald-600 border-emerald-500/20",
+    date: "15.05.2026",
   },
   {
-    date: "23",
-    month: "Maj",
-    title: "Ekopiknik Rodzinny w Konopiskach",
-    time: "14:00",
-    location: "Park Gminny",
+    title: "Przerwy w dostawie wody przy ul. Lipowej i Leśnej",
+    tag: "Ważne",
+    tagColor: "bg-rose-500/10 text-rose-600 border-rose-500/20",
+    date: "14.05.2026",
   },
   {
-    date: "01",
-    month: "Cze",
-    title: "Dzień Dziecka — Festiwal Radości",
-    time: "11:00",
-    location: "Centrum Kultury",
+    title: "Bezpłatne szczepienia dla seniorów 65+",
+    tag: "Medycyna",
+    tagColor: "bg-blue-500/10 text-blue-600 border-blue-500/20",
+    date: "12.05.2026",
+  },
+  {
+    title: "Konsultacje budżetu obywatelskiego 2027",
+    tag: "Ogłoszenie",
+    tagColor: "bg-[var(--gold)]/10 text-[var(--gold)] border-[var(--gold)]/20",
+    date: "10.05.2026",
+  },
+]
+
+const comments = [
+  {
+    author: "Jan Kowalski",
+    avatar: "JK",
+    time: "2 godz. temu",
+    content: "Wspaniała wiadomość o EkoStrefie w Kopalni! Dzieciaki zyskają nowoczesne miejsce do nauki biologii i chemii.",
+    articleTitle: "EkoStrefa w SP w Kopalni",
+  },
+  {
+    author: "Marta_K",
+    avatar: "MK",
+    time: "5 godz. temu",
+    content: "Świetna inicjatywa z bezpłatnymi badaniami na Dzień Mamy i Taty. Profilaktyka to podstawa, na pewno zapiszę rodziców.",
+    articleTitle: "Otwarte badania profilaktyczne",
+  },
+  {
+    author: "Krzysztof",
+    avatar: "KR",
+    time: "1 dzień temu",
+    content: "Wreszcie przyspieszono ten poranny kurs linii 104 ze Starczy do Częstochowy. Dotychczas spóźnienia do pracy były normą.",
+    articleTitle: "Zmiany w Komunikacji Jurajskiej",
+  },
+  {
+    author: "Sołtys",
+    avatar: "SO",
+    time: "2 dni temu",
+    content: "Ogród nauki w Aleksandrii wygląda fantastycznie! Uczniowie mają super warunki pod chmurką. Gratulacje dla dyrekcji.",
+    articleTitle: "Aleksandryjski Ogród Nauki",
   },
 ]
 
@@ -58,33 +92,73 @@ export function EventsWidget() {
         </div>
       </div>
 
-      {/* Calendar List */}
+      {/* Municipal Announcements Widget */}
       <div className="space-y-4">
         <div className="flex items-center gap-3 px-1 mb-6">
           <div className="h-px flex-1 bg-slate-100" />
-          <span className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-300">Lista spotkań</span>
+          <span className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-300">Ogłoszenia Urzędu Gminy</span>
           <div className="h-px w-4 bg-slate-100" />
         </div>
         
-        {events.map((event, i) => (
-          <div key={i} className="flex gap-4 group cursor-pointer relative p-4 rounded-2xl border border-slate-100 bg-white shadow-sm transition-all duration-500 hover:shadow-lg hover:border-[var(--imperial-blue)]/10 hover:-translate-y-0.5">
-            <div className="flex flex-col items-center justify-center shrink-0 w-14 h-16 rounded-xl bg-slate-50 border border-slate-100 transition-all duration-500 group-hover:bg-[var(--imperial-blue)] group-hover:border-[var(--imperial-blue)]">
-              <span className="text-[8px] font-black uppercase tracking-widest text-slate-400 mb-0.5 transition-colors group-hover:text-white/40">{event.month}</span>
-              <span className="text-xl font-serif font-black text-[var(--imperial-blue)] transition-colors group-hover:text-white">{event.date}</span>
-            </div>
-            
-            <div className="flex-1 min-w-0 flex flex-col justify-center">
-              <h4 className="text-[11px] font-bold leading-snug text-[var(--imperial-blue)] mb-2 transition-colors line-clamp-2 tracking-tight group-hover:text-[var(--gold)]">
-                {event.title}
-              </h4>
-              <div className="flex flex-wrap gap-x-3 gap-y-1">
-                <div className="flex items-center gap-1.5 text-[9px] text-slate-400 font-bold uppercase tracking-wider">
-                  <Clock className="h-3 w-3 text-[var(--imperial-blue)]/20" />
-                  {event.time}
+        <div className="rounded-3xl border border-slate-100 bg-white/40 p-4 space-y-3">
+          {announcements.map((ann, i) => (
+            <a 
+              key={i} 
+              href="https://www.konopiska.pl" 
+              target="_blank" 
+              rel="noreferrer"
+              className="flex items-start gap-3.5 p-3 rounded-2xl bg-white hover:bg-slate-50 border border-transparent hover:border-slate-100 transition-all duration-300 group/ann"
+            >
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[var(--imperial-blue)]/5 border border-[var(--imperial-blue)]/10 text-[var(--imperial-blue)] group-hover/ann:bg-[var(--imperial-blue)] group-hover/ann:text-white transition-colors">
+                <Bell className="h-4 w-4" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className={`text-[8px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-md border ${ann.tagColor}`}>
+                    {ann.tag}
+                  </span>
+                  <span className="text-[8px] font-bold text-slate-400">{ann.date}</span>
                 </div>
-                <div className="flex items-center gap-1.5 text-[9px] text-slate-400 font-bold uppercase tracking-wider">
-                  <MapPin className="h-3 w-3 text-[var(--imperial-blue)]/20" />
-                  {event.location}
+                <h4 className="text-xs font-bold leading-snug text-[var(--imperial-blue)] line-clamp-2 group-hover/ann:text-[var(--gold)] transition-colors">
+                  {ann.title}
+                </h4>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Latest Comments Widget */}
+      <div className="space-y-4">
+        <div className="flex items-center gap-3 px-1 mb-6">
+          <div className="h-px flex-1 bg-slate-100" />
+          <span className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-300">Najnowsze komentarze</span>
+          <div className="h-px w-4 bg-slate-100" />
+        </div>
+        
+        {comments.map((comment, i) => (
+          <div key={i} className="group cursor-pointer relative p-5 rounded-3xl border border-slate-100 bg-white/50 shadow-sm transition-all duration-500 hover:shadow-lg hover:border-[var(--gold)]/20 hover:bg-white">
+            <div className="flex items-start gap-3.5">
+              {/* Author Initial Bubble */}
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--imperial-blue)]/5 border border-[var(--imperial-blue)]/10 text-[var(--imperial-blue)] font-bold text-xs shadow-inner transition-colors group-hover:bg-[var(--gold)]/10 group-hover:border-[var(--gold)]/30">
+                {comment.avatar}
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-xs font-bold text-[var(--imperial-blue)]">{comment.author}</span>
+                  <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider flex items-center gap-1">
+                    <Clock className="h-2.5 w-2.5" />
+                    {comment.time}
+                  </span>
+                </div>
+                <p className="text-xs text-slate-500 leading-relaxed font-medium line-clamp-3 mb-2.5">
+                  „{comment.content}”
+                </p>
+                <div className="flex items-center gap-1.5">
+                  <MessageSquare className="h-3 w-3 text-[var(--gold)]" />
+                  <span className="text-[9px] font-bold text-[var(--gold)]/80 uppercase tracking-widest truncate max-w-[220px]">
+                    {comment.articleTitle}
+                  </span>
                 </div>
               </div>
             </div>

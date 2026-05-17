@@ -7,6 +7,8 @@ import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
 import { newsItems } from "@/lib/news-data"
 
+import { NewsGroups } from "@/components/news-groups"
+
 export default function Page() {
   const updatedAt = new Date().toLocaleString("pl-PL", {
     day: "2-digit",
@@ -22,7 +24,7 @@ export default function Page() {
       <BreakingTicker items={newsItems} />
       <HeroFeature items={newsItems.slice(0, 5)} />
       
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
+      <div className="mx-auto max-w-[90rem] px-4 py-16 sm:px-6 lg:py-24">
         <div className="grid lg:grid-cols-12 gap-16">
           {/* Main Content: News List */}
           <div className="min-w-0 lg:col-span-8">
@@ -38,6 +40,7 @@ export default function Page() {
         </div>
       </div>
 
+      <NewsGroups items={newsItems} />
       <SiteFooter />
     </main>
   )

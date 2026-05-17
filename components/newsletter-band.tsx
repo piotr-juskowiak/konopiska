@@ -5,7 +5,7 @@ import { Mail } from "lucide-react"
 export function NewsletterBand() {
   return (
     <section id="newsletter" aria-labelledby="newsletter-heading" className="bg-primary text-primary-foreground">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 md:grid-cols-2 md:items-center md:py-20">
+      <div className="mx-auto grid max-w-[90rem] gap-10 px-4 py-16 sm:px-6 md:grid-cols-2 md:items-center md:py-20">
         <div>
           <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-accent">
             Niedzielne wydanie

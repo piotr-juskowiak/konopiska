@@ -179,10 +179,10 @@ export function NewsList({ items }: { items: NewsItem[] }) {
       </div>
 
       <div className="grid gap-8">
-        {filtered.map((item, idx) => (
+        {filtered.slice(0, 7).map((item, idx) => (
           <article
             key={item.slug}
-            className="group relative overflow-hidden rounded-[2.5rem] border border-slate-100 bg-white/50 p-5 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] backdrop-blur-xl transition-all duration-700 hover:-translate-y-1 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.1)] hover:bg-white"
+            className="group relative overflow-hidden rounded-[2.5rem] border border-slate-100/80 bg-white/60 p-5 shadow-[0_25px_60px_-15px_rgba(15,23,42,0.12)] backdrop-blur-xl transition-all duration-700 hover:-translate-y-1 hover:shadow-[0_40px_90px_-15px_rgba(15,23,42,0.25)] hover:bg-white"
           >
             <div className="grid gap-8 lg:grid-cols-[16rem_1fr]">
               <Link
@@ -226,15 +226,10 @@ export function NewsList({ items }: { items: NewsItem[] }) {
                 <div className="flex items-center justify-between mt-auto">
                   <Link
                     href={`/artykul/${item.slug}`}
-                    className="group/btn inline-flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.2em] text-[var(--imperial-blue)] transition-all hover:gap-6"
+                    className="inline-flex items-center gap-2.5 rounded-full bg-[var(--imperial-blue)] px-6 py-3.5 text-[9px] font-black uppercase tracking-[0.2em] text-white shadow-[0_10px_20px_rgba(15,23,42,0.15)] transition-all hover:bg-[var(--gold)] hover:text-[var(--imperial-blue)] hover:shadow-[0_15px_30px_rgba(181,155,51,0.3)] hover:-translate-y-0.5 active:scale-95"
                   >
-                    <span className="relative">
-                      Czytaj artykuł
-                      <span className="absolute -bottom-1.5 left-0 h-0.5 w-0 bg-[var(--gold)] transition-all group-hover/btn:w-full" />
-                    </span>
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-50 border border-slate-100 transition-all group-hover/btn:bg-[var(--imperial-blue)] group-hover/btn:text-white group-hover/btn:border-[var(--imperial-blue)] group-hover/btn:shadow-lg">
-                      <ArrowRight className="h-4 w-4" />
-                    </div>
+                    Czytaj artykuł
+                    <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
                 </div>
               </div>

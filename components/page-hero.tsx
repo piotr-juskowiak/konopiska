@@ -22,7 +22,7 @@ export function PageHero({
             "radial-gradient(circle at 20% 30%, var(--primary) 0, transparent 35%), radial-gradient(circle at 80% 60%, var(--accent) 0, transparent 30%)",
         }}
       />
-      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-24">
+      <div className="relative mx-auto max-w-[90rem] px-4 py-16 sm:px-6 md:py-24">
         <nav aria-label="Okruszki" className="mb-6">
           <ol className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
             {breadcrumb.map((b, i) => (

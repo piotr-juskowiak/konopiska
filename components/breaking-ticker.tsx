@@ -32,13 +32,15 @@ export function BreakingTicker({ items }: { items: NewsItem[] }) {
               <Link
                 key={`${item.slug}-${i}`}
                 href={`/artykul/${item.slug}`}
-                className="group flex items-center gap-4 text-white/80 transition-all hover:text-white"
+                className="group flex items-baseline gap-3 text-white/80 transition-all hover:text-white"
               >
                 <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-[var(--gold)]/80 group-hover:text-[var(--gold)]">
                   {item.date}
                 </span>
-                <span aria-hidden className="h-1 w-1 rounded-full bg-white/20 transition-colors group-hover:bg-[var(--gold)]" />
-                <span className="font-medium tracking-tight group-hover:translate-x-1 transition-transform">{item.title}</span>
+                <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-white/20 transition-colors group-hover:bg-[var(--gold)] self-center translate-y-[2px]" />
+                <span className="font-medium tracking-tight group-hover:translate-x-1 transition-transform">
+                  {item.title}
+                </span>
               </Link>
             ))}
           </div>

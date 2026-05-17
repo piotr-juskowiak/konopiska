@@ -63,7 +63,7 @@ export function NewsGrid({ items }: { items: NewsItem[] }) {
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[var(--french-blue)]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[30rem] h-[30rem] bg-[var(--gold)]/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+      <div className="relative mx-auto max-w-[90rem] px-4 sm:px-6">
         {/* Heading Area */}
         <div className="mb-12 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">

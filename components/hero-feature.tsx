@@ -50,7 +50,7 @@ export function HeroFeature({ items }: { items: NewsItem[] }) {
         ))}
       </div>
 
-      <div className="relative z-30 mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-32 w-full">
+      <div className="relative z-30 mx-auto max-w-[90rem] px-4 py-20 sm:px-6 lg:py-32 w-full">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           
           {/* Left: Content Area */}

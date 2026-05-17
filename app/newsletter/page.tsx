@@ -56,7 +56,7 @@ export default function NewsletterPage() {
         ]}
       />
 
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+      <section className="mx-auto max-w-[90rem] px-4 py-16 sm:px-6">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-start">
           {/* Form card */}
           <div className="overflow-hidden rounded-3xl border border-border bg-primary text-primary-foreground shadow-sm">

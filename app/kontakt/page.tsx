@@ -69,7 +69,7 @@ export default function KontaktPage() {
       />
 
       {/* Channels */}
-      <section className="mx-auto max-w-7xl px-4 pt-16 sm:px-6">
+      <section className="mx-auto max-w-[90rem] px-4 pt-16 sm:px-6">
         <div className="grid gap-6 md:grid-cols-3">
           {channels.map(({ icon: Icon, title, email, desc }) => (
             <a
@@ -89,7 +89,7 @@ export default function KontaktPage() {
       </section>
 
       {/* Form + info */}
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+      <section className="mx-auto max-w-[90rem] px-4 py-16 sm:px-6">
         <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
           <div className="rounded-3xl border border-border bg-card p-8 shadow-sm md:p-12">
             <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-primary">

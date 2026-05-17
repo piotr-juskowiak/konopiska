@@ -20,14 +20,16 @@ import {
   Sun,
   Wind,
   X,
+  Trophy,
+  Landmark,
 } from "lucide-react"
 import { formatPolishDate, newsItems, type NewsItem } from "@/lib/news-data"
 
 const nav = [
   { label: "Aktualności", href: "/aktualnosci", icon: Newspaper },
   { label: "Wydarzenia", href: "/?cat=Wydarzenia#archiwum", icon: CalendarDays },
-  { label: "Oceń Radnych", href: "/ocen-radnych", icon: ShieldCheck },
-  { label: "Archiwum", href: "/archiwum", icon: Archive },
+  { label: "Sport", href: "/?kategoria=Sport#wiadomosci", icon: Trophy },
+  { label: "Polityka", href: "/?kategoria=Samorząd#wiadomosci", icon: Landmark },
   { label: "Kontakt", href: "/kontakt", icon: Mail },
 ]
 
@@ -110,7 +112,7 @@ function WeatherWidget() {
   const Icon = getWeatherIcon(weather.code)
 
   return (
-    <div className="group relative hidden h-9 items-center gap-3 rounded-full border border-white/10 bg-white/10 px-4 text-white/90 shadow-sm backdrop-blur-md transition-all hover:bg-white/20 md:flex">
+    <div className="group relative hidden h-8 items-center gap-3 rounded-full border border-white/10 bg-white/10 px-4 text-white/90 shadow-sm backdrop-blur-md transition-all hover:bg-white/20 md:flex">
       <div className="relative">
         <Icon className="h-4 w-4 text-[var(--gold)] drop-shadow-[0_0_8px_rgba(181,155,51,0.4)]" aria-hidden />
         <span className="absolute -right-1 -top-1 flex h-1.5 w-1.5">
@@ -247,7 +249,7 @@ function SearchSuggestions({
   )
 }
 
-export function SiteHeader({ updatedAt }: { updatedAt: string }) {
+export function SiteHeader({ updatedAt }: { updatedAt?: string }) {
   const router = useRouter()
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
@@ -255,6 +257,23 @@ export function SiteHeader({ updatedAt }: { updatedAt: string }) {
   const [desktopSearchOpen, setDesktopSearchOpen] = useState(false)
   const [query, setQuery] = useState("")
   const inputRef = useRef<HTMLInputElement>(null)
+
+  const [todayDate, setTodayDate] = useState("17 maja 2026")
+
+  useEffect(() => {
+    try {
+      const today = new Date()
+      setTodayDate(
+        today.toLocaleDateString("pl-PL", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        })
+      )
+    } catch (e) {
+      // safe fallback
+    }
+  }, [])
 
   const searchResults = useMemo(() => {
     const q = query.trim().toLowerCase()
@@ -313,10 +332,7 @@ export function SiteHeader({ updatedAt }: { updatedAt: string }) {
       <div className="border-b border-white/10 bg-[var(--imperial-blue)] text-white">
         <div className="mx-auto flex max-w-[90rem] items-center justify-between gap-4 px-4 py-2.5 text-[10px] sm:px-6">
           <div className="flex min-w-0 items-center gap-3 sm:gap-6">
-            <span className="hidden rounded-full border border-white/10 bg-white/5 px-3 py-1 font-bold uppercase tracking-[0.18em] text-[var(--gold)] sm:inline">
-              Wydanie internetowe · woj. śląskie
-            </span>
-            <span className="truncate font-mono text-white/75">Aktualizacja: {updatedAt}</span>
+            <span className="truncate font-mono text-white/75">Dzień dzisiejszy: {todayDate}</span>
           </div>
           <div className="flex shrink-0 items-center gap-3">
             <WeatherWidget />
