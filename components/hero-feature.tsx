@@ -41,7 +41,7 @@ export function HeroFeature({ items }: { items: NewsItem[] }) {
             <img
               src={item.image || "/placeholder.svg"}
               alt=""
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover blur-3xl scale-110"
             />
             {/* Dynamic Overlays */}
             <div className="absolute inset-0 bg-gradient-to-r from-[var(--imperial-blue)] via-[var(--imperial-blue)]/60 to-transparent z-20" />

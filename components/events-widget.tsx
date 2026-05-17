@@ -6,25 +6,25 @@ const announcements = [
   {
     title: "Harmonogram wywozu odpadów w czerwcu",
     tag: "Harmonogram",
-    tagColor: "bg-emerald-500/10 text-emerald-600 border-emerald-500/20",
+    tagColor: "bg-[var(--imperial-blue)]/5 text-[var(--imperial-blue)] border-[var(--imperial-blue)]/10",
     date: "15.05.2026",
   },
   {
     title: "Przerwy w dostawie wody przy ul. Lipowej i Leśnej",
     tag: "Ważne",
-    tagColor: "bg-rose-500/10 text-rose-600 border-rose-500/20",
+    tagColor: "bg-[var(--gold)]/10 text-[var(--gold)] border-[var(--gold)]/20",
     date: "14.05.2026",
   },
   {
     title: "Bezpłatne szczepienia dla seniorów 65+",
     tag: "Medycyna",
-    tagColor: "bg-blue-500/10 text-blue-600 border-blue-500/20",
+    tagColor: "bg-[var(--imperial-blue)]/5 text-[var(--imperial-blue)] border-[var(--imperial-blue)]/10",
     date: "12.05.2026",
   },
   {
     title: "Konsultacje budżetu obywatelskiego 2027",
     tag: "Ogłoszenie",
-    tagColor: "bg-[var(--gold)]/10 text-[var(--gold)] border-[var(--gold)]/20",
+    tagColor: "bg-[var(--imperial-blue)]/5 text-[var(--imperial-blue)] border-[var(--imperial-blue)]/10",
     date: "10.05.2026",
   },
 ]

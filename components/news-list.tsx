@@ -125,7 +125,7 @@ export function NewsList({ items }: { items: NewsItem[] }) {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Szukaj informacji..."
-              className="h-14 w-full rounded-2xl border border-slate-200 bg-white pl-16 pr-12 text-xs font-semibold text-[var(--imperial-blue)] shadow-[0_10px_30px_-15px_rgba(0,0,0,0.05)] outline-none transition-all focus:border-[var(--gold)]/40 focus:ring-4 focus:ring-[var(--gold)]/5 placeholder:text-slate-400"
+              className="h-14 w-full rounded-2xl border border-[var(--imperial-blue)] bg-white pl-16 pr-12 text-xs font-semibold text-[var(--imperial-blue)] shadow-[0_10px_30px_-15px_rgba(0,0,0,0.05)] outline-none transition-all focus:border-[var(--gold)]/40 focus:ring-4 focus:ring-[var(--gold)]/5 placeholder:text-slate-400"
             />
             {query && (
               <button
@@ -182,7 +182,7 @@ export function NewsList({ items }: { items: NewsItem[] }) {
         {filtered.slice(0, 7).map((item, idx) => (
           <article
             key={item.slug}
-            className="group relative overflow-hidden rounded-[2.5rem] border border-slate-100/80 bg-white/60 p-5 shadow-[0_25px_60px_-15px_rgba(15,23,42,0.12)] backdrop-blur-xl transition-all duration-700 hover:-translate-y-1 hover:shadow-[0_40px_90px_-15px_rgba(15,23,42,0.25)] hover:bg-white"
+            className="group relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-[var(--imperial-blue)] p-5 shadow-[0_25px_60px_-15px_rgba(15,23,42,0.12)] backdrop-blur-xl transition-all duration-700 hover:-translate-y-1 hover:shadow-[0_40px_90px_-15px_rgba(15,23,42,0.25)] hover:bg-[var(--imperial-blue)]/95"
           >
             <div className="grid gap-8 lg:grid-cols-[16rem_1fr]">
               <Link
@@ -207,26 +207,26 @@ export function NewsList({ items }: { items: NewsItem[] }) {
                   <span className={`rounded-xl border px-4 py-1.5 text-[9px] font-black uppercase tracking-[0.15em] shadow-sm ${getCategoryTone(item.category)}`}>
                     {item.category}
                   </span>
-                  <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400">
+                  <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.2em] text-white/40">
                     <CalendarDays className="h-3.5 w-3.5 text-[var(--gold)]" />
                     {formatPolishDate(item.date)}
                   </div>
                 </div>
 
-                <h3 className="mb-4 font-serif text-2xl font-semibold leading-tight text-[var(--imperial-blue)] transition-colors group-hover:text-[var(--gold)] xl:text-3xl tracking-tighter">
+                <h3 className="mb-4 font-serif text-xl font-medium leading-tight text-white transition-colors group-hover:text-[var(--gold)] xl:text-2xl tracking-tighter pr-8">
                   <Link href={`/artykul/${item.slug}`} className="block">
                     {item.title}
                   </Link>
                 </h3>
 
-                <p className="mb-7 line-clamp-2 text-base leading-relaxed text-slate-500/80 font-medium">
+                <p className="mb-7 line-clamp-2 text-sm leading-relaxed text-white/70 font-medium">
                   {item.excerpt}
                 </p>
 
                 <div className="flex items-center justify-between mt-auto">
                   <Link
                     href={`/artykul/${item.slug}`}
-                    className="inline-flex items-center gap-2.5 rounded-full bg-[var(--imperial-blue)] px-6 py-3.5 text-[9px] font-black uppercase tracking-[0.2em] text-white shadow-[0_10px_20px_rgba(15,23,42,0.15)] transition-all hover:bg-[var(--gold)] hover:text-[var(--imperial-blue)] hover:shadow-[0_15px_30px_rgba(181,155,51,0.3)] hover:-translate-y-0.5 active:scale-95"
+                    className="inline-flex items-center gap-2.5 rounded-full bg-[var(--imperial-blue)] border border-white px-6 py-3.5 text-[9px] font-black uppercase tracking-[0.2em] text-white shadow-[0_10px_20px_rgba(15,23,42,0.15)] transition-all hover:bg-[var(--gold)] hover:text-[var(--imperial-blue)] hover:border-[var(--gold)] hover:shadow-[0_15px_30px_rgba(181,155,51,0.3)] hover:-translate-y-0.5 active:scale-95"
                   >
                     Czytaj artykuł
                     <ArrowRight className="h-3.5 w-3.5" />

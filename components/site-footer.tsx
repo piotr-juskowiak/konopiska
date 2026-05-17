@@ -62,7 +62,7 @@ const socials = [
 
 export function SiteFooter() {
   return (
-    <footer className="relative mt-24 bg-[var(--imperial-blue)] text-white overflow-hidden">
+    <footer className="relative bg-[var(--imperial-blue)] text-white overflow-hidden">
       {/* Background photo */}
       <div
         aria-hidden
