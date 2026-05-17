@@ -363,7 +363,7 @@ export function SiteHeader({ updatedAt }: { updatedAt?: string }) {
           </span>
           <span className="flex min-w-0 flex-col leading-tight">
             <span className="whitespace-nowrap font-serif text-xl font-semibold tracking-tight text-[var(--imperial-blue)] sm:text-2xl">
-              Konopiska
+              Gmina Konopiska
             </span>
             <span className="mt-1 hidden text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--imperial-blue)]/60 sm:block">
               Niezależny przegląd gminny

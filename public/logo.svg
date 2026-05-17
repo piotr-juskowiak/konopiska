@@ -1,0 +1,19 @@
+<svg viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Stem -->
+  <rect x="236" y="80" width="40" height="352" rx="4" fill="#FFE500" />
+  
+  <!-- Top Leaf -->
+  <path d="M 236,160 Q 185,140 120,120 Q 175,170 236,190 Z" fill="#FFE500" />
+  
+  <!-- Middle Leaf -->
+  <path d="M 236,240 Q 185,220 120,200 Q 175,250 236,270 Z" fill="#FFE500" />
+  
+  <!-- Bottom Leaf -->
+  <path d="M 236,320 Q 185,300 120,280 Q 175,330 236,350 Z" fill="#FFE500" />
+  
+  <!-- Upper Leg -->
+  <path d="M 276,256 L 452,80 L 395.5,80 L 276,199.5 Z" fill="#FFE500" />
+  
+  <!-- Lower Leg -->
+  <path d="M 276,256 L 452,432 L 395.5,432 L 276,312.5 Z" fill="#FFE500" />
+</svg>
