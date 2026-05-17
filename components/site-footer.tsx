@@ -20,12 +20,12 @@ const sections = [
   {
     title: "Działy",
     links: [
-      { label: "Aktualności", href: "/?cat=Aktualno%C5%9Bci#archiwum" },
-      { label: "Wydarzenia", href: "/?cat=Wydarzenia#archiwum" },
-      { label: "Samorząd", href: "/?cat=Samorz%C4%85d#archiwum" },
+      { label: "Aktualności", href: "/aktualnosci" },
+      { label: "Wydarzenia", href: "/wydarzenia" },
+      { label: "Samorząd", href: "/polityka" },
       { label: "Mieszkańcy", href: "/?cat=Mieszka%C5%84cy#archiwum" },
-      { label: "Kultura", href: "/?cat=Kultura#archiwum" },
-      { label: "Sport", href: "/?cat=Sport#archiwum" },
+      { label: "Kultura", href: "/wydarzenia" },
+      { label: "Sport", href: "/sport" },
     ],
   },
   {

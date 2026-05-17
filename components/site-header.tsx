@@ -27,9 +27,9 @@ import { formatPolishDate, newsItems, type NewsItem } from "@/lib/news-data"
 
 const nav = [
   { label: "Aktualności", href: "/aktualnosci", icon: Newspaper },
-  { label: "Wydarzenia", href: "/?cat=Wydarzenia#archiwum", icon: CalendarDays },
-  { label: "Sport", href: "/?kategoria=Sport#wiadomosci", icon: Trophy },
-  { label: "Polityka", href: "/?kategoria=Samorząd#wiadomosci", icon: Landmark },
+  { label: "Wydarzenia", href: "/wydarzenia", icon: CalendarDays },
+  { label: "Sport", href: "/sport", icon: Trophy },
+  { label: "Polityka", href: "/polityka", icon: Landmark },
   { label: "Kontakt", href: "/kontakt", icon: Mail },
 ]
 
