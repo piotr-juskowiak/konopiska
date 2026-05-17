@@ -178,13 +178,9 @@ export function SiteFooter() {
 
              <div className="mt-10 flex flex-col gap-4 pt-8 border-t border-white/5">
                <div className="flex items-center gap-3">
-                 <MapPin className="h-3.5 w-3.5 text-[var(--gold)]/60" />
-                 <span className="text-[11px] text-white/30">ul. Lipowa 5, 42-274 Konopiska</span>
-               </div>
-               <div className="flex items-center gap-3">
                  <Mail className="h-3.5 w-3.5 text-[var(--gold)]/60" />
-                 <a href="mailto:redakcja@serwis-konopiska.pl" className="text-[11px] text-white/30 hover:text-[var(--gold)] transition-colors">
-                   redakcja@serwis-konopiska.pl
+                 <a href="mailto:kontakt@gmina-konopiska.pl" className="text-[11px] text-white/30 hover:text-[var(--gold)] transition-colors">
+                   kontakt@gmina-konopiska.pl
                  </a>
                </div>
              </div>
