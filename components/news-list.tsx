@@ -89,7 +89,7 @@ export function NewsList({ items }: { items: NewsItem[] }) {
               </span>
             </div>
             
-            <h2 className="font-serif text-4xl sm:text-5xl font-medium text-[var(--imperial-blue)] leading-[1.05] tracking-tighter">
+            <h2 className="font-serif text-4xl sm:text-5xl font-medium text-[var(--imperial-blue)] leading-[1.05]">
               Najnowsze <br />
               <span className="font-light text-[var(--imperial-blue)] drop-shadow-sm opacity-80">wiadomości</span>
             </h2>
@@ -214,7 +214,7 @@ export function NewsList({ items }: { items: NewsItem[] }) {
                   </div>
                 </div>
 
-                <h3 className="mb-4 font-serif text-xl font-medium leading-tight text-[var(--imperial-blue)] transition-colors group-hover:text-[var(--gold)] xl:text-2xl tracking-tighter pr-8">
+                <h3 className="mb-4 font-serif text-xl font-medium leading-tight text-[var(--imperial-blue)] transition-colors group-hover:text-[var(--gold)] xl:text-2xl pr-8">
                   <Link href={`/artykul/${item.slug}`} className="block">
                     {item.title}
                   </Link>
