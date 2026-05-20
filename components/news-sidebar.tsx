@@ -79,7 +79,7 @@ const upcomingEvents = [
 
 export function NewsSidebar() {
   return (
-    <aside className="sticky top-32 space-y-6 lg:space-y-8">
+    <aside className="sticky top-0 space-y-6 lg:space-y-8">
       {/* Advertisement Section */}
       <div className="rounded-2xl bg-gradient-to-br from-[var(--imperial-blue)]/10 to-[var(--gold)]/5 p-8 border border-[var(--imperial-blue)]/10 min-h-[280px] flex items-center justify-center text-center">
         <div className="space-y-4">

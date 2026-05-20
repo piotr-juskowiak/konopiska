@@ -175,9 +175,9 @@ export function NewsList({ items }: { items: NewsItem[] }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-10">
         {/* Main Content - Articles */}
-        <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {filtered.slice(0, 9).map((item, idx) => (
           <article
             key={item.slug}
