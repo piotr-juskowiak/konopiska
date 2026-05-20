@@ -5,6 +5,8 @@ import { useRouter, useSearchParams, usePathname } from "next/navigation"
 import { useMemo, useState, useEffect } from "react"
 import { CalendarDays, ChevronRight, Search, SlidersHorizontal, X, ArrowRight, LayoutGrid, List } from "lucide-react"
 import { categories, formatPolishDate, type NewsItem } from "@/lib/news-data"
+import { NewsSidebar } from "./news-sidebar"
+import { NewsGroups } from "./news-groups"
 
 const categoryTone: Record<string, string> = {
   Ekologia: "text-[var(--gold)] bg-[var(--gold)]/10 border-[var(--gold)]/20",
@@ -78,8 +80,11 @@ export function NewsList({ items }: { items: NewsItem[] }) {
 
   return (
     <div id="wiadomosci" className="scroll-mt-28">
-      {/* Premium Header Section */}
-      <div className="mb-10">
+      <div className="grid grid-cols-1 lg:grid-cols-[70%_30%] gap-10">
+        {/* Left Column: Header + Articles */}
+        <div className="flex flex-col">
+          {/* Premium Header Section */}
+          <div className="mb-10">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="space-y-3">
             <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-white border border-slate-100 shadow-sm">
@@ -174,8 +179,10 @@ export function NewsList({ items }: { items: NewsItem[] }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filtered.slice(0, 9).map((item, idx) => (
+        {/* Main Content - Articles */}
+        {filtered.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+          {filtered.slice(0, 6).map((item, idx) => (
           <article
             key={item.slug}
             className="group relative flex flex-col h-full overflow-hidden rounded-[2.5rem] bg-white/70 backdrop-blur-md p-5 border border-slate-100 shadow-[0_8px_30px_rgba(15,23,42,0.02)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[var(--gold)]/30 hover:shadow-[0_20px_45px_rgba(15,23,42,0.06)]"
@@ -191,18 +198,10 @@ export function NewsList({ items }: { items: NewsItem[] }) {
                   className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--imperial-blue)]/30 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                
-                <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-lg bg-black/40 px-3 py-1.5 backdrop-blur-md border border-white/10 text-[8px] font-black uppercase tracking-[0.2em] text-white">
-                  <div className="h-1.5 w-1.5 rounded-full bg-[var(--gold)] animate-pulse" />
-                  Wiadomość
-                </div>
               </Link>
 
               <div className="flex flex-col flex-grow px-1">
                 <div className="mb-4 flex flex-wrap items-center gap-4">
-                  <span className={`rounded-lg border px-3 py-1.5 text-[8px] font-black uppercase tracking-[0.15em] shadow-sm ${getCategoryTone(item.category)}`}>
-                    {item.category}
-                  </span>
                   <div className="flex items-center gap-1.5 text-[8px] font-bold uppercase tracking-[0.15em] text-slate-400">
                     <CalendarDays className="h-3.5 w-3.5 text-[var(--gold)]/80" />
                     {formatPolishDate(item.date)}
@@ -219,30 +218,32 @@ export function NewsList({ items }: { items: NewsItem[] }) {
                   {item.excerpt}
                 </p>
               </div>
-
-              <div className="flex items-center px-1 mt-auto">
-                <Link
-                  href={`/artykul/${item.slug}`}
-                  className="inline-flex items-center gap-2 rounded-xl bg-[var(--imperial-blue)] px-5 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-white shadow-[0_4px_12px_rgba(15,23,42,0.1)] transition-all group-hover:bg-[var(--gold)] group-hover:text-[var(--imperial-blue)] group-hover:shadow-[0_8px_20px_rgba(181,155,51,0.2)] active:scale-95"
-                >
-                  Czytaj więcej
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-              </div>
             </div>
           </article>
-        ))}
-      </div>
-
-      {filtered.length === 0 && (
-        <div className="rounded-[3rem] border-2 border-dashed border-slate-100 bg-white/50 py-24 text-center backdrop-blur-sm">
-          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-slate-50 text-slate-200">
-            <Search className="h-10 w-10" />
+          ))}
           </div>
-          <h3 className="mb-2 font-serif text-xl font-bold text-[var(--imperial-blue)]">Brak wyników</h3>
-          <p className="text-xs font-medium text-slate-400">Spróbuj wpisać inne hasło lub zmień kategorię.</p>
+        ) : (
+          <div className="rounded-[3rem] border-2 border-dashed border-slate-100 bg-white/50 py-24 text-center backdrop-blur-sm">
+            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-slate-50 text-slate-200">
+              <Search className="h-10 w-10" />
+            </div>
+            <h3 className="mb-2 font-serif text-xl font-bold text-[var(--imperial-blue)]">Brak wyników</h3>
+            <p className="text-xs font-medium text-slate-400">Spróbuj wpisać inne hasło lub zmień kategorię.</p>
+          </div>
+        )}
+        
+        {/* Thematic Categories injected here */}
+        <div className="mt-8">
+          <NewsGroups />
         </div>
-      )}
+        
+        </div>
+
+        {/* Sidebar */}
+        <div className="lg:col-span-1">
+          <NewsSidebar />
+        </div>
+      </div>
     </div>
   )
 }

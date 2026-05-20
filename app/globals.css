@@ -5,9 +5,9 @@
 
 :root {
   /* Serene Blue & Cream palette */
-  --imperial-blue: #18418e;
+  --imperial-blue: #1d3e8a;
   --imperial-blue-dark: #0f2d6b;
-  --imperial-gradient: linear-gradient(135deg, #18418e 0%, #1a5abf 50%, #0f2d6b 100%);
+  --imperial-gradient: linear-gradient(135deg, #1d3e8a 0%, #1a5abf 50%, #0f2d6b 100%);
   --french-blue: #1a5abf;
   --steel-azure: #2563eb;
   --school-bus-yellow: #e5d99f;

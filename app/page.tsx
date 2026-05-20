@@ -9,6 +9,7 @@ import { newsItems } from "@/lib/news-data"
 
 import { NewsGroups } from "@/components/news-groups"
 import { CategoryTiles } from "@/components/category-tiles"
+import { AdBannerHorizontal } from "@/components/ad-banner-horizontal"
 
 export default function Page() {
   const updatedAt = new Date().toLocaleString("pl-PL", {
@@ -40,22 +41,11 @@ export default function Page() {
               <NewsList items={newsItems} />
             </Suspense>
 
-            {/* Elegant Artistic Divider */}
-            <div className="relative flex items-center justify-center">
-              <div className="absolute inset-0 flex items-center" aria-hidden="true">
-                <div className="w-full border-t border-slate-200/40" />
-              </div>
-              <div className="relative flex h-11 w-11 items-center justify-center rounded-full border border-slate-200/80 bg-white/80 backdrop-blur-md shadow-sm transition-transform duration-700 hover:rotate-180">
-                <div className="h-2 w-2 rounded-full bg-[var(--gold)]" />
-              </div>
-            </div>
-
-            {/* Categories / Thematic Groups */}
-            <NewsGroups />
           </div>
         </div>
       </section>
 
+      <AdBannerHorizontal />
       <SiteFooter />
     </main>
   )

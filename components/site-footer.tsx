@@ -7,8 +7,6 @@ import {
   Youtube,
   Twitter,
   MapPin,
-  Clock,
-  ArrowUpRight,
   ChevronRight,
   Rss,
 } from "lucide-react"
@@ -32,8 +30,8 @@ const sections = [
       { label: "Zespół", href: "#" },
       { label: "Kontakt z redakcją", href: "/kontakt" },
       { label: "Reklama i patronaty", href: "#" },
-      { label: "Prenumerata papierowa", href: "#" },
-      { label: "Polityka prywatności", href: "#" },
+      { label: "Prenumerata", href: "#" },
+      { label: "Prywatność", href: "#" },
     ],
   },
   {
@@ -59,102 +57,101 @@ const socials = [
 
 export function SiteFooter() {
   return (
-    <footer className="relative imperial-gradient text-white overflow-hidden">
-      {/* Background photo */}
-      <div
-        aria-hidden
-        className="absolute inset-0 z-0 bg-cover bg-center opacity-40 transition-opacity duration-1000"
-        style={{
-          backgroundImage:
-            "url('https://d2exd72xrrp1s7.cloudfront.net/www/000/1k5/in/in4ech8dz68u8djuusd3n4i73wnm4w2t-uhi41226144/0?width=2560&height=3200&crop=false&q=80')",
-        }}
-      />
-      <div aria-hidden className="absolute inset-0 z-0 bg-gradient-to-b from-[var(--imperial-blue)] via-[var(--imperial-blue)]/80 to-[var(--imperial-blue)]" />
+    <footer className="relative bg-[var(--imperial-blue-dark)] text-white overflow-hidden border-t-[6px] border-[var(--gold)]">
+      {/* Abstract geometric background */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-[var(--imperial-blue)] opacity-50 blur-[100px]" />
+        <div className="absolute bottom-0 left-0 w-full h-[60%] bg-gradient-to-t from-black/60 to-transparent" />
+      </div>
 
-      {/* Main grid */}
-      <div className="relative z-10 mx-auto max-w-[1440px] px-4 py-20 sm:px-6 lg:py-24">
-        <div className="grid gap-16 xl:grid-cols-4 lg:grid-cols-12">
-          {/* Brand block */}
-          <div className="lg:col-span-4 xl:col-span-1 flex flex-col">
-            <Link href="/" className="inline-flex items-center gap-4 group">
-              <div className="relative">
-                <div className="absolute inset-0 bg-[var(--gold)] rounded-full blur-md opacity-20 group-hover:opacity-40 transition-opacity" />
-                <img
-                  src="/logo.png"
-                  alt=""
-                  className="relative h-14 w-14 rounded-full object-cover border-2 border-[var(--gold)]/30"
-                />
+      {/* Main Footer Content */}
+      <div className="relative z-10 mx-auto max-w-[90rem] px-4 pt-16 pb-12 sm:px-6">
+        <div className="flex flex-col lg:flex-row justify-between gap-16 lg:gap-12 xl:gap-20">
+          
+          {/* Left: Brand & Info */}
+          <div className="flex flex-col max-w-sm shrink-0">
+            <Link href="/" className="inline-flex items-center gap-4 group mb-8">
+              <img
+                src="/logo.png"
+                alt=""
+                className="h-16 w-16 rounded-2xl object-cover border-2 border-white/10 group-hover:border-[var(--gold)] transition-colors shadow-xl"
+              />
+              <div className="flex flex-col">
+                <span className="font-serif text-2xl font-bold leading-none text-white tracking-tight group-hover:text-[var(--gold)] transition-colors">
+                  Serwis Gminny
+                </span>
+                <span className="mt-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--gold)]">
+                  Konopiska
+                </span>
               </div>
-              <span>
-                <span className="block font-serif text-xl font-medium leading-none text-white tracking-tight">
-                  Serwis Informacyjny
-                </span>
-                <span className="mt-1 block font-mono text-[9px] font-bold uppercase tracking-[0.4em] text-[var(--gold)]">
-                  Konopiska · 2026
-                </span>
-              </span>
             </Link>
+            <p className="text-sm text-white/50 leading-relaxed mb-8 font-medium">
+              Oficjalne i niezależne źródło informacji. Codzienne aktualności, zapowiedzi wydarzeń oraz najważniejsze komunikaty dla mieszkańców.
+            </p>
+            <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 shadow-inner">
+                <MapPin className="h-4 w-4 text-[var(--gold)]" />
+              </div>
+              <p className="text-xs font-semibold text-white/70">
+                ul. Lipowa 5, 42-274 Konopiska
+              </p>
+            </div>
           </div>
 
-          {/* Link columns */}
-          {sections.map((section) => (
-            <div key={section.title} className="lg:col-span-2 xl:col-span-1">
-              <div className="relative mb-8">
-                <h4 className="font-serif text-base font-medium tracking-tight text-white/90">
+          {/* Right: Navigation Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-12 lg:gap-16 w-full lg:w-auto flex-grow justify-end">
+            {sections.map((section) => (
+              <div key={section.title} className="flex flex-col">
+                <h4 className="font-serif text-lg font-bold text-white mb-6 flex items-center gap-2.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)] shadow-[0_0_8px_rgba(181,155,51,0.8)]" />
                   {section.title}
                 </h4>
-                <div aria-hidden className="mt-3 flex items-center gap-2">
-                  <div className="h-px w-8 bg-[var(--gold)]" />
-                  <div className="h-1 w-1 rounded-full bg-[var(--gold)]" />
-                </div>
+                <ul className="flex flex-col gap-3.5">
+                  {section.links.map((link) => (
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
+                        className="text-sm font-medium text-white/50 hover:text-[var(--gold)] hover:translate-x-1 inline-block transition-all"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="space-y-4">
-                {section.links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="group flex items-center gap-2 text-sm text-white/50 transition-all hover:text-[var(--gold)]"
-                    >
-                      <ArrowUpRight className="h-3 w-3 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
-                      <span className="transition-transform group-hover:translate-x-1">{link.label}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+            ))}
+          </div>
+
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="relative z-10 border-t border-white/5 bg-black/40 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-4 py-10 sm:px-6 lg:flex-row">
-          <div className="flex flex-col items-center lg:items-start gap-2">
-            <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/20">
-              © 2026 Serwis Informacyjny Konopiska
-            </p>
-          </div>
+      {/* Bottom bar - Reduced height */}
+      <div className="relative z-10 border-t border-white/10 bg-black/40 backdrop-blur-md">
+        <div className="mx-auto flex max-w-[90rem] flex-col items-center justify-between gap-4 px-4 py-4 sm:px-6 md:flex-row">
+          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30">
+            © 2026 Serwis Informacyjny
+          </p>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
             {socials.map(({ label, href, Icon }) => (
               <a
                 key={label}
                 href={href}
                 aria-label={label}
-                className="grid h-11 w-11 place-items-center rounded-xl bg-white/[0.02] border border-white/5 text-white/30 transition-all hover:bg-[var(--gold)] hover:text-[var(--imperial-blue)] hover:scale-110 active:scale-95 shadow-sm hover:border-[var(--gold)]"
+                className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/5 text-white/40 border border-white/5 hover:bg-[var(--gold)] hover:text-[var(--imperial-blue)] hover:border-[var(--gold)] hover:scale-110 transition-all"
               >
-                <Icon className="h-5 w-5" />
+                <Icon className="h-3.5 w-3.5" />
               </a>
             ))}
           </div>
           
           <button 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="group flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 hover:text-[var(--gold)] transition-colors"
+            className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-white/30 hover:text-[var(--gold)] transition-colors group"
           >
-            Wróć na górę
-            <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[var(--gold)] transition-colors">
-              <ChevronRight className="h-4 w-4 -rotate-90" />
+            W górę
+            <div className="w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-[var(--gold)] group-hover:bg-[var(--gold)]/20 transition-all">
+              <ChevronRight className="h-3 w-3 -rotate-90 group-hover:text-[var(--gold)] transition-colors" />
             </div>
           </button>
         </div>
