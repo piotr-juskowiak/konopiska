@@ -89,14 +89,9 @@ export function NewsList({ items }: { items: NewsItem[] }) {
               </span>
             </div>
             
-            <h2 className="font-serif text-4xl sm:text-5xl font-medium text-[var(--imperial-blue)] leading-[1.05]">
-              Najnowsze <br />
-              <span className="font-light text-[var(--imperial-blue)] drop-shadow-sm opacity-80">wiadomości</span>
+            <h2 className="font-serif text-4xl sm:text-5xl font-bold text-[var(--imperial-blue)] leading-[1.05]">
+              Najnowsze wiadomości
             </h2>
-            
-            <p className="text-sm text-slate-400 font-medium max-w-sm leading-relaxed">
-              Odkryj historie, które kształtują naszą gminę każdego dnia.
-            </p>
           </div>
 
           <div className="flex flex-col items-end gap-6">
@@ -179,60 +174,60 @@ export function NewsList({ items }: { items: NewsItem[] }) {
         </div>
       </div>
 
-      <div className="grid gap-8">
-        {filtered.slice(0, 7).map((item, idx) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {filtered.slice(0, 9).map((item, idx) => (
           <article
             key={item.slug}
-            className="group relative overflow-hidden rounded-[2.5rem] border border-slate-100/80 bg-white/60 p-5 shadow-[0_25px_60px_-15px_rgba(15,23,42,0.12)] backdrop-blur-xl transition-all duration-700 hover:-translate-y-1 hover:shadow-[0_40px_90px_-15px_rgba(15,23,42,0.25)] hover:bg-white"
+            className="group relative flex flex-col h-full overflow-hidden rounded-[2.5rem] bg-white/70 backdrop-blur-md p-5 border border-slate-100 shadow-[0_8px_30px_rgba(15,23,42,0.02)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[var(--gold)]/30 hover:shadow-[0_20px_45px_rgba(15,23,42,0.06)]"
           >
-            <div className="grid gap-8 lg:grid-cols-[20rem_1fr]">
+            <div className="flex flex-col h-full justify-between gap-5">
               <Link
                 href={`/artykul/${item.slug}`}
-                className="relative aspect-[16/10] overflow-hidden rounded-[2rem] bg-slate-50 lg:aspect-auto lg:h-full"
+                className="relative aspect-[16/10] w-full overflow-hidden rounded-[1.6rem] bg-slate-50 border border-slate-100/50"
               >
                 <img
                   src={item.image || "/placeholder.svg"}
                   alt=""
-                  className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-[var(--imperial-blue)]/20 to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--imperial-blue)]/30 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 
-                <div className="absolute bottom-5 left-5 flex items-center gap-2.5 rounded-xl bg-black/40 px-4 py-2 backdrop-blur-xl border border-white/20 text-[9px] font-black uppercase tracking-[0.25em] text-white transition-all group-hover:translate-x-1">
-                  <div className="h-1.5 w-1.5 rounded-full bg-[var(--gold)]" />
-                  Fotoreportaż
+                <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-lg bg-black/40 px-3 py-1.5 backdrop-blur-md border border-white/10 text-[8px] font-black uppercase tracking-[0.2em] text-white">
+                  <div className="h-1.5 w-1.5 rounded-full bg-[var(--gold)] animate-pulse" />
+                  Wiadomość
                 </div>
               </Link>
 
-              <div className="flex flex-col justify-center py-2 pr-4 lg:pr-16">
-                <div className="mb-5 flex flex-wrap items-center gap-6">
-                  <span className={`rounded-xl border px-4 py-1.5 text-[9px] font-black uppercase tracking-[0.15em] shadow-sm ${getCategoryTone(item.category)}`}>
+              <div className="flex flex-col flex-grow px-1">
+                <div className="mb-4 flex flex-wrap items-center gap-4">
+                  <span className={`rounded-lg border px-3 py-1.5 text-[8px] font-black uppercase tracking-[0.15em] shadow-sm ${getCategoryTone(item.category)}`}>
                     {item.category}
                   </span>
-                  <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400">
-                    <CalendarDays className="h-3.5 w-3.5 text-[var(--gold)]" />
+                  <div className="flex items-center gap-1.5 text-[8px] font-bold uppercase tracking-[0.15em] text-slate-400">
+                    <CalendarDays className="h-3.5 w-3.5 text-[var(--gold)]/80" />
                     {formatPolishDate(item.date)}
                   </div>
                 </div>
 
-                <h3 className="mb-4 font-serif text-xl font-medium leading-tight text-[var(--imperial-blue)] transition-colors group-hover:text-[var(--gold)] xl:text-2xl pr-8">
+                <h3 className="mb-3 font-serif text-lg sm:text-xl font-bold leading-snug text-[var(--imperial-blue)] transition-colors group-hover:text-[var(--gold)] line-clamp-2">
                   <Link href={`/artykul/${item.slug}`} className="block">
                     {item.title}
                   </Link>
                 </h3>
 
-                <p className="mb-7 line-clamp-2 text-sm leading-relaxed text-slate-500/80 font-medium">
+                <p className="text-[10px] font-medium leading-relaxed text-slate-400 mb-2 line-clamp-2">
                   {item.excerpt}
                 </p>
+              </div>
 
-                <div className="flex items-center justify-between mt-auto">
-                  <Link
-                    href={`/artykul/${item.slug}`}
-                    className="inline-flex items-center gap-2.5 rounded-full bg-[var(--imperial-blue)] px-6 py-3.5 text-[9px] font-black uppercase tracking-[0.2em] text-white shadow-[0_10px_20px_rgba(15,23,42,0.15)] transition-all hover:bg-[var(--gold)] hover:text-[var(--imperial-blue)] hover:shadow-[0_15px_30px_rgba(181,155,51,0.3)] hover:-translate-y-0.5 active:scale-95"
-                  >
-                    Czytaj artykuł
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
-                </div>
+              <div className="flex items-center px-1 mt-auto">
+                <Link
+                  href={`/artykul/${item.slug}`}
+                  className="inline-flex items-center gap-2 rounded-xl bg-[var(--imperial-blue)] px-5 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-white shadow-[0_4px_12px_rgba(15,23,42,0.1)] transition-all group-hover:bg-[var(--gold)] group-hover:text-[var(--imperial-blue)] group-hover:shadow-[0_8px_20px_rgba(181,155,51,0.2)] active:scale-95"
+                >
+                  Czytaj więcej
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
               </div>
             </div>
           </article>

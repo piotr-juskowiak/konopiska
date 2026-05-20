@@ -24,59 +24,32 @@ const categoryConfigs = [
 
 export function CategoryTiles() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#0a1021] via-[#0f172a] to-[#080d1a] border-y border-[var(--gold)]/15 py-16 md:py-20">
-      {/* Premium Decorative Glows */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
-        <div className="absolute -top-[30%] -left-[10%] w-[500px] h-[500px] rounded-full bg-[var(--gold)]/10 blur-[120px]" />
-        <div className="absolute -bottom-[30%] -right-[10%] w-[600px] h-[600px] rounded-full bg-[var(--french-blue)]/20 blur-[130px]" />
-      </div>
-
-      <div className="relative mx-auto max-w-[90rem] px-4 sm:px-6">
-        {/* Section Heading */}
-        <div className="mb-12 text-center md:text-left">
-          <div className="flex items-center justify-center md:justify-start gap-3 mb-3">
-            <span aria-hidden className="h-0.5 w-10 bg-[var(--gold)]" />
-            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[var(--gold)]">
-              Kategorie Tematyczne
-            </p>
+    <div className="relative w-full -mt-8 mb-12 z-20">
+      <div className="mx-auto max-w-[90rem] px-4 sm:px-6">
+        <div className="flex items-center justify-center">
+          <div className="inline-flex items-center gap-1.5 overflow-x-auto no-scrollbar bg-white/80 backdrop-blur-lg border border-slate-100/80 shadow-[0_10px_30px_rgba(0,0,0,0.03)] py-3 px-5 rounded-2xl sm:rounded-full max-w-full">
+            <span className="hidden sm:inline-flex items-center gap-1.5 pr-4 border-r border-slate-200/60 text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 select-none">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--gold)]" />
+              Kategorie:
+            </span>
+            <div className="flex items-center gap-2 pl-0 sm:pl-2">
+              {categoryConfigs.map((config) => {
+                const Icon = config.icon
+                return (
+                  <Link
+                    key={config.name}
+                    href={`/aktualnosci?kategoria=${encodeURIComponent(config.name)}#archiwum`}
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl text-[11px] font-bold text-slate-600 transition-all duration-300 hover:text-[var(--imperial-blue)] hover:bg-slate-50 border border-transparent hover:border-slate-100 whitespace-nowrap active:scale-95 group"
+                  >
+                    <Icon className="h-3.5 w-3.5 text-slate-400 group-hover:text-[var(--gold)] transition-colors duration-300" aria-hidden />
+                    <span>{config.name}</span>
+                  </Link>
+                )
+              })}
+            </div>
           </div>
-          <h2 className="font-serif text-3xl font-semibold tracking-tight text-white md:text-4xl">
-            Przeglądaj według działów
-          </h2>
-        </div>
-
-        {/* Grid of Categories */}
-        <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5">
-          {categoryConfigs.map((config) => {
-            const Icon = config.icon
-            return (
-              <Link
-                key={config.name}
-                href={`/aktualnosci?kategoria=${encodeURIComponent(config.name)}#archiwum`}
-                className="group relative flex flex-col items-center justify-center rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 text-center backdrop-blur-md transition-all duration-300 hover:-translate-y-1.5 hover:border-[var(--gold)]/40 hover:bg-white/[0.05] hover:shadow-[0_12px_30px_-10px_rgba(0,0,0,0.5)]"
-              >
-                {/* Ambient Internal Glow */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/[0.01] to-white/[0.03] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                
-                {/* Icon Container */}
-                <div className="relative mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/[0.03] border border-white/[0.08] text-slate-300 transition-all duration-500 group-hover:scale-110 group-hover:bg-[var(--gold)]/[0.12] group-hover:border-[var(--gold)]/40 group-hover:text-[var(--gold)] group-hover:shadow-[0_0_20px_rgba(181,155,51,0.18)]">
-                  <Icon className="h-6 w-6 transition-transform duration-500 group-hover:rotate-6" aria-hidden />
-                </div>
-                
-                {/* Name */}
-                <h3 className="relative font-serif text-base font-semibold leading-tight text-white transition-colors group-hover:text-[var(--gold)]">
-                  {config.name}
-                </h3>
-                
-                {/* Description */}
-                <p className="relative mt-2 text-xs leading-snug text-slate-400 font-medium transition-colors group-hover:text-slate-300">
-                  {config.desc}
-                </p>
-              </Link>
-            )
-          })}
         </div>
       </div>
-    </section>
+    </div>
   )
 }

@@ -329,11 +329,8 @@ export function SiteHeader({ updatedAt }: { updatedAt?: string }) {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 shadow-[0_12px_40px_rgba(15,23,42,0.08)] backdrop-blur-xl">
       {/* Top utility bar */}
-      <div className="border-b border-white/10 bg-[var(--imperial-blue)] text-white">
-        <div className="mx-auto flex max-w-[90rem] items-center justify-between gap-4 px-4 py-2.5 text-[10px] sm:px-6">
-          <div className="flex min-w-0 items-center gap-3 sm:gap-6">
-            <span className="truncate font-mono text-white/75">Dzień dzisiejszy: {todayDate}</span>
-          </div>
+      <div className="imperial-gradient border-b border-white/10 text-white">
+        <div className="mx-auto flex max-w-[90rem] items-center justify-end gap-4 px-4 py-2.5 text-[10px] sm:px-6">
           <div className="flex shrink-0 items-center gap-3">
             <WeatherWidget />
             <a
@@ -374,7 +371,6 @@ export function SiteHeader({ updatedAt }: { updatedAt?: string }) {
         <nav aria-label="Nawigacja główna" className="hidden shrink-0 xl:block">
           <ul className="flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50/80 p-1 text-sm shadow-inner shadow-white">
             {nav.map((item) => {
-              const Icon = item.icon
               const isActive = isNavItemActive(item.href, pathname)
 
               return (
@@ -388,14 +384,6 @@ export function SiteHeader({ updatedAt }: { updatedAt?: string }) {
                         : "text-slate-600 hover:bg-white/80 hover:text-[var(--imperial-blue)]"
                     }`}
                   >
-                    <Icon
-                      className={`h-3.5 w-3.5 transition ${
-                        isActive
-                          ? "text-[var(--gold)]"
-                          : "text-slate-400 group-hover:text-[var(--gold)]"
-                      }`}
-                      aria-hidden
-                    />
                     {item.label}
                   </Link>
                 </li>
@@ -465,7 +453,7 @@ export function SiteHeader({ updatedAt }: { updatedAt?: string }) {
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Zamknij menu" : "Otwórz menu"}
             aria-expanded={open}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-[var(--imperial-blue)] text-white shadow-[0_8px_20px_rgba(15,23,42,0.18)] transition hover:bg-[#1e293b] xl:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 imperial-gradient text-white shadow-[0_8px_20px_rgba(24,65,142,0.28)] transition hover:opacity-90 xl:hidden"
           >
             {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
@@ -477,7 +465,6 @@ export function SiteHeader({ updatedAt }: { updatedAt?: string }) {
         <div className="border-t border-slate-200 bg-white/95 shadow-[0_18px_40px_rgba(15,23,42,0.08)] xl:hidden">
           <ul className="mx-auto grid max-w-[90rem] gap-2 px-4 py-4 sm:px-6">
             {nav.map((item) => {
-              const Icon = item.icon
               const isActive = isNavItemActive(item.href, pathname)
 
               return (
@@ -492,9 +479,6 @@ export function SiteHeader({ updatedAt }: { updatedAt?: string }) {
                         : "text-slate-600 hover:bg-slate-50 hover:text-[var(--imperial-blue)]"
                     }`}
                   >
-                    <span className="grid h-8 w-8 place-items-center rounded-full bg-white text-[var(--gold)] shadow-sm ring-1 ring-slate-200">
-                      <Icon className="h-4 w-4" aria-hidden />
-                    </span>
                     {item.label}
                   </Link>
                 </li>

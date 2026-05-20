@@ -5,9 +5,11 @@
 
 :root {
   /* Serene Blue & Cream palette */
-  --imperial-blue: #0f172a;
-  --french-blue: #1e40af;
-  --steel-azure: #1d4ed8;
+  --imperial-blue: #18418e;
+  --imperial-blue-dark: #0f2d6b;
+  --imperial-gradient: linear-gradient(135deg, #18418e 0%, #1a5abf 50%, #0f2d6b 100%);
+  --french-blue: #1a5abf;
+  --steel-azure: #2563eb;
   --school-bus-yellow: #e5d99f;
   --gold: #b59b33;
 
@@ -100,6 +102,11 @@
     font-feature-settings: "ss01", "cv11";
     overflow-x: hidden;
     background-color: #f8fafc;
+  }
+
+  /* Gradient helper for main blue backgrounds */
+  .imperial-gradient {
+    background: var(--imperial-gradient) !important;
   }
 
   body::before {
