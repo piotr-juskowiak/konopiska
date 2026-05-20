@@ -5,6 +5,7 @@ import { useRouter, useSearchParams, usePathname } from "next/navigation"
 import { useMemo, useState, useEffect } from "react"
 import { CalendarDays, ChevronRight, Search, SlidersHorizontal, X, ArrowRight, LayoutGrid, List } from "lucide-react"
 import { categories, formatPolishDate, type NewsItem } from "@/lib/news-data"
+import { NewsSidebar } from "./news-sidebar"
 
 const categoryTone: Record<string, string> = {
   Ekologia: "text-[var(--gold)] bg-[var(--gold)]/10 border-[var(--gold)]/20",
@@ -174,8 +175,10 @@ export function NewsList({ items }: { items: NewsItem[] }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filtered.slice(0, 9).map((item, idx) => (
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Main Content - Articles */}
+        <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+          {filtered.slice(0, 9).map((item, idx) => (
           <article
             key={item.slug}
             className="group relative flex flex-col h-full overflow-hidden rounded-[2.5rem] bg-white/70 backdrop-blur-md p-5 border border-slate-100 shadow-[0_8px_30px_rgba(15,23,42,0.02)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[var(--gold)]/30 hover:shadow-[0_20px_45px_rgba(15,23,42,0.06)]"
@@ -232,6 +235,12 @@ export function NewsList({ items }: { items: NewsItem[] }) {
             </div>
           </article>
         ))}
+        </div>
+
+        {/* Sidebar */}
+        <div className="lg:col-span-1">
+          <NewsSidebar />
+        </div>
       </div>
 
       {filtered.length === 0 && (
