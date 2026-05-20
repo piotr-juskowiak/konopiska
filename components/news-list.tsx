@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useRouter, useSearchParams, usePathname } from "next/navigation"
 import { useMemo, useState, useEffect } from "react"
-import { CalendarDays, ChevronRight, Search, SlidersHorizontal, X, ArrowRight, LayoutGrid, List } from "lucide-react"
+import { CalendarDays, Search, ArrowUpDown, Clock, TrendingUp, AlignLeft, LayoutGrid } from "lucide-react"
 import { categories, formatPolishDate, type NewsItem } from "@/lib/news-data"
 import { NewsSidebar } from "./news-sidebar"
 import { NewsGroups } from "./news-groups"
@@ -25,51 +25,42 @@ function getCategoryTone(category?: string) {
   return categoryTone[category ?? ""] ?? "bg-slate-50 text-slate-600 border-slate-100"
 }
 
+type SortKey = "newest" | "oldest" | "az"
+
+const sortOptions: { key: SortKey; label: string; icon: React.ElementType }[] = [
+  { key: "newest", label: "Najnowsze", icon: Clock },
+  { key: "oldest", label: "Najstarsze", icon: ArrowUpDown },
+  { key: "az", label: "A–Z", icon: AlignLeft },
+]
+
 export function NewsList({ items }: { items: NewsItem[] }) {
   const router = useRouter()
   const params = useSearchParams()
   const pathname = usePathname()
 
   const urlCategory = params.get("kategoria") ?? "Wszystkie"
-  const urlQuery = params.get("q") ?? ""
-
   const [active, setActive] = useState(urlCategory)
-  const [query, setQuery] = useState(urlQuery)
-  const [showFilters, setShowFilters] = useState(false)
+  const [sort, setSort] = useState<SortKey>("newest")
 
-  useEffect(() => {
-    setActive(urlCategory)
-  }, [urlCategory])
-  useEffect(() => {
-    setQuery(urlQuery)
-  }, [urlQuery])
+  useEffect(() => { setActive(urlCategory) }, [urlCategory])
 
   useEffect(() => {
     const t = setTimeout(() => {
       const next = new URLSearchParams(Array.from(params.entries()))
       if (active && active !== "Wszystkie") next.set("kategoria", active)
       else next.delete("kategoria")
-      if (query.trim()) next.set("q", query.trim())
-      else next.delete("q")
       const qs = next.toString()
       router.replace(`${pathname}${qs ? `?${qs}` : ""}#wiadomosci`, { scroll: false })
     }, 250)
     return () => clearTimeout(t)
-  }, [active, query, params, pathname, router])
+  }, [active, params, pathname, router])
 
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase()
-    return items.filter((i) => {
-      const matchCat = active === "Wszystkie" || i.category === active
-      if (!matchCat) return false
-      if (!q) return true
-      return (
-        i.title.toLowerCase().includes(q) ||
-        i.excerpt.toLowerCase().includes(q) ||
-        (i.category ?? "").toLowerCase().includes(q)
-      )
-    })
-  }, [active, query, items])
+    const base = items.filter((i) => active === "Wszystkie" || i.category === active)
+    if (sort === "oldest") return [...base].sort((a, b) => a.date.localeCompare(b.date))
+    if (sort === "az") return [...base].sort((a, b) => a.title.localeCompare(b.title, "pl"))
+    return [...base].sort((a, b) => b.date.localeCompare(a.date))
+  }, [active, sort, items])
 
   const categoryCounts = useMemo(() => {
     return categories.reduce<Record<string, number>>((acc, cat) => {
@@ -83,101 +74,76 @@ export function NewsList({ items }: { items: NewsItem[] }) {
       <div className="grid grid-cols-1 lg:grid-cols-[70%_30%] gap-10">
         {/* Left Column: Header + Articles */}
         <div className="flex flex-col">
-          {/* Premium Header Section */}
-          <div className="mb-10">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div className="space-y-3">
-            <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-white border border-slate-100 shadow-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-[var(--gold)] animate-pulse" />
-              <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[var(--imperial-blue)]/60">
-                Dziennik Gminny
-              </span>
-            </div>
-            
-            <h2 className="font-serif text-4xl sm:text-5xl font-bold text-[var(--imperial-blue)] leading-[1.05]">
-              Najnowsze wiadomości
-            </h2>
-          </div>
-
-          <div className="flex flex-col items-end gap-6">
-            <div className="group relative flex items-center gap-3 bg-white p-1.5 pr-5 rounded-full border border-slate-100 shadow-lg transition-all hover:border-[var(--gold)]/20">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--imperial-blue)] text-white shadow-lg shadow-[var(--imperial-blue)]/20">
-                <LayoutGrid className="h-4 w-4" />
+          {/* Header Section */}
+          <div className="mb-8">
+            {/* Title row */}
+            <div className="flex items-end justify-between gap-4 mb-6">
+              <div className="space-y-2">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-white border border-slate-100 shadow-sm">
+                  <div className="h-1.5 w-1.5 rounded-full bg-[var(--gold)] animate-pulse" />
+                  <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[var(--imperial-blue)]/60">Dziennik Gminny</span>
+                </div>
+                <h2 className="font-serif text-4xl sm:text-5xl font-bold text-[var(--imperial-blue)] leading-[1.05]">
+                  Najnowsze wiadomości
+                </h2>
               </div>
-              <div className="flex flex-col">
-                <span className="text-[8px] font-black uppercase tracking-widest text-slate-400">Publikacje</span>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-lg font-serif font-black text-[var(--imperial-blue)]">{filtered.length}</span>
-                  <span className="text-[9px] font-bold text-slate-300">/ {items.length}</span>
+
+              {/* Count badge */}
+              <div className="flex items-center gap-2.5 bg-white border border-slate-100 shadow-sm rounded-2xl px-4 py-2.5 shrink-0">
+                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[var(--imperial-blue)] text-white">
+                  <LayoutGrid className="h-3.5 w-3.5" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[8px] font-black uppercase tracking-widest text-slate-400">Artykuły</span>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-base font-serif font-black text-[var(--imperial-blue)]">{filtered.length}</span>
+                    <span className="text-[9px] font-bold text-slate-300">/ {items.length}</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div className="mt-10 flex flex-col sm:flex-row gap-3">
-          <div className="relative flex-1">
-            <div className="absolute left-5 top-1/2 -translate-y-1/2 flex items-center gap-3 pointer-events-none">
-              <Search className="h-4 w-4 text-slate-400" />
-              <div className="h-3 w-px bg-slate-200" />
-            </div>
-            <input
-              type="search"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Szukaj informacji..."
-              className="h-14 w-full rounded-2xl border border-[var(--imperial-blue)]/20 bg-white pl-16 pr-12 text-xs font-semibold text-[var(--imperial-blue)] shadow-[0_10px_30px_-15px_rgba(0,0,0,0.05)] outline-none transition-all focus:border-[var(--gold)]/40 focus:ring-4 focus:ring-[var(--gold)]/5 placeholder:text-slate-400"
-            />
-            {query && (
-              <button
-                type="button"
-                onClick={() => setQuery("")}
-                className="absolute right-4 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-xl text-slate-400 transition hover:bg-slate-50 hover:text-[var(--imperial-blue)]"
-              >
-                <X className="h-3.5 w-3.5" />
-              </button>
-            )}
-          </div>
-          
-          <button 
-            onClick={() => setShowFilters(!showFilters)}
-            className={`group flex h-14 items-center justify-center gap-3 rounded-2xl px-8 text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500 shadow-xl ${
-              showFilters 
-                ? "bg-[var(--gold)] text-white shadow-[var(--gold)]/30" 
-                : "bg-[var(--imperial-blue)] text-white shadow-[var(--imperial-blue)]/20 hover:bg-[#1e293b]"
-            }`}
-          >
-            <SlidersHorizontal className={`h-3.5 w-3.5 transition-transform duration-500 ${showFilters ? "rotate-90" : ""}`} />
-            Filtry
-          </button>
-        </div>
-
-        <div className={`overflow-hidden transition-all duration-500 ease-in-out ${showFilters ? "max-h-[300px] opacity-100 mt-5" : "max-h-0 opacity-0 pointer-events-none"}`}>
-          <div className="flex flex-wrap gap-2 p-1">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setActive(cat)}
-                className={`flex h-10 items-center gap-3 rounded-xl border px-5 transition-all duration-300 ${
-                  cat === active
-                    ? "border-[var(--imperial-blue)] bg-[var(--imperial-blue)] text-white shadow-lg scale-105"
-                    : "border-slate-100 bg-white text-slate-500 hover:border-[var(--imperial-blue)]/20 hover:text-[var(--imperial-blue)]"
-                }`}
-              >
-                <span className="text-[9px] font-bold uppercase tracking-[0.15em]">{cat}</span>
-                <span
-                  className={`rounded-lg px-1.5 py-0.5 font-mono text-[8px] font-bold ${
-                    cat === active ? "bg-white/10 text-white" : "bg-slate-50 text-slate-400"
+            {/* Sort row */}
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mr-1">Sortuj:</span>
+              {sortOptions.map(({ key, label, icon: Icon }) => (
+                <button
+                  key={key}
+                  onClick={() => setSort(key)}
+                  className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-[0.15em] border transition-all ${
+                    sort === key
+                      ? "bg-[var(--imperial-blue)] text-white border-[var(--imperial-blue)] shadow-md"
+                      : "bg-white text-slate-500 border-slate-100 hover:border-[var(--imperial-blue)]/30 hover:text-[var(--imperial-blue)]"
                   }`}
                 >
-                  {categoryCounts[cat] ?? 0}
-                </span>
-              </button>
-            ))}
+                  <Icon className="h-3 w-3" />
+                  {label}
+                </button>
+              ))}
+            </div>
+
+            {/* Category pills */}
+            <div className="flex flex-wrap gap-2 mt-4">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActive(cat)}
+                  className={`flex items-center gap-2 h-8 px-4 rounded-xl border text-[9px] font-bold uppercase tracking-[0.12em] transition-all ${
+                    cat === active
+                      ? "bg-[var(--imperial-blue)] text-white border-[var(--imperial-blue)] shadow-md"
+                      : "bg-white text-slate-500 border-slate-100 hover:border-[var(--imperial-blue)]/20 hover:text-[var(--imperial-blue)]"
+                  }`}
+                >
+                  {cat}
+                  <span className={`rounded px-1 py-0.5 font-mono text-[8px] ${
+                    cat === active ? "bg-white/15 text-white" : "bg-slate-50 text-slate-400"
+                  }`}>
+                    {categoryCounts[cat] ?? 0}
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
-      </div>
 
         {/* Main Content - Articles */}
         {filtered.length > 0 ? (
