@@ -8,21 +8,21 @@ import { categories, formatPolishDate, type NewsItem } from "@/lib/news-data"
 import { NewsSidebar } from "./news-sidebar"
 import { NewsGroups } from "./news-groups"
 
-const categoryTone: Record<string, string> = {
-  Ekologia: "text-[var(--gold)] bg-[var(--gold)]/10 border-[var(--gold)]/20",
-  Edukacja: "text-[var(--gold)] bg-[var(--gold)]/10 border-[var(--gold)]/20",
-  Wydarzenia: "text-[var(--gold)] bg-[var(--gold)]/10 border-[var(--gold)]/20",
-  Samorząd: "text-[var(--gold)] bg-[var(--gold)]/10 border-[var(--gold)]/20",
-  Kultura: "text-[var(--gold)] bg-[var(--gold)]/10 border-[var(--gold)]/20",
-  Sport: "text-[var(--gold)] bg-[var(--gold)]/10 border-[var(--gold)]/20",
-  Transport: "text-[var(--gold)] bg-[var(--gold)]/10 border-[var(--gold)]/20",
-  Zdrowie: "text-[var(--gold)] bg-[var(--gold)]/10 border-[var(--gold)]/20",
-  Fundusze: "text-[var(--gold)] bg-[var(--gold)]/10 border-[var(--gold)]/20",
-  Społeczność: "text-[var(--gold)] bg-[var(--gold)]/10 border-[var(--gold)]/20",
+const categoryTone: Record<string, { text: string; bg: string; border: string; bar: string }> = {
+  Ekologia:   { text: "text-emerald-700", bg: "bg-emerald-50",   border: "border-emerald-200",  bar: "bg-emerald-500" },
+  Edukacja:   { text: "text-sky-700",     bg: "bg-sky-50",       border: "border-sky-200",      bar: "bg-sky-500"     },
+  Wydarzenia: { text: "text-violet-700",  bg: "bg-violet-50",   border: "border-violet-200",  bar: "bg-violet-500"  },
+  Samorząd:   { text: "text-blue-700",    bg: "bg-blue-50",     border: "border-blue-200",    bar: "bg-blue-600"    },
+  Kultura:    { text: "text-fuchsia-700", bg: "bg-fuchsia-50",  border: "border-fuchsia-200", bar: "bg-fuchsia-500" },
+  Sport:      { text: "text-amber-700",   bg: "bg-amber-50",    border: "border-amber-200",   bar: "bg-amber-500"   },
+  Transport:  { text: "text-orange-700",  bg: "bg-orange-50",   border: "border-orange-200",  bar: "bg-orange-500"  },
+  Zdrowie:    { text: "text-rose-700",    bg: "bg-rose-50",     border: "border-rose-200",    bar: "bg-rose-500"    },
+  Fundusze:   { text: "text-teal-700",    bg: "bg-teal-50",     border: "border-teal-200",    bar: "bg-teal-500"    },
+  Społeczność:{ text: "text-indigo-700",  bg: "bg-indigo-50",   border: "border-indigo-200",  bar: "bg-indigo-500"  },
 }
 
 function getCategoryTone(category?: string) {
-  return categoryTone[category ?? ""] ?? "bg-slate-50 text-slate-600 border-slate-100"
+  return categoryTone[category ?? ""] ?? { text: "text-slate-600", bg: "bg-slate-50", border: "border-slate-100", bar: "bg-slate-400" }
 }
 
 type SortKey = "newest" | "oldest" | "az"
@@ -103,57 +103,34 @@ export function NewsList({ items }: { items: NewsItem[] }) {
               </div>
             </div>
 
-            {/* Sort row */}
-            <div className="flex items-center gap-2">
-              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mr-1">Sortuj:</span>
-              {sortOptions.map(({ key, label, icon: Icon }) => (
-                <button
-                  key={key}
-                  onClick={() => setSort(key)}
-                  className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-[0.15em] border transition-all ${
-                    sort === key
-                      ? "bg-[var(--imperial-blue)] text-white border-[var(--imperial-blue)] shadow-md"
-                      : "bg-white text-slate-500 border-slate-100 hover:border-[var(--imperial-blue)]/30 hover:text-[var(--imperial-blue)]"
-                  }`}
-                >
-                  <Icon className="h-3 w-3" />
-                  {label}
-                </button>
-              ))}
-            </div>
-
-            {/* Category pills */}
-            <div className="flex flex-wrap gap-2 mt-4">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setActive(cat)}
-                  className={`flex items-center gap-2 h-8 px-4 rounded-xl border text-[9px] font-bold uppercase tracking-[0.12em] transition-all ${
-                    cat === active
-                      ? "bg-[var(--imperial-blue)] text-white border-[var(--imperial-blue)] shadow-md"
-                      : "bg-white text-slate-500 border-slate-100 hover:border-[var(--imperial-blue)]/20 hover:text-[var(--imperial-blue)]"
-                  }`}
-                >
-                  {cat}
-                  <span className={`rounded px-1 py-0.5 font-mono text-[8px] ${
-                    cat === active ? "bg-white/15 text-white" : "bg-slate-50 text-slate-400"
-                  }`}>
-                    {categoryCounts[cat] ?? 0}
-                  </span>
-                </button>
-              ))}
+            {/* Sort dropdown */}
+            <div className="flex items-center gap-3 mt-4">
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Sortuj:</span>
+              <select
+                value={sort}
+                onChange={(e) => setSort(e.target.value as SortKey)}
+                className="h-9 w-40 rounded-xl border border-slate-200 bg-white px-3 text-[10px] font-bold uppercase tracking-[0.1em] text-slate-600 outline-none focus:border-[var(--imperial-blue)]"
+              >
+                {sortOptions.map((opt) => (
+                  <option key={opt.key} value={opt.key}>
+                    {opt.label}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
 
         {/* Main Content - Articles */}
         {filtered.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-          {filtered.slice(0, 6).map((item, idx) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-5">
+          {filtered.slice(0, 6).map((item, idx) => {
+            const tone = getCategoryTone(item.category)
+            return (
           <article
             key={item.slug}
-            className="group relative flex flex-col h-full overflow-hidden rounded-[2.5rem] bg-white/70 backdrop-blur-md p-5 border border-slate-100 shadow-[0_8px_30px_rgba(15,23,42,0.02)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[var(--gold)]/30 hover:shadow-[0_20px_45px_rgba(15,23,42,0.06)]"
+            className="group relative flex flex-col h-full overflow-hidden rounded-[2.5rem] bg-white/70 backdrop-blur-md border border-slate-100 shadow-[0_8px_30px_rgba(15,23,42,0.02)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_45px_rgba(15,23,42,0.06)]"
           >
-            <div className="flex flex-col h-full justify-between gap-5">
+            <div className="flex flex-col h-full justify-between gap-5 p-5">
               <Link
                 href={`/artykul/${item.slug}`}
                 className="relative aspect-[16/10] w-full overflow-hidden rounded-[1.6rem] bg-slate-50 border border-slate-100/50"
@@ -186,7 +163,8 @@ export function NewsList({ items }: { items: NewsItem[] }) {
               </div>
             </div>
           </article>
-          ))}
+            )
+          })}
           </div>
         ) : (
           <div className="rounded-[3rem] border-2 border-dashed border-slate-100 bg-white/50 py-24 text-center backdrop-blur-sm">

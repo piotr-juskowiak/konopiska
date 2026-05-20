@@ -231,6 +231,76 @@ const raw: Omit<NewsItem, "slug" | "readingTime">[] = [
     ],
     category: "Kultura",
   },
+  {
+    title: "Złoty medal dla drużyny z Konopisk w mistrzostwach województwa",
+    url: "https://www.konopiska.pl/aktualnosci/zloty-medal-dla-druzyny-z-konopisk/6312",
+    date: "10.04.2026",
+    timestamp: 1775837960,
+    image: "https://www.konopiska.pl/img/media/500x250/500x250-13_Bieg_Pamięci_2022-29.jpg.webp",
+    excerpt:
+      "Nasza drużyna zdobyła złoto na mistrzostwach województwa, pokonując silnych rywali.",
+    body: [
+      "Wspaniały sukces naszych sportowców. Zdobyli złoto w rywalizacji wojewódzkiej.",
+      "Gratulujemy i życzymy dalszych sukcesów."
+    ],
+    category: "Sport",
+  },
+  {
+    title: "Nowe wyposażenie hali sportowej GCKiS",
+    url: "https://www.konopiska.pl/aktualnosci/nowe-wyposazenie-hali-sportowej/6311",
+    date: "05.04.2026",
+    timestamp: 1775405960,
+    image: "https://www.konopiska.pl/img/media/500x250/500x250-IMG_1472-Duży.jpeg.webp",
+    excerpt:
+      "Nowoczesny sprzęt sportowy trafił do Gminnego Centrum Kultury i Sportu.",
+    body: [
+      "Zakończył się montaż nowego wyposażenia sportowego w hali GCKiS.",
+      "Inwestycja ułatwi organizację profesjonalnych treningów."
+    ],
+    category: "Sport",
+  },
+  {
+    title: "Wystawa malarstwa lokalnych artystów w GCKiS",
+    url: "https://www.konopiska.pl/aktualnosci/wystawa-malarstwa-lokalnych-artystow/6310",
+    date: "02.04.2026",
+    timestamp: 1775146760,
+    image: "https://www.konopiska.pl/img/media/500x250/500x250-mmo.jpg.webp",
+    excerpt:
+      "Zapraszamy na wyjątkową wystawę prac lokalnych artystów w centrum kultury.",
+    body: [
+      "Swoje prace zaprezentuje ponad 10 artystów z naszej gminy.",
+      "Wernisaż odbędzie się w piątek o godzinie 18:00."
+    ],
+    category: "Kultura",
+  },
+  {
+    title: "Nowe inwestycje drogowe w sołectwach",
+    url: "https://www.konopiska.pl/aktualnosci/nowe-inwestycje-drogowe-w-solectwach/6309",
+    date: "28.03.2026",
+    timestamp: 1774714760,
+    image: "https://www.konopiska.pl/img/media/500x250/500x250-1_2_DSC03612_www.jpg.webp",
+    excerpt:
+      "Ruszyły prace modernizacyjne na kluczowych drogach w naszych sołectwach.",
+    body: [
+      "Rozpoczął się kolejny etap remontów lokalnych dróg.",
+      "Zakończenie prac planowane jest na połowę lata."
+    ],
+    category: "Samorząd",
+  },
+  {
+    title: "Spotkanie wójta z sołtysami dotyczące planów na nowy rok",
+    url: "https://www.konopiska.pl/aktualnosci/spotkanie-wojta-z-soltysami/6308",
+    date: "20.03.2026",
+    timestamp: 1774023560,
+    image: "https://www.konopiska.pl/img/media/500x250/500x250-sejm1.jpg.webp",
+    excerpt:
+      "Omówiono najważniejsze cele i priorytety inwestycyjne na najbliższe miesiące.",
+    body: [
+      "Wczoraj odbyło się spotkanie wójta z sołtysami wszystkich miejscowości z naszej gminy.",
+      "Rozmowy dotyczyły m.in. budżetu sołeckiego oraz planowanych wydarzeń."
+    ],
+    category: "Samorząd",
+  },
 ]
 
 export const newsItems: NewsItem[] = raw.map((n) => {

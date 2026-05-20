@@ -9,31 +9,31 @@ const groupsConfig = [
     title: "Sport i rekreacja",
     subtitle: "Turnieje, relacje meczowe, zalew Pająk i aktywność fizyczna.",
     filterCat: "Sport",
-    bg: "bg-amber-500",
-    border: "border-amber-500",
-    pill: "bg-amber-500 text-white",
-    hover: "hover:border-amber-400",
-    accent: "text-amber-500",
+    bg: "bg-gradient-to-r from-sky-400 to-blue-500",
+    border: "border-sky-500",
+    pill: "bg-sky-500 text-white",
+    hover: "hover:border-sky-400",
+    accent: "text-sky-500",
   },
   {
     title: "Kultura i rozrywka",
     subtitle: "Konkursy, festiwale muzyczne i wydarzenia kulturalne.",
     filterCat: "Kultura",
-    bg: "bg-violet-600",
-    border: "border-violet-600",
-    pill: "bg-violet-600 text-white",
-    hover: "hover:border-violet-400",
-    accent: "text-violet-600",
+    bg: "bg-gradient-to-r from-yellow-400 to-amber-500",
+    border: "border-yellow-500",
+    pill: "bg-yellow-500 text-amber-900",
+    hover: "hover:border-yellow-400",
+    accent: "text-amber-500",
   },
   {
     title: "Sołectwa",
     subtitle: "Inwestycje, zebrania sołeckie i infrastruktura drogowa.",
     filterCat: "Samorząd",
-    bg: "bg-emerald-600",
-    border: "border-emerald-600",
-    pill: "bg-emerald-600 text-white",
-    hover: "hover:border-emerald-400",
-    accent: "text-emerald-600",
+    bg: "bg-gradient-to-r from-amber-700 to-orange-900",
+    border: "border-orange-800",
+    pill: "bg-orange-800 text-white",
+    hover: "hover:border-orange-700",
+    accent: "text-orange-800",
   },
 ]
 
@@ -48,21 +48,18 @@ export function NewsGroups() {
           return (
             <div key={idx} className="flex flex-col gap-5">
               {/* Section header */}
-              <div className="flex items-center justify-between">
-                <div className={`flex items-center gap-4 ${group.bg} rounded-2xl px-5 py-3 shadow-md`}>
-                  <div>
-                    <h3 className="font-serif text-xl font-bold text-white leading-tight">
-                      {group.title}
-                    </h3>
-                    <p className="text-xs text-white/75 mt-0.5 font-medium">
-                      {group.subtitle}
-                    </p>
-                  </div>
+              <div className={`flex items-center justify-between ${group.bg} rounded-2xl px-5 py-4 shadow-md w-full`}>
+                <div>
+                  <h3 className="font-serif text-xl font-bold text-white leading-tight">
+                    {group.title}
+                  </h3>
+                  <p className="text-xs text-white/80 mt-1 font-medium">
+                    {group.subtitle}
+                  </p>
                 </div>
-
                 <Link
                   href={`/?kategoria=${encodeURIComponent(group.filterCat)}#archiwum`}
-                  className={`hidden sm:inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] ${group.accent} hover:opacity-70 transition-opacity`}
+                  className="hidden sm:inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] text-white/90 hover:text-white transition-opacity"
                 >
                   Zobacz wszystkie
                   <ArrowRight className="h-3.5 w-3.5" />

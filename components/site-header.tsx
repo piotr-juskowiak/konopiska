@@ -27,10 +27,9 @@ import { formatPolishDate, newsItems, type NewsItem } from "@/lib/news-data"
 
 const nav = [
   { label: "Aktualności", href: "/aktualnosci", icon: Newspaper },
-  { label: "Wydarzenia", href: "/wydarzenia", icon: CalendarDays },
-  { label: "Sport", href: "/sport", icon: Trophy },
-  { label: "Polityka", href: "/polityka", icon: Landmark },
-  { label: "Kontakt", href: "/kontakt", icon: Mail },
+  { label: "Kultura i rozrywka", href: "/kultura", icon: CalendarDays },
+  { label: "Sport i wydarzenia", href: "/sport", icon: Trophy },
+  { label: "Sołectwa", href: "/solectwa", icon: Landmark },
 ]
 
 function isNavItemActive(href: string, pathname: string) {

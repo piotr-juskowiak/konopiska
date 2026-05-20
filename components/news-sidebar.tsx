@@ -1,6 +1,6 @@
 "use client"
 
-import { MessageSquare, Calendar, Megaphone, TrendingUp, ChevronRight } from "lucide-react"
+import { MessageSquare, Megaphone, TrendingUp, ChevronRight, Sun, Cloud, CloudRain, CloudSnow, Wind, Droplets, CloudLightning, CloudDrizzle } from "lucide-react"
 
 // Mock data for announcements
 const ugAnnouncements = [
@@ -48,33 +48,49 @@ const mostCommentedArticles = [
   },
 ]
 
-// Mock calendar events
-const upcomingEvents = [
-  {
-    id: 1,
-    date: "18.05",
-    title: "Zmiany rozkładu jazdy",
-    category: "Transport",
-  },
-  {
-    id: 2,
-    date: "20.05",
-    title: "Bieg Pamięci Bohaterów",
-    category: "Sport",
-  },
-  {
-    id: 3,
-    date: "25.05",
-    title: "Ekopiknik dla rodzin",
-    category: "Ekologia",
-  },
-  {
-    id: 4,
-    date: "31.05",
-    title: "Festiwal Światła i Wody",
-    category: "Kultura",
-  },
+// 14-day weather forecast mock data
+const weatherDays = [
+  { day: "Dziś",   icon: "sun",        high: 22, low: 13, rain: 0  },
+  { day: "Jut.",   icon: "cloud",      high: 19, low: 11, rain: 10 },
+  { day: "Śr",     icon: "rain",       high: 16, low: 10, rain: 80 },
+  { day: "Czw",    icon: "drizzle",    high: 15, low: 9,  rain: 60 },
+  { day: "Pt",     icon: "cloud",      high: 18, low: 11, rain: 20 },
+  { day: "Sob",    icon: "sun",        high: 23, low: 14, rain: 0  },
+  { day: "Nd",     icon: "sun",        high: 25, low: 15, rain: 0  },
+  { day: "Pn",     icon: "cloud",      high: 21, low: 13, rain: 15 },
+  { day: "Wt",     icon: "thunder",    high: 17, low: 10, rain: 70 },
+  { day: "Śr",     icon: "rain",       high: 14, low: 9,  rain: 85 },
+  { day: "Czw",    icon: "cloud",      high: 16, low: 10, rain: 30 },
+  { day: "Pt",     icon: "sun",        high: 20, low: 12, rain: 5  },
+  { day: "Sob",    icon: "sun",        high: 24, low: 14, rain: 0  },
+  { day: "Nd",     icon: "cloud",      high: 22, low: 13, rain: 10 },
 ]
+
+function WeatherIcon({ icon, size = 16 }: { icon: string; size?: number }) {
+  const cls = `shrink-0`
+  const style = { width: size, height: size }
+  switch (icon) {
+    case "sun":      return <Sun       className={cls} style={style} />
+    case "cloud":    return <Cloud     className={cls} style={style} />
+    case "rain":     return <CloudRain className={cls} style={style} />
+    case "snow":     return <CloudSnow className={cls} style={style} />
+    case "thunder":  return <CloudLightning className={cls} style={style} />
+    case "drizzle":  return <CloudDrizzle  className={cls} style={style} />
+    default:         return <Sun       className={cls} style={style} />
+  }
+}
+
+function weatherIconColor(icon: string) {
+  switch (icon) {
+    case "sun":     return "text-amber-400"
+    case "cloud":   return "text-slate-300"
+    case "rain":    return "text-blue-400"
+    case "drizzle": return "text-blue-300"
+    case "thunder": return "text-violet-400"
+    case "snow":    return "text-sky-200"
+    default:        return "text-amber-400"
+  }
+}
 
 export function NewsSidebar() {
   return (
@@ -165,43 +181,69 @@ export function NewsSidebar() {
         </div>
       </div>
 
-      {/* Events Calendar */}
-      <div className="space-y-4 bg-gradient-to-br from-[var(--imperial-blue)] to-[var(--imperial-blue-dark)] p-8 rounded-[2rem] text-white shadow-xl shadow-[var(--imperial-blue)]/10">
-        <div className="flex items-center justify-between mb-2">
+      {/* 14-Day Weather Widget */}
+      <div className="bg-gradient-to-br from-[var(--imperial-blue)] to-[var(--imperial-blue-dark)] p-6 rounded-[2rem] text-white shadow-xl shadow-[var(--imperial-blue)]/10">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 shadow-inner">
-              <Calendar className="h-5 w-5 text-[var(--gold)]" />
+              <Sun className="h-5 w-5 text-amber-400" />
             </div>
-            <h3 className="font-serif text-xl font-bold text-white">
-              Kalendarz
-            </h3>
+            <div>
+              <h3 className="font-serif text-xl font-bold text-white leading-tight">Pogoda</h3>
+              <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-white/40">Konopiska · 14 dni</p>
+            </div>
           </div>
-          <button className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center text-white/60 hover:bg-[var(--gold)] hover:text-[var(--imperial-blue-dark)] transition-colors">
-             <ChevronRight className="h-5 w-5" />
+          <button className="h-9 w-9 rounded-full bg-white/10 flex items-center justify-center text-white/60 hover:bg-[var(--gold)] hover:text-[var(--imperial-blue-dark)] transition-colors">
+            <ChevronRight className="h-4 w-4" />
           </button>
         </div>
-        
-        <div className="flex flex-col gap-0 divide-y divide-white/10">
-          {upcomingEvents.map((event) => (
+
+        {/* Today's highlight */}
+        <div className="flex items-center justify-between bg-white/8 rounded-2xl px-4 py-3 mb-4 border border-white/10">
+          <div className="flex items-center gap-3">
+            <Sun className="h-8 w-8 text-amber-400" />
+            <div>
+              <p className="text-2xl font-black text-white">22°</p>
+              <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-white/50">Słonecznie</p>
+            </div>
+          </div>
+          <div className="flex flex-col items-end gap-1 text-[11px] font-semibold text-white/60">
+            <span className="flex items-center gap-1"><Droplets className="h-3 w-3 text-blue-300" /> 0%</span>
+            <span className="flex items-center gap-1"><Wind className="h-3 w-3 text-white/40" /> 12 km/h</span>
+          </div>
+        </div>
+
+        {/* 14-day list — vertical */}
+        <div className="flex flex-col gap-1">
+          {weatherDays.map((d, i) => (
             <div
-              key={event.id}
-              className="group flex items-center gap-5 py-4 cursor-pointer"
+              key={i}
+              className={`flex items-center justify-between rounded-xl px-4 py-2 transition-colors cursor-pointer ${
+                i === 0
+                  ? "bg-white/15 border border-white/20"
+                  : "bg-white/5 hover:bg-white/10 border border-transparent hover:border-white/10"
+              }`}
             >
-              <div className="flex flex-col items-center justify-center min-w-[3.5rem] rounded-xl bg-white/5 border border-white/10 p-2 group-hover:bg-white/20 transition-colors shadow-inner">
-                <span className="text-lg font-black text-white leading-none">
-                  {event.date.split(".")[0]}
+              <span className={`w-10 text-[11px] font-black uppercase tracking-wider ${i === 0 ? "text-[var(--gold)]" : "text-white/60"}`}>
+                {d.day}
+              </span>
+              <div className="flex items-center gap-3 flex-1 justify-center">
+                <span className={`${weatherIconColor(d.icon)}`}>
+                  <WeatherIcon icon={d.icon} size={16} />
                 </span>
-                <span className="text-[10px] font-bold text-white/50 uppercase tracking-wider mt-1">
-                  maj
-                </span>
+                <div className="w-10 text-left">
+                  {d.rain > 0 && (
+                    <span className="inline-flex items-center gap-0.5 text-[9px] font-bold text-blue-300">
+                      <Droplets className="h-2.5 w-2.5" />
+                      {d.rain}%
+                    </span>
+                  )}
+                </div>
               </div>
-              <div className="flex-1">
-                <p className="text-sm font-semibold text-white/90 group-hover:text-[var(--gold)] transition-colors line-clamp-1">
-                  {event.title}
-                </p>
-                <span className="text-[10px] font-black uppercase tracking-[0.1em] text-[var(--gold)] mt-1.5 block">
-                  {event.category}
-                </span>
+              <div className="flex items-center justify-end gap-3 w-16">
+                <span className="text-sm font-bold text-white w-5 text-right">{d.high}°</span>
+                <span className="text-xs font-medium text-white/40 w-5 text-right">{d.low}°</span>
               </div>
             </div>
           ))}

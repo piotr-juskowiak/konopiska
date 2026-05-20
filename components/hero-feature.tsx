@@ -38,13 +38,14 @@ export function HeroFeature({ items }: { items: NewsItem[] }) {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Premium gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a]" />
+      {/* Premium blue gradient background — matches sidebar */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--imperial-blue)] via-[var(--imperial-blue-dark)] to-[#050d1a]" />
       
       {/* Ambient glows */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full bg-[var(--gold)]/10 blur-[150px]" />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full bg-blue-500/10 blur-[120px]" />
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full bg-[var(--imperial-blue)]/40 blur-[150px]" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full bg-[var(--steel-azure)]/15 blur-[120px]" />
+        <div className="absolute top-1/2 right-0 w-[400px] h-[400px] rounded-full bg-[var(--imperial-blue-dark)]/60 blur-[100px]" />
       </div>
 
       <div className="relative mx-auto max-w-[90rem] px-4 sm:px-6">
