@@ -102,31 +102,31 @@ export function NewsSidebar() {
 
       {/* UG Announcements */}
       <div className="rounded-2xl bg-white border border-slate-100 shadow-sm overflow-hidden">
-        <div className="bg-gradient-to-r from-[var(--imperial-blue)]/5 to-transparent px-6 py-4 border-b border-slate-100">
-          <div className="flex items-center gap-2.5 mb-1">
-            <Megaphone className="h-4 w-4 text-[var(--imperial-blue)]" />
-            <h3 className="font-serif text-lg font-bold text-[var(--imperial-blue)]">
+        <div className="bg-gradient-to-r from-[var(--imperial-blue)]/5 to-transparent px-6 py-5 border-b border-slate-100">
+          <div className="flex items-center gap-3 mb-1">
+            <Megaphone className="h-5 w-5 text-[var(--imperial-blue)]" />
+            <h3 className="font-serif text-xl font-bold text-[var(--imperial-blue)]">
               Ogłoszenia UG
             </h3>
           </div>
-          <p className="text-xs text-slate-500 ml-6">Urzędu Gminy</p>
+          <p className="text-sm text-slate-500 ml-8">Urzędu Gminy</p>
         </div>
-        <div className="space-y-3 p-4">
+        <div className="space-y-4 p-5">
           {ugAnnouncements.map((announcement) => (
             <div
               key={announcement.id}
-              className="group flex flex-col gap-2 p-3 rounded-lg bg-slate-50 hover:bg-[var(--gold)]/5 transition-colors border border-transparent hover:border-[var(--gold)]/20 cursor-pointer"
+              className="group flex flex-col gap-2 p-4 rounded-xl bg-slate-50 hover:bg-[var(--gold)]/5 transition-colors border border-transparent hover:border-[var(--gold)]/20 cursor-pointer"
             >
               <div className="flex items-start justify-between gap-2">
-                <p className="text-xs font-bold text-[var(--imperial-blue)] leading-snug group-hover:text-[var(--gold)] transition-colors flex-1">
+                <p className="text-sm font-bold text-[var(--imperial-blue)] leading-snug group-hover:text-[var(--gold)] transition-colors flex-1">
                   {announcement.title}
                 </p>
               </div>
               <div className="flex items-center justify-between gap-2">
-                <span className="inline-flex items-center px-2 py-1 rounded-md bg-[var(--imperial-blue)]/10 text-[7px] font-black uppercase tracking-[0.1em] text-[var(--imperial-blue)]">
+                <span className="inline-flex items-center px-2.5 py-1.5 rounded-md bg-[var(--imperial-blue)]/10 text-[9px] font-black uppercase tracking-[0.1em] text-[var(--imperial-blue)]">
                   {announcement.tag}
                 </span>
-                <span className="text-[7px] font-semibold text-slate-400">
+                <span className="text-xs font-semibold text-slate-400">
                   {announcement.date}
                 </span>
               </div>

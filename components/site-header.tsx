@@ -329,8 +329,8 @@ export function SiteHeader({ updatedAt }: { updatedAt?: string }) {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 shadow-[0_12px_40px_rgba(15,23,42,0.08)] backdrop-blur-xl">
       {/* Top utility bar */}
-      <div className="bg-[var(--imperial-blue)] border-b border-[var(--imperial-blue)]/20 text-white">
-        <div className="mx-auto flex max-w-[90rem] items-center justify-end gap-4 px-4 py-2.5 text-[10px] sm:px-6">
+      <div className="bg-[#0f172a] border-b border-slate-800 text-white">
+        <div className="mx-auto flex max-w-[90rem] items-center justify-end gap-4 px-4 py-3 text-[11px] sm:px-6">
           <div className="flex shrink-0 items-center gap-3">
             <WeatherWidget />
             <a

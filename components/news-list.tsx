@@ -175,10 +175,10 @@ export function NewsList({ items }: { items: NewsItem[] }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-[70%_30%] gap-10">
         {/* Main Content - Articles */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {filtered.slice(0, 9).map((item, idx) => (
+          {filtered.slice(0, 6).map((item, idx) => (
           <article
             key={item.slug}
             className="group relative flex flex-col h-full overflow-hidden rounded-[2.5rem] bg-white/70 backdrop-blur-md p-5 border border-slate-100 shadow-[0_8px_30px_rgba(15,23,42,0.02)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[var(--gold)]/30 hover:shadow-[0_20px_45px_rgba(15,23,42,0.06)]"
